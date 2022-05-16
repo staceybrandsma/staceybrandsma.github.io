@@ -4,6 +4,11 @@ and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
+# Contact
+- [LinkedIn](www.linkedin.com/in/staceybrandsma)
+- [Email](stacey.data.science@gmail.com)
+- [Github](www.github.com/staceybrandsma)
+
 # Work Experience
 - [Senior Data Scientist ~ Amgen](./sds-amgen.md)
 - [Data Scientist 2 ~ Parsyl](./ds-parsyl.md)
