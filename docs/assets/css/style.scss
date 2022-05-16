@@ -2,10 +2,15 @@
 ---
 
 @import "{{ site.theme }}";
-banner {
-    background: #4276b6;
-    border: #4276b6
+#banner {
+    background: #4a707f;
+    border: #4a707f;
+}
+#banner .button{
+    background: #888;
+    border: #888;
 }
 header {
     background: #444;
+    text-shadow: #444;
 }

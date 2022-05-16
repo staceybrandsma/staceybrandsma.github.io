@@ -16,4 +16,8 @@ Analytics and BSc in Biology.
 - [Data Scientist ~ Johnson & Johnson](./ds-jj.md)
 - [Monitoring & Evaluation Officer ~ MCC](./me-mcc.md)
 
-
+## Education
+- [MSc Computer Science ~ Georgia Tech](./omscs.md)
+- [MSc Analytics ~ Georgia Tech](./omsa.md)
+- [MicroMasters in Data & Economics ~ MIT](./dedp.md)
+- [BSc Biology ~ Kings University](./bsc.md)
