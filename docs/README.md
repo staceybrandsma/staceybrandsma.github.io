@@ -1,1 +1,6 @@
 #### Stacey Brandsma
+
+Welcome!  
+
+[Directory](./)
+
