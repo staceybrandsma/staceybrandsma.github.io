@@ -4,7 +4,7 @@ and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
-# Contact
+## Contact Information
 - [LinkedIn](www.linkedin.com/in/staceybrandsma)
 - [Email](stacey.data.science@gmail.com)
 - [Github](www.github.com/staceybrandsma)
@@ -16,7 +16,7 @@ to complement my MSc in Analytics and BSc in Biology.
 - [Data Scientist ~ Johnson & Johnson](./ds-jj.md)
 - [Monitoring & Evaluation Officer ~ MCC](./me-mcc.md)
 
-## MSc Computer Science
+## Master of Science in Computer Science
 Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
 2024
 
@@ -28,7 +28,7 @@ Completed Coursework:
 - Seminar in Artificial Intelligence
 - Machine Learning & Data Science Tools
 
-## MSc Analytics
+## M.Sc. Analytics
 Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020
 
 Completed Coursework:
