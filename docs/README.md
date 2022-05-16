@@ -2,5 +2,6 @@
 
 Welcome!  
 
-[Directory](./)
+[Home](./)
+[About me](./about.md)
 
