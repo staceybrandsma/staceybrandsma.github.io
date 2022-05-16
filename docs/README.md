@@ -17,17 +17,70 @@ to complement my MSc in Analytics and BSc in Biology.
 - [Monitoring & Evaluation Officer ~ MCC](./me-mcc.md)
 
 ## MSc Computer Science
-Georgia Institute of Technology //
-GPA: 4.0 //
-Anticipated Graduation: 2024 //
+Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
+2024
 
-Completed Classes:
+Completed Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
 - Human Computer Interaction
 - Seminar in Artificial Intelligence
 - Machine Learning & Data Science Tools
+
+## MSc Analytics
+Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020
+
+Completed Coursework:
+- Simulation
+- Data & Visual Analytics
+- Introduction to Modeling
+- Introduction to Computing
+- Business Fundamentals
+- Business Data Analytics
+- Regression Analysis
+- Bayesian Statistics
+- High Dimensional Data Analytics
+- Machine Learning
+
+## Additional Coursework
+Coursera Specializations:
+- AI for Medicine ~ DeepLearning.ai
+- Practical Data Science ~ DeepLearning.ai
+- Machine Learning Engineering for Production ~ DeepLearning.ai
+- Fundamentals of Public Health Practice ~ Imperial College London
+Coursera Courses:
+- Bioinformatics for Beginners ~ USC San Diego
+- Learning How to Learn ~ McMaster University
+Certifications:
+- Data Science Professional ~ Databricks
+
+## MicroMasters in Data & Economics
+Massachusetts Institute of Technology // Completed: 2018
+
+Completed Coursework:
+- Principles of Microeconomics
+- Challenges of Global Poverty
+- Data Analysis for Social Scientists
+- Advanced Development Economics
+- Designing and Running Randomized Evaluations
+
+## BSc Biology
+Kings University // GPA 3.4 // Graduation: 2013
+
+Relevant Coursework:
+- Calculus
+- Biological Modelling
+- Introductory and Advanced Statistics
+- Experimental Methods
+
+Additional Achievements:
+- Certificate in Development Studies
+- Senior Thesis (LINK) published in International Journal of Microbiology & presented at Agriculture and Agri-Food Canada
+- Laurence Decore Student Leadership Award
+- Vice President of Student Government
+- Student Representative on Presidential Search Committee
+- Student Leader
 
 # Education
 - [MSc Computer Science ~ Georgia Tech](./omscs.md)
