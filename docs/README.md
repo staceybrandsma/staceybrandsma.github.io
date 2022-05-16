@@ -16,6 +16,12 @@ to complement my MSc in Analytics and BSc in Biology.
 - [Data Scientist ~ Johnson & Johnson](./ds-jj.md)
 - [Monitoring & Evaluation Officer ~ MCC](./me-mcc.md)
 
+# Education
+- [MSc Computer Science ~ Georgia Tech](./omscs.md)
+- [MSc Analytics ~ Georgia Tech](./omsa.md)
+- [MicroMasters in Data & Economics ~ MIT](./dedp.md)
+- [BSc Biology ~ Kings University](./bsc.md)
+
 ## Master of Science in Computer Science
 Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
 2024
@@ -81,9 +87,3 @@ Additional Achievements:
 - Vice President of Student Government
 - Student Representative on Presidential Search Committee
 - Student Leader
-
-# Education
-- [MSc Computer Science ~ Georgia Tech](./omscs.md)
-- [MSc Analytics ~ Georgia Tech](./omsa.md)
-- [MicroMasters in Data & Economics ~ MIT](./dedp.md)
-- [BSc Biology ~ Kings University](./bsc.md)
