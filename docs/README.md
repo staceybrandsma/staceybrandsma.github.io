@@ -1,7 +1,7 @@
-#### Stacey Brandsma
+## Stacey Brandsma
 
 Welcome!  
 
-[Home](./)
+[Home](./)\n
 [About me](./about.md)
 
