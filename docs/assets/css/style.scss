@@ -7,10 +7,16 @@
     border: #4a707f;
 }
 #banner .button{
-    background: #888;
+    background: linear-gradient(#4a707f, #888);
     border: #888;
 }
 header {
     background: #444;
+    text-shadow: #444;
+}
+body {
+    background: #c1c0c0;
+}
+h1 {
     text-shadow: #444;
 }
