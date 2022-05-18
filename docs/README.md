@@ -4,6 +4,18 @@ and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
+## Skills
+Languages| Methodologies
+--- | ---
+- Python | Machine Learning
+- R | Natural Language Processing
+- SQL | Image Analysis
+- Bash/Zsh | Deep Learning
+- Git | Big Data Analytics
+- Matlab | Simulation
+- CSS | Bayesian Statistics
+- HTML | Bysiness Analytics
+
 ## Contact Information
 - [LinkedIn](www.linkedin.com/in/staceybrandsma)
 - [Email](stacey.data.science@gmail.com)
@@ -55,9 +67,12 @@ Coursera Specializations:
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
 - Fundamentals of Public Health Practice ~ Imperial College London
+
 Coursera Courses:
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
+- Foundations of Data Analysis ~ UT Austin
+
 Certifications:
 - Data Science Professional ~ Databricks
 
