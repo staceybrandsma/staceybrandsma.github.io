@@ -22,18 +22,62 @@ to complement my MSc in Analytics and BSc in Biology.
 - [Github](www.github.com/staceybrandsma)
 
 # Work Experience
-- [Senior Data Scientist ~ Amgen](./sds-amgen.md)
-- [Data Scientist 2 ~ Parsyl](./ds-parsyl.md)
-- [Data Scientist ~ HCA Healthcare](./ds-hca.md)
-- [Data Scientist ~ Johnson & Johnson](./ds-jj.md)
-- [Monitoring & Evaluation Officer ~ MCC](./me-mcc.md)
+## Senior Data Scientist ~ Amgen
+_July 2021 to present_
+## Data Scientist 2 ~ Parsyl
+_March 2021 - July 2021_
 
+## Data Scientist ~ HCA Healthcare
+_April 2020 to March 2021_
+I worked on the Clinical Operations Group Data Science team.  This
+involves building production machine learning models and analyses to
+improve patient outcomes. 
+Key Projects:
+- Created and currently maintaining COVID-19 ICU Census models and dashboard.
+- Modeled ICU capacity, COVID-19 hospitalizations, and hospital health status.
+- Modeled elective surgery appointment recovery at hospitals and surgery centers during COVID-19 pandemic.
+- Developed a 30-day readmission classifier model for patients.
+- Built pipeline for calculating regional COVID-19 Rt values.
+- Built and deployed predictive models for a patient’s hospital visit cost.
+- Award: outstanding work during COVID-19 pandemic.
+
+## Data Scientist ~ Johnson & Johnson
+_June 2018 to April 2020_
+I worked on the Advanced Analytics Data Science team within J&J.  My
+main project was developing a model and visualization for detecting
+suspicious orders in controlled pharmaceutical substances.
+Additionally, I worked with the the Data Analytics & Acquisition team
+within the Logistics Product Line of Johnson & Johnson supply chain,
+supporting pharmaceuticals, medical devices, and consumer products.
+This team is responsible for developing new initiatives in analytics
+to make the supply chain more efficient and effective. 
+- Modelled and visualized anomalies for controlled substances.
+- Built shiny app for visualizing advanced statistical concepts to business partners.
+- Modelled and predicted promotion timing and efficacy for seasonal consumer products.
+- Updated and documented legacy system for monitoring anomalous suture orders.
+- Modelled and predicted promotion timing and efficacy for seasonal
+  consumer products.
+- Assisting in building machine learning models to predict ETA with IoT GPS sensors.
+- Assisting in building modeling anomalies for controlled substances.
+- Testing and tracking location and battery data from IoT sensors.
+- Assisting in the build of a dashboard overview of metrics and current distribution status.
+
+## Monitoring & Evaluation Officer ~ MCC
+_September 2014 - October 2017_
+I worked with local partner community and non-governmental
+organizations to develop their capacity for program management. 
+Key Responsibilities:
+– reviewed and approved partner reports
+– supported partners in developing project plans
+– supported partners in their monitoring strategies
+– organized external evaluations
+– conducted informal reviews of programs
+– organized annual partner meetings
+– maintained MCC country program database
+– conducted workshops on Monitoring and Evaluation for partners
+– collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
+– contributed to the Monitoring and Evaluation Network
 # Education
-- [MSc Computer Science ~ Georgia Tech](./omscs.md)
-- [MSc Analytics ~ Georgia Tech](./omsa.md)
-- [MicroMasters in Data & Economics ~ MIT](./dedp.md)
-- [BSc Biology ~ Kings University](./bsc.md)
-
 ## Master of Science in Computer Science
 Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
 2024
@@ -61,12 +105,16 @@ Completed Coursework:
 - High Dimensional Data Analytics
 - Machine Learning
 
+## Public Health Coursework
+- Fundamentals of Public Health Practice ~ Imperial College London
+- Global Disease Masterclass ~ Imperial College London
+- Epidemiology for Public Health ~ Imperial College London
+
 ## Additional Coursework
 Coursera Specializations:
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
-- Fundamentals of Public Health Practice ~ Imperial College London
 
 Coursera Courses:
 - Bioinformatics for Beginners ~ USC San Diego
