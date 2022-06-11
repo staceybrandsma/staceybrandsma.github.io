@@ -5,21 +5,18 @@ and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
 ## Skills
-Languages | Methodologies | 
---- | --- | 
-- Python | Machine Learning |
-- R | Natural Language Processing |
-- SQL | Image Analysis |
-- Bash/Zsh | Deep Learning |
-- Git | Big Data Analytics |
-- Matlab | Simulation |
-- CSS | Bayesian Statistics |
-- HTML | Business Analytics |
+_Languages_
+Python, R, SQL, Spark, Bash/Zsh, Git
+_Methodologies_
+Machine Learning, Natural Language Processing, Computer Vision, Deep
+Learning, Big Data Analytics, Simulation, Bayesian Statistics,
+Regression, Business Analytics
 
 ## Contact Information
 - [LinkedIn](www.linkedin.com/in/staceybrandsma)
 - [Email](stacey.data.science@gmail.com)
 - [Github](www.github.com/staceybrandsma)
+- [Test](docs/skills.md)
 
 # Work Experience
 ## Senior Data Scientist ~ Amgen
