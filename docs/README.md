@@ -6,9 +6,9 @@ to complement my MSc in Analytics and BSc in Biology.
 
 ## Skills
 _Languages_
-Python, R, SQL, Spark, Bash/Zsh, Git
+- Python, R, SQL, Spark, Bash/Zsh, Git
 _Methodologies_
-Machine Learning, Natural Language Processing, Computer Vision, Deep
+- Machine Learning, Natural Language Processing, Computer Vision, Deep
 Learning, Big Data Analytics, Simulation, Bayesian Statistics,
 Regression, Business Analytics
 
@@ -16,7 +16,7 @@ Regression, Business Analytics
 - [LinkedIn](www.linkedin.com/in/staceybrandsma)
 - [Email](stacey.data.science@gmail.com)
 - [Github](www.github.com/staceybrandsma)
-- [Test](docs/skills.md)
+- [Test](skills.md)
 
 # Work Experience
 ## Senior Data Scientist ~ Amgen
