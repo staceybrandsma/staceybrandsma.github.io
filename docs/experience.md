@@ -5,10 +5,26 @@
 # Work Experience
 ## Senior Data Scientist ~ Amgen
 _July 2021 to present_
+As a technical leader on the team, I work on several projects across
+the company, including clinical trial innovation, research and
+development, and epidemiology.  
+Key Projects:
+- Helped develop and improve a machine learning pipeline for clinical trial optimization and site
+selection
+- Advised business partners on expansion and roll out of production model for Osteoporosis detection
+- Developing computer vision pipeline for ingesting cell painting
+images for cell phenotype changes.  
+- Building forecasting predictions for key product sales.
+- Contributing to natural language processing modelling effort for
+ingesting relevant news articles.  
+- Acting as a mentor for junior staff and ambassador for data science across Amgen, facilitating
+symposiums, journal clubs, knowledge sharing sessions, pilots, and
+lunch and learns.  
 
 ## Data Scientist 2 ~ Parsyl
 _March 2021 - July 2021_
-I worked 
+I led several projects to expand data science across the company,
+particularly in the food safety and public health space.  
 Key Projects:
 - Built production model for predicting location of facility using IOT devices.
 - Deployed and built algorithm for predicting shelf life lost for muscle meat products in the cold chain
