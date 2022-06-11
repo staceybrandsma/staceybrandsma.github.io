@@ -32,7 +32,7 @@ _April 2020 to March 2021_\
 I worked on the Clinical Operations Group Data Science team.  This
 involves building production machine learning models and analyses to
 improve patient outcomes. 
-Key Projects:
+Key Projects:\
 - Created and currently maintaining COVID-19 ICU Census models and dashboard.
 - Modeled ICU capacity, COVID-19 hospitalizations, and hospital health status.
 - Modeled elective surgery appointment recovery at hospitals and surgery centers during COVID-19 pandemic.
@@ -48,6 +48,7 @@ main project was developing a model and visualization for detecting
 suspicious orders in controlled pharmaceutical substances.
 Additionally, I worked with the the Data Analytics & Acquisition team,
 supporting pharmaceuticals, medical devices, and consumer products.
+Key Projects:\
 - Modelled and visualized anomalies for controlled substances.
 - Built shiny app for visualizing advanced statistical concepts to business partners.
 - Modelled and predicted promotion timing and efficacy for seasonal consumer products.
@@ -63,7 +64,7 @@ supporting pharmaceuticals, medical devices, and consumer products.
 _September 2014 - October 2017_\
 I worked with local partner community and non-governmental
 organizations to develop their capacity for program management. 
-Key Responsibilities:
+Key Responsibilities:\
 - reviewed and approved partner reports
 - supported partners in developing project plans
 - supported partners in their monitoring strategies
@@ -79,7 +80,7 @@ Key Responsibilities:
 ## M.Sc. Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 2024_\
-Completed Coursework:
+Completed Coursework:\
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
@@ -89,7 +90,7 @@ Completed Coursework:
 
 ## M.Sc. Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
-Completed Coursework:
+Completed Coursework:\
 - Simulation
 - Data & Visual Analytics
 - Introduction to Modeling
@@ -123,7 +124,7 @@ _Certifications:_\
 
 ## MicroMasters in Data & Economics
 _Massachusetts Institute of Technology // Completed: 2018_\
-Completed Coursework:
+Completed Coursework:\
 - Principles of Microeconomics
 - Challenges of Global Poverty
 - Data Analysis for Social Scientists
@@ -132,13 +133,13 @@ Completed Coursework:
 
 ## BSc Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
-Relevant Coursework:
+Relevant Coursework:\
 - Calculus
 - Biological Modelling
 - Introductory and Advanced Statistics
 - Experimental Methods
 
-Additional Achievements:
+Additional Achievements:\
 - Certificate in Development Studies
 - Senior Thesis (LINK) published in International Journal of Microbiology & presented at Agriculture and Agri-Food Canada
 - Laurence Decore Student Leadership Award
