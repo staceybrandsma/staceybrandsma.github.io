@@ -5,10 +5,16 @@ and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
 ## Skills
-| Languages | Python, R, SQL, Bash/Zsh, Git, Matlab, CSS, HTML | 
-| Methodologies | Machine Learning, Natural Language Processing, Image
-Analysis, Deep Learning, Big Data Analytics, Simulation , Bayesian
-Statistics, Business Analytics |
+Languages | Methodologies | 
+--- | --- | 
+- Python | Machine Learning |
+- R | Natural Language Processing |
+- SQL | Image Analysis |
+- Bash/Zsh | Deep Learning |
+- Git | Big Data Analytics |
+- Matlab | Simulation |
+- CSS | Bayesian Statistics |
+- HTML | Business Analytics |
 
 ## Contact Information
 - [LinkedIn](www.linkedin.com/in/staceybrandsma)
