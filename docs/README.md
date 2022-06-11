@@ -6,7 +6,7 @@ to complement my MSc in Analytics and BSc in Biology.
 
 ## Contact Information
 - [Resume](StaceyBrandsma_Resume.pdf)
-- stacey.data.science@gmail.com
+- [Email](stacey.data.science@gmail.com)
 - <a href="https://www.linkedin.com/in/stacey-brandsma/"> LinkedIn </a>
 - <a href="https://www.github.com/staceybrandsma/"> Github </a>
 
