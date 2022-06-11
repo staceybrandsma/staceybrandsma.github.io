@@ -1,10 +1,11 @@
-# Home
-[Back to Home](README.md)
+# Stacey Brandsma
 
+[Back to Home](README.md)
+# Education
 ## M.Sc. Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 2024_\
-Completed Coursework:
+Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
@@ -14,7 +15,7 @@ Completed Coursework:
 
 ## M.Sc. Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
-Completed Coursework:
+Coursework:
 - Simulation
 - Data & Visual Analytics
 - Introduction to Modeling

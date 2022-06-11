@@ -1,5 +1,5 @@
 
-# Home
+# Stacey Brandsma
 [Back to Home](README.md)
 
 # Work Experience
@@ -8,6 +8,10 @@ _July 2021 to present_
 
 ## Data Scientist 2 ~ Parsyl
 _March 2021 - July 2021_
+I worked 
+Key Projects:
+- Built production model for predicting location of facility using IOT devices.
+- Deployed and built algorithm for predicting shelf life lost for muscle meat products in the cold chain
 
 ## Data Scientist ~ HCA Healthcare
 _April 2020 to March 2021_\

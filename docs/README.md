@@ -4,7 +4,13 @@ and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
 
-## Skills
+# Contact Information
+- [Resume](StaceyBrandsma_Resume.pdf)
+- [LinkedIn](www.linkedin.com/in/staceybrandsma)
+- [Email](stacey.data.science@gmail.com)
+- [Github](www.github.com/staceybrandsma)
+
+# Skills
 _Languages_
 - Python, R, SQL, Spark, Bash/Zsh, Git
 
@@ -13,10 +19,20 @@ _Methodologies_
 Learning, Big Data Analytics, Simulation, Bayesian Statistics,
 Regression, Business Analytics
 
-## Contact Information
-- [LinkedIn](www.linkedin.com/in/staceybrandsma)
-- [Email](stacey.data.science@gmail.com)
-- [Github](www.github.com/staceybrandsma)
+_Data Engineering_
+- AWS, Kedro, Docker, Hadoop, Teradata, Openshift
+
+_Visualization Tools_
+- Tableau, R-Shiny, D3, PowerBI
+
+_Collaboration_
+- Agile, Jira, Confluence, Scrum, Software Testing, Product
+  Development, Code Reviews, Pair Programming, Knowledge Transfer,
+  Technical Presentations
+
+_Areas of Expertise_
+- Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program
+  Management, Research, DevOps
 
 # Work Experience
 - [Senior Data Scientist ~ Amgen](experience.md)
