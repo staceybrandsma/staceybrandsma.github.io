@@ -11,28 +11,18 @@ to complement my MSc in Analytics and BSc in Biology.
 - <a href="https://www.github.com/staceybrandsma/"> Github </a>
 
 ## Skills
-_Languages_
-- Python, R, SQL, Spark, Bash/Zsh, Git
 
-_Methodologies_
-- Machine Learning, Natural Language Processing, Computer Vision, Deep
+| Languages | Python, R, SQL, Spark, Bash/Zsh, Git |
+| Methodologies | Machine Learning, Natural Language Processing, Computer Vision, Deep
 Learning, Big Data Analytics, Simulation, Bayesian Statistics,
-Regression, Business Analytics
-
-_Data Engineering_
-- AWS, Kedro, Docker, Hadoop, Teradata, Openshift
-
-_Visualization Tools_
-- Tableau, R-Shiny, D3, PowerBI
-
-_Collaboration_
-- Agile, Jira, Confluence, Scrum, Software Testing, Product
+Regression, Business Analytics |
+| Data Engineering | AWS, Kedro, Docker, Hadoop, Teradata, Openshift |
+| Visualization Tools | Tableau, R-Shiny, D3, PowerBI |
+| Collaboration | Agile, Jira, Confluence, Scrum, Software Testing, Product
   Development, Code Reviews, Pair Programming, Knowledge Transfer,
-  Technical Presentations
-
-_Areas of Expertise_
-- Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program
-  Management, Research, DevOps
+  Technical Presentations |
+| Areas of Expertise | Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program
+  Management, Research, DevOps |
 
 ## Work Experience
 - [Senior Data Scientist ~ Amgen](experience.md)
