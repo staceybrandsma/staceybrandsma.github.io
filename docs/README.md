@@ -1,5 +1,5 @@
 # Stacey Brandsma
-I am a Data Scientist with several years of experience analyzing data
+I am a senior data scientist with several years of experience analyzing data
 and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a MSc in Computer Science
 to complement my MSc in Analytics and BSc in Biology.  
@@ -74,11 +74,11 @@ Key Responsibilities:
 - conducted workshops on Monitoring and Evaluation for partners
 - collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
 - contributed to the Monitoring and Evaluation Network
-# Education
-## Master of Science in Computer Science
-Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
-2024
 
+# Education
+## M.Sc. Computer Science
+_Georgia Institute of Technology // GPA: 4.0 // Anticipated
+Graduation: 2024_\
 Completed Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
@@ -88,8 +88,7 @@ Completed Coursework:
 - Machine Learning & Data Science Tools
 
 ## M.Sc. Analytics
-Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020
-
+_Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
 Completed Coursework:
 - Simulation
 - Data & Visual Analytics
@@ -103,27 +102,27 @@ Completed Coursework:
 - Machine Learning
 
 ## Public Health Coursework
-- Fundamentals of Public Health Practice ~ Imperial College London
-- Global Disease Masterclass ~ Imperial College London
-- Epidemiology for Public Health ~ Imperial College London
+_Imperial College London_\
+- Fundamentals of Public Health Practice
+- Global Disease Masterclass
+- Epidemiology for Public Health
 
 ## Additional Coursework
-Coursera Specializations:
+_Coursera Specializations:_\
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
 
-Coursera Courses:
+_Coursera Courses:_\
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
 - Foundations of Data Analysis ~ UT Austin
 
-Certifications:
+_Certifications:_\
 - Data Science Professional ~ Databricks
 
 ## MicroMasters in Data & Economics
-Massachusetts Institute of Technology // Completed: 2018
-
+_Massachusetts Institute of Technology // Completed: 2018_\
 Completed Coursework:
 - Principles of Microeconomics
 - Challenges of Global Poverty
@@ -132,8 +131,7 @@ Completed Coursework:
 - Designing and Running Randomized Evaluations
 
 ## BSc Biology
-Kings University // GPA 3.4 // Graduation: 2013
-
+_Kings University // GPA 3.4 // Graduation: 2013_\
 Relevant Coursework:
 - Calculus
 - Biological Modelling
