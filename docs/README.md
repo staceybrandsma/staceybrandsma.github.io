@@ -19,6 +19,7 @@ Regression, Business Analytics
 - [Test](skills.md)
 
 # Work Experience
+- [Senior Data Scientist](experience.md)
 ## Senior Data Scientist ~ Amgen
 _July 2021 to present_
 ## Data Scientist 2 ~ Parsyl
