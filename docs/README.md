@@ -28,7 +28,7 @@ _July 2021 to present_
 _March 2021 - July 2021_
 
 ## Data Scientist ~ HCA Healthcare
-_April 2020 to March 2021_
+_April 2020 to March 2021_\
 I worked on the Clinical Operations Group Data Science team.  This
 involves building production machine learning models and analyses to
 improve patient outcomes. 
@@ -42,15 +42,12 @@ Key Projects:
 - Award: outstanding work during COVID-19 pandemic.
 
 ## Data Scientist ~ Johnson & Johnson
-_June 2018 to April 2020_
+_June 2018 to April 2020_\
 I worked on the Advanced Analytics Data Science team within J&J.  My
 main project was developing a model and visualization for detecting
 suspicious orders in controlled pharmaceutical substances.
-Additionally, I worked with the the Data Analytics & Acquisition team
-within the Logistics Product Line of Johnson & Johnson supply chain,
+Additionally, I worked with the the Data Analytics & Acquisition team,
 supporting pharmaceuticals, medical devices, and consumer products.
-This team is responsible for developing new initiatives in analytics
-to make the supply chain more efficient and effective. 
 - Modelled and visualized anomalies for controlled substances.
 - Built shiny app for visualizing advanced statistical concepts to business partners.
 - Modelled and predicted promotion timing and efficacy for seasonal consumer products.
@@ -63,20 +60,20 @@ to make the supply chain more efficient and effective.
 - Assisting in the build of a dashboard overview of metrics and current distribution status.
 
 ## Monitoring & Evaluation Officer ~ MCC
-_September 2014 - October 2017_
+_September 2014 - October 2017_\
 I worked with local partner community and non-governmental
 organizations to develop their capacity for program management. 
 Key Responsibilities:
-– reviewed and approved partner reports
-– supported partners in developing project plans
-– supported partners in their monitoring strategies
-– organized external evaluations
-– conducted informal reviews of programs
-– organized annual partner meetings
-– maintained MCC country program database
-– conducted workshops on Monitoring and Evaluation for partners
-– collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
-– contributed to the Monitoring and Evaluation Network
+- reviewed and approved partner reports
+- supported partners in developing project plans
+- supported partners in their monitoring strategies
+- organized external evaluations
+- conducted informal reviews of programs
+- organized annual partner meetings
+- maintained MCC country program database
+- conducted workshops on Monitoring and Evaluation for partners
+- collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
+- contributed to the Monitoring and Evaluation Network
 # Education
 ## Master of Science in Computer Science
 Georgia Institute of Technology // GPA: 4.0 // Anticipated Graduation:
