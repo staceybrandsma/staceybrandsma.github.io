@@ -31,8 +31,8 @@ _March 2021 - July 2021_
 _April 2020 to March 2021_\
 I worked on the Clinical Operations Group Data Science team.  This
 involves building production machine learning models and analyses to
-improve patient outcomes. 
-Key Projects:\
+improve patient outcomes. \
+Key Projects:
 - Created and currently maintaining COVID-19 ICU Census models and dashboard.
 - Modeled ICU capacity, COVID-19 hospitalizations, and hospital health status.
 - Modeled elective surgery appointment recovery at hospitals and surgery centers during COVID-19 pandemic.
@@ -47,8 +47,8 @@ I worked on the Advanced Analytics Data Science team within J&J.  My
 main project was developing a model and visualization for detecting
 suspicious orders in controlled pharmaceutical substances.
 Additionally, I worked with the the Data Analytics & Acquisition team,
-supporting pharmaceuticals, medical devices, and consumer products.
-Key Projects:\
+supporting pharmaceuticals, medical devices, and consumer products.\
+Key Projects:
 - Modelled and visualized anomalies for controlled substances.
 - Built shiny app for visualizing advanced statistical concepts to business partners.
 - Modelled and predicted promotion timing and efficacy for seasonal consumer products.
@@ -63,8 +63,8 @@ Key Projects:\
 ## Monitoring & Evaluation Officer ~ MCC
 _September 2014 - October 2017_\
 I worked with local partner community and non-governmental
-organizations to develop their capacity for program management. 
-Key Responsibilities:\
+organizations to develop their capacity for program management. \
+Key Responsibilities:
 - reviewed and approved partner reports
 - supported partners in developing project plans
 - supported partners in their monitoring strategies
@@ -80,7 +80,7 @@ Key Responsibilities:\
 ## M.Sc. Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 2024_\
-Completed Coursework:\
+Completed Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
@@ -90,7 +90,7 @@ Completed Coursework:\
 
 ## M.Sc. Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
-Completed Coursework:\
+Completed Coursework:
 - Simulation
 - Data & Visual Analytics
 - Introduction to Modeling
@@ -103,28 +103,28 @@ Completed Coursework:\
 - Machine Learning
 
 ## Public Health Coursework
-_Imperial College London_\
+_Imperial College London_
 - Fundamentals of Public Health Practice
 - Global Disease Masterclass
 - Epidemiology for Public Health
 
 ## Additional Coursework
-_Coursera Specializations:_\
+_Coursera Specializations:_
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
 
-_Coursera Courses:_\
+_Coursera Courses:_
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
 - Foundations of Data Analysis ~ UT Austin
 
-_Certifications:_\
+_Certifications:_
 - Data Science Professional ~ Databricks
 
 ## MicroMasters in Data & Economics
 _Massachusetts Institute of Technology // Completed: 2018_\
-Completed Coursework:\
+Completed Coursework:
 - Principles of Microeconomics
 - Challenges of Global Poverty
 - Data Analysis for Social Scientists
@@ -133,13 +133,13 @@ Completed Coursework:\
 
 ## BSc Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
-Relevant Coursework:\
+Relevant Coursework:
 - Calculus
 - Biological Modelling
 - Introductory and Advanced Statistics
 - Experimental Methods
 
-Additional Achievements:\
+Additional Achievements:
 - Certificate in Development Studies
 - Senior Thesis (LINK) published in International Journal of Microbiology & presented at Agriculture and Agri-Food Canada
 - Laurence Decore Student Leadership Award
