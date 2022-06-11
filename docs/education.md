@@ -56,7 +56,7 @@ Completed Coursework:
 - Advanced Development Economics
 - Designing and Running Randomized Evaluations
 
-## BSc Biology
+## B.Sc. Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
 Relevant Coursework:
 - Calculus
@@ -66,7 +66,7 @@ Relevant Coursework:
 
 Additional Achievements:
 - Certificate in Development Studies
-- Senior Thesis (LINK) published in International Journal of Microbiology & presented at Agriculture and Agri-Food Canada
+- Senior [Thesis](https://pubmed.ncbi.nlm.nih.gov/23107497/) published in International Journal of Microbiology & presented at Agriculture and Agri-Food Canada
 - Laurence Decore Student Leadership Award
 - Vice President of Student Government
 - Student Representative on Presidential Search Committee
