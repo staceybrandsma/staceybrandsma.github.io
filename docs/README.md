@@ -11,7 +11,7 @@ to complement my MSc in Analytics and BSc in Biology.
 - <a href="https://www.github.com/staceybrandsma/"> Github </a>
 
 ## Skills
-
+| --- | --- |
 | Languages | Python, R, SQL, Spark, Bash/Zsh, Git |
 | Methodologies | Machine Learning, Natural Language Processing, Computer Vision, Deep
 Learning, Big Data Analytics, Simulation, Bayesian Statistics,
