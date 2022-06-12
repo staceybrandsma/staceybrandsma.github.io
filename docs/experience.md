@@ -2,12 +2,12 @@
 # Stacey Brandsma
 [Back to Home](README.md)
 
-# Work Experience
+# Professional Experience
 ## Senior Data Scientist ~ Amgen
 _July 2021 to present_\
 As a technical leader on the team, I work on several projects across
 the company, including clinical trial innovation, research and
-development, and epidemiology.  
+development, and epidemiology.  \
 Key Projects:
 - Helped develop and improve a machine learning pipeline for clinical trial optimization and site
 selection
@@ -24,7 +24,7 @@ lunch and learns.
 ## Data Scientist 2 ~ Parsyl
 _March 2021 - July 2021_\
 I led several projects to expand data science across the company,
-particularly in the food safety and public health space.  
+particularly in the food safety and public health space.  \
 Key Projects:
 - Built production model for predicting location of facility using IOT devices.
 - Deployed and built algorithm for predicting shelf life lost for muscle meat products in the cold chain
@@ -33,7 +33,7 @@ Key Projects:
 _April 2020 to March 2021_\
 I worked on the Clinical Operations Group Data Science team.  This
 involves building production machine learning models and analyses to
-improve patient outcomes. 
+improve patient outcomes. \
 Key Projects:
 - Created and currently maintaining COVID-19 ICU Census models and dashboard.
 - Modeled ICU capacity, COVID-19 hospitalizations, and hospital health status.
@@ -49,7 +49,7 @@ I worked on the Advanced Analytics Data Science team within J&J.  My
 main project was developing a model and visualization for detecting
 suspicious orders in controlled pharmaceutical substances.
 Additionally, I worked with the the Data Analytics & Acquisition team,
-supporting pharmaceuticals, medical devices, and consumer products.
+supporting pharmaceuticals, medical devices, and consumer products.\
 Key Projects:
 - Modelled and visualized anomalies for controlled substances.
 - Built shiny app for visualizing advanced statistical concepts to business partners.
@@ -65,7 +65,7 @@ Key Projects:
 ## Monitoring & Evaluation Officer ~ MCC
 _September 2014 - October 2017_\
 I worked with local partner community and non-governmental
-organizations to develop their capacity for program management. 
+organizations to develop their capacity for program management. \
 Key Responsibilities:
 - reviewed and approved partner reports
 - supported partners in developing project plans
