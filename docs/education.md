@@ -9,7 +9,7 @@ Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
-- Human Computer Interaction
+- Human Computer Interaction\
 Seminars
 - Artificial Intelligence Reading Group
 - Machine Learning & Data Science Tools
