@@ -2,6 +2,13 @@
 
 [Back to Home](README.md)
 # Education
+## Doctorate - Public Health Informatics
+_Johns Hopkins // School of Public Health // Anticipated Completion
+2029
+Coursework:
+- lots of fun classes
+Dissertation:
+- really amazing dissertation
 ## Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 2024_\
