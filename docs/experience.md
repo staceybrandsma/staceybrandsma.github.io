@@ -14,7 +14,7 @@ selection
 - Advised business partners on expansion and roll out of production model for Osteoporosis detection
 - Developing computer vision pipeline for ingesting cell painting
 images for cell phenotype changes.  
-- Building forecasting predictions for key product sales.
+- Building forecasting predictions for key product sales for use by CFO and other executives.
 - Contributing to natural language processing modelling effort for
 ingesting relevant news articles.  
 - Acting as a mentor for junior staff and ambassador for data science across Amgen, facilitating

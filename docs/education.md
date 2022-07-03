@@ -10,7 +10,8 @@ Coursework:
 - AI Ethics & Society
 - Deep Learning
 - Human Computer Interaction
-- Seminar in Artificial Intelligence
+Seminars
+- Artificial Intelligence Reading Group
 - Machine Learning & Data Science Tools
 
 ## M.Sc. Analytics
@@ -32,12 +33,14 @@ _Imperial College London_
 - Fundamentals of Public Health Practice
 - Global Disease Masterclass
 - Epidemiology for Public Health
+- Statistics for Public Health
 
 ## Additional Coursework
 _Coursera Specializations:_
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
+- Deep Learning ~ DeepLearning.ai
 
 _Coursera Courses:_
 - Bioinformatics for Beginners ~ USC San Diego
