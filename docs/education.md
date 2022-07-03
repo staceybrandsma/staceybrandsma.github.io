@@ -13,7 +13,7 @@ Coursework:
 - Artificial Intelligence Reading Group
 - Machine Learning & Data Science Tools
 
-## M.Sc. Analytics
+## Master of Science - Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
 Coursework:
 - Simulation
@@ -58,7 +58,7 @@ Completed Coursework:
 - Advanced Development Economics
 - Designing and Running Randomized Evaluations
 
-## B.Sc. Biology
+## Bachelor of Science - Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
 Relevant Coursework:
 - Calculus
