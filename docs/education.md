@@ -2,7 +2,7 @@
 
 [Back to Home](README.md)
 # Education
-## M.Sc. Computer Science
+## Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 2024_\
 Coursework:
