@@ -33,6 +33,7 @@ _Imperial College London_
 - Global Disease Masterclass
 - Epidemiology for Public Health
 - Statistics for Public Health
+- Infectious Disease Modelling
 
 ## Additional Coursework
 _Coursera Specializations:_
