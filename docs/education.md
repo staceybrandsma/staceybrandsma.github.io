@@ -30,18 +30,49 @@ Coursework:
 ## Public Health Coursework
 _Imperial College London_
 - Fundamentals of Public Health Practice
-  - testing 
+  - The Public Health Approach
+  - The Public Health Toolkit
+  - Behaviour and Behaviour Change 
+  - Health Protection
 - Global Disease Masterclass
+  - Global Disease Distribution
+  - Communicable Diseases ~ Epidemiology, Intervention, and Prevention
+  - Non-communicable Diseases
 - Epidemiology for Public Health
+  - Measuring Disease in Epidemiology
+  - Study Designs in Epidemiology
+  - Validity and Bias in Epidemiology
 - Statistics for Public Health
+  - Introduction to Statistics and Data Analysis
+  - Linear Regression
+  - Logistic Regression
+  - Survival Analysis
 - Infectious Disease Modelling
+  - Developing the SIR Model
+  - Interventions and Calibration
+  - Building on the SIR Model
 
 ## Additional Coursework
 _Coursera Specializations:_
 - AI for Medicine ~ DeepLearning.ai
+  - AI for Medical Diagnosis
+  - AI for Medical Prognosis
+  - AI for Medical Treatment
 - Practical Data Science ~ DeepLearning.ai
+  - Analyze Datasets and Train ML Models
+  - Build, Train, and Deploy ML Pipelines using BERT
+  - Optimize ML Models and Deploy Human-in-the-Loop Pipelines
 - Machine Learning Engineering for Production ~ DeepLearning.ai
+  - Introduction to Machine Learning in Production
+  - Machine Learning Data Lifecycle
+  - Machine Learning Modelling Pipelines
+  - Deploying Machine Learning Models in Production
 - Deep Learning ~ DeepLearning.ai
+  - Neural Networks and Deep Learning
+  - Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization
+  - Structuring Machine Learning Projects
+  - Convolutional Neural Networks
+  - Sequence Models
 
 _Coursera Courses:_
 - Bioinformatics for Beginners ~ USC San Diego
