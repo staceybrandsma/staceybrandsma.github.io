@@ -30,6 +30,7 @@ Coursework:
 ## Public Health Coursework
 _Imperial College London_
 - Fundamentals of Public Health Practice
+  - testing 
 - Global Disease Masterclass
 - Epidemiology for Public Health
 - Statistics for Public Health
