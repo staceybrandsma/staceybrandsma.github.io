@@ -51,6 +51,8 @@ _Imperial College London_
   - Developing the SIR Model
   - Interventions and Calibration
   - Building on the SIR Model
+- Digital Health
+  - Introduction to Digital Health
 
 ## Additional Coursework
 _Coursera Specializations:_
@@ -75,7 +77,7 @@ _Coursera Specializations:_
   - Sequence Models
 
 _Coursera Courses:_
-- Advanced Computer Vision with Tensorflow - DeepLearning.ai
+- Advanced Computer Vision with Tensorflow ~ DeepLearning.ai
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
 - Foundations of Data Analysis ~ UT Austin
