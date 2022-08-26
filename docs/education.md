@@ -12,6 +12,7 @@ Coursework:
 - Human Computer Interaction
 - Artificial Intelligence Reading Group
 - Machine Learning & Data Science Tools
+- Artificial Intelligence
 
 ## Master of Science - Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
