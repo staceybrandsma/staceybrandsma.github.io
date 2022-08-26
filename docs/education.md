@@ -53,6 +53,8 @@ _Imperial College London_
   - Building on the SIR Model
 - Digital Health
   - Introduction to Digital Health
+  - Design and Implementation of Digital Health Interventions
+  - Evaluation of Digital Health Interventions
 
 ## Additional Coursework
 _Coursera Specializations:_
