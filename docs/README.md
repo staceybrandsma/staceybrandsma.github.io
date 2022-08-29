@@ -14,8 +14,8 @@ to complement my Master of Science in Analytics and Bachelor of Science in Biolo
 |   |   |
 | --- | --- |
 | Languages | Python, R, SQL, Spark, Bash/Zsh, Git |
-| Methodologies | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Simulation, Bayesian Statistics, Regression, Business Analytics |
-| Data Engineering | AWS, Kedro, Docker, Hadoop, Teradata, Openshift |
+| Methodologies | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analyiss, Simulation, Bayesian Statistics, Regression, Business Analytics |
+| Data Engineering | AWS, Kedro, Docker, Teradata, Openshift |
 | Visualization Tools | Tableau, R-Shiny, D3, PowerBI |
 | Collaboration | Agile, Jira, Confluence, Scrum, Software Testing, Product Development, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
 | Areas of Expertise | Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program Management, Research, DevOps |
