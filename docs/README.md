@@ -29,7 +29,7 @@ to complement my Master of Science in Analytics and Bachelor of Science in Biolo
 ## Education
 - [Master of Science in Computer Science ~ Georgia Tech](education.md)
 - [Master of Science in Analytics ~ Georgia Tech](education.md)
-- [Coursework in Public Health ~ Imperial College London](education.md)
-- [Additional Online Coursework ~ Coursera](education.md)
+- [Biomedical and Public Health Coursework](education.md)
+- [Additional Data Science Coursework](education.md)
 - [MicroMasters in Data & Economics ~ MIT](education.md)
 - [Bachelor of Science in Biology ~ Kings University](education.md)
