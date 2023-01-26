@@ -47,6 +47,7 @@ _Coursework:_
 - Deep Learning ~ DeepLearning.ai
 - Advanced Computer Vision with Tensorflow ~ DeepLearning.ai
 - Foundations of Data Analysis ~ UT Austin
+- Natural Language Processing ~ DeepLearning.ai
 
 _Certifications:_
 - Data Science Professional ~ Databricks
