@@ -29,18 +29,16 @@ Coursework:
 - Machine Learning
 
 ## Biomedical and Public Health Coursework
-_Imperial College London_
-- Fundamentals of Public Health Practice
-- Global Disease Masterclass
-- Epidemiology for Public Health
-- Statistics for Public Health
-- Infectious Disease Modelling
-- Digital Health
+- Fundamentals of Public Health Practice ~ Imperial College London
+- Global Disease Masterclass ~ Imperial College London
+- Epidemiology for Public Health ~ Imperial College London
+- Statistics for Public Health ~ Imperial College London
+- Infectious Disease Modelling ~ Imperial College London
+- Digital Health ~ Imperial College London
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
 
 ## Data Science Coursework
-_Coursework:_
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
