@@ -37,6 +37,7 @@ Coursework:
 - Digital Health ~ Imperial College London
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
+- Drug Discovery, Development, & Commercialization ~ UC San Diego
 
 ## Data Science Coursework
 - AI for Medicine ~ DeepLearning.ai
