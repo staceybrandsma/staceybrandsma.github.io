@@ -38,6 +38,7 @@ Coursework:
 - Bioinformatics for Beginners ~ USC San Diego
 - Learning How to Learn ~ McMaster University
 - Drug Discovery, Development, & Commercialization ~ UC San Diego
+- Cancer Biology ~ Johns Hopkins University
 
 ## Data Science Coursework
 - AI for Medicine ~ DeepLearning.ai
