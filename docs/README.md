@@ -14,9 +14,9 @@ and biotech companies, with a passion for utilizing digital health to improve pa
 | --- | --- |
 | Languages | Python, R, SQL, Spark, Bash/Zsh, Git |
 | Data Science Methods | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analysis, Simulation, Bayesian Statistics, Regression, Business Analytics |
-| Engineering | AWS, Kedro, Docker, Teradata, Openshift |
-| Visualization Tools | Tableau, R-Shiny, D3, PowerBI |
-| Collaboration | Agile, Jira, Confluence, Scrum, Software Testing, Product Development, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
+| Engineering | AWS, Databricks, Kedro, Docker |
+| Visualization Tools | Tableau, R-Shiny, PowerBI |
+| Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
 | Areas of Expertise | Digital Health, Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program Management, Research, DevOps |
 
 ## Work Experience
