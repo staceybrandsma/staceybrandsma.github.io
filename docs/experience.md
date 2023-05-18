@@ -11,7 +11,7 @@ key initiatives to build community at Amgen, facilitating the CFO mentoring prog
 the Data Science Symposium organizing committee.  \
 Key Projects:
 - Led project to develop competitive intelligence for executives by building models for news
-summarization and question/answering, topic modelling, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
+summarization and question/answering, topic modelling, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
 - Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity
 and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team is evaluating digital health products for improving retention and data collection in a trial setting.
 - Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured external keynote speaker and moderated fireside and panel discussions.  Facilitated event for approximately 400 Amgen employees
