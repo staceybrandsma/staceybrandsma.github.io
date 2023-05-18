@@ -12,7 +12,7 @@ and biotech companies, with a passion for utilizing digital health to improve pa
 ## Skills
 |   |   |
 | --- | --- |
-| Languages | Python, R, SQL, Spark, Bash/Zsh, Git |
+| Languages | Python, SQL, R, Spark, Bash/Zsh, Git |
 | Data Science Methods | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analysis, Simulation, Bayesian Statistics, Regression, Business Analytics |
 | Engineering | AWS, Databricks, Kedro, Docker |
 | Visualization Tools | Tableau, R-Shiny, PowerBI |
