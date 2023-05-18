@@ -17,7 +17,7 @@ and biotech companies, with a passion for utilizing digital health to improve pa
 | Engineering | AWS, Databricks, Kedro, Docker |
 | Visualization Tools | Tableau, R-Shiny, PowerBI |
 | Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
-| Areas of Expertise | Digital Health, Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program Management, Research, DevOps |
+| Areas of Expertise | Digital Health, Biotech, Healthcare, Epidemiology, Public Health, Pharma, Program Management, Research, Biomedical Informatics, Public Health |
 
 ## Work Experience
 - [Senior Data Scientist ~ Amgen](experience.md)
