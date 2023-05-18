@@ -6,7 +6,7 @@
 ## Senior Data Scientist ~ Amgen
 _July 2021 to present_\
 As a technical leader on the team, I work on several projects across
-the company, including competitive intelligence and digital health.  I am also a leader in several 
+the company, particularly in competitive intelligence and digital health.  I am also a leader in several 
 key initiatives to build community at Amgen, facilitating the CFO mentoring program and vice-chairing 
 the Data Science Symposium organizing committee.  \
 Key Projects:
