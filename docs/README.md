@@ -3,6 +3,7 @@ I am a senior data scientist with several years of experience analyzing data
 and building and deploying machine learning models in large healthcare
 and biotech companies.  I am working towards a Master of Science in Computer Science
 to complement my Master of Science in Analytics and Bachelor of Science in Biology.  
+I am passionate about using Digital Health to improve patient's lives.  
 
 ## Contact Information
 - stacey.data.science@gmail.com
