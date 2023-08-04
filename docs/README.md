@@ -1,7 +1,9 @@
 # Stacey Brandsma
 I am a senior data scientist with several years of experience analyzing data
 and building and deploying machine learning models in large healthcare
-and biotech companies, with a passion for utilizing digital health to improve patient's lives.  I am working towards a Master of Science in Computer Science to complement my Master of Science in Analytics and Bachelor of Science in Biology. 
+and biotech companies, with a passion for utilizing digital health to improve patient's lives.  
+My area of interest is exploring public health and data science applications to chronic cardiometabolic diseases, such as diabetes and obesity.  
+I am working towards a Master of Science in Computer Science to complement my Master of Science in Analytics and Bachelor of Science in Biology. 
 
 ## Contact Information
 - stacey.data.science@gmail.com

@@ -10,19 +10,14 @@ the company, particularly in competitive intelligence and digital health.  I am 
 key initiatives to build community at Amgen, facilitating the CFO mentoring program and vice-chairing 
 the Data Science Symposium organizing committee.  \
 Key Projects:
-- Led project to develop competitive intelligence for executives by building models for news
-summarization and question/answering, topic modelling, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
-- Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity
-and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team is evaluating digital health products for improving retention and data collection in a trial setting.
+- Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team is evaluating digital health products for improving retention and data collection in a trial setting.
+- Lead project to develop competitive intelligence for executives by building models for news summarization and question/answering, topic modelling, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
 - Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured external keynote speaker and moderated fireside and panel discussions.  Facilitated event for approximately 400 Amgen employees
-- Leader and facilitator of the CFO Mentoring program.  I automated and improved the mentor matching process, saving hundreds of work hours
-- Helped develop and improve a machine learning pipeline for clinical trial optimization and site
-selection
+- Leader and facilitator of the CFO Mentoring program.  I automated and improved the mentor matching process, saving hundreds of work hours and improving matching
+- Helped develop and improve a machine learning pipeline for clinical trial optimization and site selection
 - Advised business partners on expansion and roll out of production model for Osteoporosis detection
-- Developing computer vision pipeline for ingesting cell painting
-images for cell phenotype changes.  
-- Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating
-symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
+- Developing computer vision pipeline for ingesting cell painting images for cell phenotype changes.  
+- Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
 
 ## Data Scientist 2 ~ Parsyl
 _March 2021 - July 2021_\

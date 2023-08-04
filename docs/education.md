@@ -64,11 +64,18 @@ Completed Coursework:
 
 ## Bachelor of Science - Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
-Relevant Coursework:
+Relevant & Interesting Coursework:
 - Calculus
 - Biological Modelling
 - Introductory and Advanced Statistics
 - Experimental Methods
+- Microbiology
+- Biochemistry
+- Genetics
+- Ecology
+- Vertebrate Zoology
+- Intermediate French
+- Coursework in Economics & Political Science
 
 Additional Achievements:
 - Certificate in Development Studies
