@@ -14,6 +14,7 @@ Coursework:
 - Machine Learning & Data Science Tools
 - Artificial Intelligence
 - Knowledge Based Artificial Intelligence
+- Independent Study ~ Understanding and Identifying Patient Risk Factors for Diabetes, Obesity, and Sleep Apnea
 
 ## Master of Science - Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
