@@ -42,6 +42,7 @@ Coursework:
 - Learning How to Learn ~ McMaster University
 - Drug Discovery, Development, & Commercialization ~ UC San Diego
 - Cancer Biology ~ Johns Hopkins University
+- Genomic Data Science ~ Johns Hopkins University
 
 ## Data Science Coursework
 - AI for Medicine ~ DeepLearning.ai
