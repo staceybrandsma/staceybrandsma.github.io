@@ -3,6 +3,9 @@
 **<span style="font-size: larger; font-size: larger;">senior data scientist</span>**
 **<span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>**
 
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior data scientist</span>** </div>
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
+
 I am a senior data scientist with several years of experience analyzing data and building and deploying machine learning models in large healthcare and biotech companies, with a passion for analyzing data to improve patient's lives.  
 My area of interest and expertise is at the intersection between precision medicine, public health, and data science and their applications in improving care for chronic diseases.  
 I am working towards a Master of Science in Computer Science to complement my Master of Science in Analytics and Bachelor of Science in Biology. 
