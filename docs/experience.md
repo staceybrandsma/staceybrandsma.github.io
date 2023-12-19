@@ -9,6 +9,7 @@ As a technical leader on the R&D AI Strategy & Execution team, I work on several
 the company, particularly in precision medicine.  I am also a leader in several 
 key initiatives to build community at Amgen, facilitating the mentoring program and vice-chairing 
 the Data Science Symposium organizing committee.  \
+\
 Key Projects:
 - Technical lead on driving new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  
 - Developing patient risk, identification, and stratification models for Inflammatory Bowel Diseases.  
