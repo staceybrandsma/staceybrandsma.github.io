@@ -1,6 +1,6 @@
 # Stacey Brandsma
 
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior data scientist</span>** </div>
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior data scientist ~ amgen</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
 I am a senior data scientist with several years of experience analyzing data and building and deploying machine learning models in large healthcare and biotech companies, with a passion for analyzing data to improve patient's lives.  
