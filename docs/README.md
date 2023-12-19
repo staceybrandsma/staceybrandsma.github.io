@@ -1,8 +1,5 @@
 # Stacey Brandsma
 
-**<span style="font-size: larger; font-size: larger;">senior data scientist</span>**
-**<span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>**
-
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior data scientist</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
