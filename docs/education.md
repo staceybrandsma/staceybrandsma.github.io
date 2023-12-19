@@ -4,12 +4,13 @@
 # Education
 ## Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
-Graduation: 2024_\
+Graduation: 05-2024_\
 Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
 - Deep Learning
 - Human Computer Interaction
+- Software Development Process
 - Artificial Intelligence Reading Group
 - Machine Learning & Data Science Tools
 - Artificial Intelligence
