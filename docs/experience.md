@@ -6,16 +6,18 @@
 ## Senior Data Scientist ~ Amgen
 _July 2021 to present_\
 As a technical leader on the R&D AI Strategy & Execution team, I work on several projects across
-the company, particularly in precision medicine.  I am also a leader in several 
-key initiatives to build community at Amgen, facilitating the mentoring program and vice-chairing 
-the Data Science Symposium organizing committee.  \
+the company, particularly in precision medicine and obesity.  I am also a leader in several 
+key initiatives to build community at Amgen, facilitating upskilling and collaboration across the company.  \
 \
 Key Projects:
-- Technical lead on driving new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  
-- Developing patient risk, identification, and stratification models for Inflammatory Bowel Diseases.  
-- Subject Matter Expert for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
+- Co-lead of AI Taskforce for Obesity & Weight Management. 
+- Building tool for querying novel molecule storage using LLMs and retrieval augmented generation.  
+- Co-lead of AI Learning Lab for R&D employees across Amgen. 
+<!-- - Technical lead on new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  -->
+<!-- - Developing patient risk, identification, and stratification models for Inflammatory Bowel Diseases.  -->
+- SME for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
 - Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. 
-- Lead project to develop competitive intelligence for executives by building models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
+- Tech lead for project to develop competitive intelligence for executives by building models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
 - Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured external keynote speaker and moderated fireside and panel discussions.  Facilitated event for approximately 400 Amgen employees.
 - Leader and facilitator of the mentoring program.  I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching
 - Helped develop and improve a machine learning pipeline for clinical trial optimization and site selection
