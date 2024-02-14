@@ -52,7 +52,7 @@ Key Projects:
 - Ingested computer vision pipeline for ingesting cell painting images for cell phenotype changes into Amgen's technical processes.
 - Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
 
-## Data Scientist 2 ~ Parsyl
+### Data Scientist 2 ~ Parsyl
 _March 2021 - July 2021_\
 I led several projects to expand data science across the company,
 particularly in the food safety and public health space.  \
@@ -60,7 +60,7 @@ Key Projects:
 - Built production model for predicting location of facility using IOT devices.
 - Deployed and built algorithm for predicting shelf life lost for muscle meat products in the cold chain
 
-## Data Scientist ~ HCA Healthcare
+### Data Scientist ~ HCA Healthcare
 _April 2020 to March 2021_\
 I worked on the Clinical Operations Data Science team.  This
 involves building production machine learning models and analyses to
@@ -74,7 +74,7 @@ Key Projects:
 - Built and deployed predictive models for a patient’s hospital visit cost.
 - Award: outstanding work during COVID-19 pandemic.
 
-## Data Science Co-Op ~ Johnson & Johnson
+### Data Science Co-Op ~ Johnson & Johnson
 _June 2018 to April 2020_\
 I worked on the Advanced Analytics Data Science team within J&J.  My
 main project was developing a model and visualization for detecting
@@ -93,7 +93,7 @@ Key Projects:
 - Testing and tracking location and battery data from IoT sensors.
 - Assisting in the build of a dashboard overview of metrics and current distribution status.
 
-## Monitoring & Evaluation Officer ~ MCC
+### Monitoring & Evaluation Officer ~ MCC
 _September 2014 - October 2017_\
 I worked with a non-profit in Zambia, partnering with local community and non-governmental
 organizations to monitor and evaluate projects in healthcare, education, and agriculture. 
@@ -119,7 +119,7 @@ organizations to monitor and evaluate projects in healthcare, education, and agr
 - [MicroMasters in Data & Economics ~ MIT](education.md)
 - [Bachelor of Science in Biology ~ Kings University](education.md) -->
 
-## Master of Science - Computer Science
+### Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 05-2024_\
 Coursework:
@@ -134,7 +134,7 @@ Coursework:
 - Knowledge Based Artificial Intelligence
 - Independent Study ~ Understanding and Identifying Patient Risk Factors for Diabetes, Obesity, and Sleep Apnea
 
-## Master of Science - Analytics
+### Master of Science - Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
 Coursework:
 - Simulation
@@ -148,7 +148,7 @@ Coursework:
 - High Dimensional Data Analytics
 - Machine Learning
 
-## Biomedical and Public Health Coursework
+### Biomedical and Public Health Coursework
 - Fundamentals of Public Health Practice ~ Imperial College London
 - Global Disease Masterclass ~ Imperial College London
 - Epidemiology for Public Health ~ Imperial College London
@@ -161,7 +161,7 @@ Coursework:
 - Cancer Biology ~ Johns Hopkins University
 - Genomic Data Science ~ Johns Hopkins University
 
-## Data Science Coursework
+### Data Science Coursework
 - AI for Medicine ~ DeepLearning.ai
 - Practical Data Science ~ DeepLearning.ai
 - Machine Learning Engineering for Production ~ DeepLearning.ai
@@ -173,7 +173,7 @@ Coursework:
 _Certifications:_
 - Data Science Professional ~ Databricks
 
-## MicroMasters in Data & Economics
+### MicroMasters in Data & Economics
 _Massachusetts Institute of Technology // Completed: 2018_\
 Completed Coursework:
 - Principles of Microeconomics
@@ -182,7 +182,7 @@ Completed Coursework:
 - Advanced Development Economics
 - Designing and Running Randomized Evaluations
 
-## Bachelor of Science - Biology
+### Bachelor of Science - Biology
 _Kings University // GPA 3.4 // Graduation: 2013_\
 Relevant & Interesting Coursework:
 - Calculus
