@@ -7,13 +7,13 @@ I am a senior data scientist with several years of experience analyzing data and
 My area of interest and expertise is at the intersection between precision medicine, public health, and data science and their applications in improving care for chronic diseases.  
 I am working towards a Master of Science in Computer Science to complement my Master of Science in Analytics and Bachelor of Science in Biology. 
 
-## Contact Information
+### Contact Information
 - stacey.data.science@gmail.com
 - [Resume](StaceyBrandsma_Resume.pdf)
 - <a href="https://www.linkedin.com/in/stacey-brandsma/"> LinkedIn </a>
 - <a href="https://www.github.com/staceybrandsma/"> Github </a>
 
-## Skills
+### Skills
 |   |   |
 | --- | --- |
 | Languages | Python, SQL, R, Spark, Bash/Zsh, Git |
@@ -37,19 +37,22 @@ As a technical leader on the R&D AI Strategy & Execution team, I work on several
 the company, particularly in precision medicine and obesity.  I am also a leader in several 
 key initiatives to build community at Amgen, facilitating upskilling and collaboration across the company.  \
 \
-Key Projects:
+Leadership & Strategic Planning:
 - Co-lead of AI Taskforce for Obesity & Weight Management. 
 - Co-lead of AI Learning Lab for R&D employees across Amgen. 
-<!-- - Technical lead on new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  -->
-<!-- - Developing patient risk, identification, and stratification models for Inflammatory Bowel Diseases.  -->
 - SME for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
+
+Techical Lead:
+<!-- - Technical lead on new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  -->
 - Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. This set the stage for the AI Taskforce for Obesity & Weight Management.
-- Technical lead for project to develop competitive intelligence for executives by building models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
-- Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured an external keynote speaker and moderated fireside and panel discussions.  Facilitated event for nearly 500 Amgen employees.
-- Leader and facilitator of the mentoring program.  I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
+- Tech lead for project to develop competitive intelligence for executives by building models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
 - Helped develop and improve a machine learning pipeline for clinical trial optimization and site selection.
 - Advised business partners on expansion and roll out of production model for Osteoporosis detection.
 - Ingested computer vision pipeline for ingesting cell painting images for cell phenotype changes into Amgen's technical processes.
+
+Collaboration & Community Building:
+- Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured an external keynote speaker and moderated fireside and panel discussions.  Facilitated event for nearly 500 Amgen employees.
+- Leader and facilitator of the mentoring program.  I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
 - Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
 
 ### Data Scientist 2 ~ Parsyl
@@ -119,7 +122,7 @@ organizations to monitor and evaluate projects in healthcare, education, and agr
 - [MicroMasters in Data & Economics ~ MIT](education.md)
 - [Bachelor of Science in Biology ~ Kings University](education.md) -->
 
-### Master of Science - Computer Science
+## Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Anticipated
 Graduation: 05-2024_\
 Coursework:
@@ -134,7 +137,7 @@ Coursework:
 - Knowledge Based Artificial Intelligence
 - Independent Study ~ Understanding and Identifying Patient Risk Factors for Diabetes, Obesity, and Sleep Apnea
 
-### Master of Science - Analytics
+## Master of Science - Analytics
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
 Coursework:
 - Simulation
