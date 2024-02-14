@@ -23,6 +23,8 @@ I am working towards a Master of Science in Computer Science to complement my Ma
 | Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
 | Areas of Expertise | Precision Medicine, Digital Health, BioPharma, Healthcare, Epidemiology, Public Health, Program Management, Research, Biomedical Informatics |
 
+---
+
 # Experience
 <!-- - [Senior Data Scientist ~ Amgen](experience.md)
 - [Data Scientist 2 ~ Parsyl](experience.md)
@@ -94,7 +96,7 @@ Key Projects:
 ## Monitoring & Evaluation Officer ~ MCC
 _September 2014 - October 2017_\
 I worked with a non-profit in Zambia, partnering with local community and non-governmental
-organizations to monitor and evaluate projects in healthcare, education, and agriculture. \
+organizations to monitor and evaluate projects in healthcare, education, and agriculture. 
 <!-- Key Responsibilities:
 - reviewed and approved partner reports
 - supported partners in developing project plans
@@ -106,6 +108,8 @@ organizations to monitor and evaluate projects in healthcare, education, and agr
 - conducted workshops on Monitoring and Evaluation for partners
 - collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
 - contributed to the Monitoring and Evaluation Network --> 
+
+---
 
 # Education
 <!-- - [Master of Science in Computer Science ~ Georgia Tech](education.md)
