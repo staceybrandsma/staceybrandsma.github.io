@@ -93,9 +93,9 @@ Key Projects:
 
 ## Monitoring & Evaluation Officer ~ MCC
 _September 2014 - October 2017_\
-I worked with local partner community and non-governmental
-organizations to develop their capacity for program management. \
-Key Responsibilities:
+I worked with a non-profit in Zambia, partnering with local community and non-governmental
+organizations to monitor and evaluate projects in healthcare, education, and agriculture. \
+<!-- Key Responsibilities:
 - reviewed and approved partner reports
 - supported partners in developing project plans
 - supported partners in their monitoring strategies
@@ -105,7 +105,7 @@ Key Responsibilities:
 - maintained MCC country program database
 - conducted workshops on Monitoring and Evaluation for partners
 - collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
-- contributed to the Monitoring and Evaluation Network
+- contributed to the Monitoring and Evaluation Network --> 
 
 # Education
 <!-- - [Master of Science in Computer Science ~ Georgia Tech](education.md)
