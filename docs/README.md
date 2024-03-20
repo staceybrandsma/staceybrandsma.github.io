@@ -16,7 +16,7 @@ I am working towards a Master of Science in Computer Science to complement my Ma
 ### Skills
 |   |   |
 | --- | --- |
-| Languages | Python, SQL, R, Spark, Bash/Zsh, Git |
+| Languages | Python, SQL, R, Bash/Zsh, Git |
 | Data Science Methods | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analysis, Simulation, Bayesian Statistics, Regression, Business Analytics, Generative AI |
 | Engineering | AWS, Databricks |
 | Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
