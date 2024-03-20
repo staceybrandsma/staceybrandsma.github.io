@@ -18,8 +18,7 @@ I am working towards a Master of Science in Computer Science to complement my Ma
 | --- | --- |
 | Languages | Python, SQL, R, Spark, Bash/Zsh, Git |
 | Data Science Methods | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analysis, Simulation, Bayesian Statistics, Regression, Business Analytics, Generative AI |
-| Engineering | AWS, Databricks, Kedro, Docker |
-| Visualization Tools | Tableau, R-Shiny, PowerBI |
+| Engineering | AWS, Databricks |
 | Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
 | Areas of Expertise | Precision Medicine, Digital Health, BioPharma, Healthcare, Epidemiology, Public Health, Program Management, Research, Biomedical Informatics |
 
