@@ -40,12 +40,18 @@ key initiatives to build community at Amgen, facilitating upskilling and collabo
 Leadership & Strategic Planning:
 - Co-lead of AI Taskforce for Obesity & Weight Management. 
 - Co-lead of AI Learning Lab for R&D employees across Amgen. 
+- Data Science representative for AI Taskforce for Global Patient Safety at Amgen.
 - SME for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
 
-Techical Lead:
+Technical Lead:
 <!-- - Technical lead on new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  -->
-- Data Science Engagement Team Lead for Digital Health in key pipeline products such as obesity and small-cell lung cancer. I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. This set the stage for the AI Taskforce for Obesity & Weight Management.
-- Tech lead for project to develop competitive intelligence for executives by building models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  In this project I held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
+- Data Science & Digital Health Engagement Lead for key pipeline products such as obesity and small-cell lung cancer. 
+  - I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  
+  - Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. This set the stage for the AI Taskforce for Obesity & Weight Management.
+- Author of white paper on AI for Clinical Applications in Healthcare.
+- Tech lead for project to develop competitive intelligence for executives 
+  - Built models for news summarization, question/answering, topic modelling, senitiment analysis, and financial forecasting.  
+  - Held numerous roles including Product Owner, Technical and Team Lead, and Developer.  My work has been recognized by CFO, CIO, VPs, and Directors across Amgen.
 - Helped develop and improve a machine learning pipeline for clinical trial optimization and site selection.
 - Advised business partners on expansion and roll out of production model for Osteoporosis detection.
 - Ingested computer vision pipeline for ingesting cell painting images for cell phenotype changes into Amgen's technical processes.
