@@ -192,7 +192,7 @@ Completed Coursework:
 - Designing and Running Randomized Evaluations
 
 ## Bachelor of Science - Biology
-_Kings University // GPA 3.4 // Graduation: 05/2013_\
+_Kings University // Graduation: 05/2013_\
 Relevant & Interesting Coursework:
 - Calculus
 - Biological Modelling
