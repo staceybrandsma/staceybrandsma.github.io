@@ -38,13 +38,13 @@ key initiatives to build community at Amgen, facilitating upskilling and collabo
 \
 Leadership & Strategic Planning:
 - Co-lead of AI Taskforce for Obesity & Weight Management. 
-- Co-lead of AI Learning Lab for R&D employees across Amgen. 
-- Data Science representative for AI Taskforce for Global Patient Safety at Amgen.
+- Co-lead of AI Learning Lab for employees across Amgen. 
+- Data Science lead for AI Taskforce for Global Patient Safety.
+- Data Science lead for Rare Disease Targeting using AI. 
 - SME for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
 
 Technical Lead:
-<!-- - Technical lead on new precision medicine initiative for Obesity and weight loss therapeutic area at Amgen.  -->
-- Data Science & Digital Health Engagement Lead for key pipeline products such as obesity and small-cell lung cancer. 
+- Data Science & Digital Health Engagement Lead for obesity pipeline products. 
   - I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  
   - Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. This set the stage for the AI Taskforce for Obesity & Weight Management.
 - Author of white paper on AI for Clinical Applications in Healthcare.
@@ -56,8 +56,11 @@ Technical Lead:
 - Ingested computer vision pipeline for ingesting cell painting images for cell phenotype changes into Amgen's technical processes.
 
 Collaboration & Community Building:
-- Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  I secured an external keynote speaker and moderated fireside and panel discussions.  Facilitated event for nearly 500 Amgen employees.
-- Leader and facilitator of the mentoring program.  I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
+- Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  
+  - I secured an external keynote speaker and moderated fireside and panel discussions.  
+  - Facilitated event for nearly 500 Amgen employees.
+- Leader and facilitator of the mentoring program.  
+  - I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
 - Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
 
 ## Data Scientist 2 ~ Parsyl
@@ -128,8 +131,7 @@ organizations to monitor and evaluate projects in healthcare, education, and agr
 - [Bachelor of Science in Biology ~ Kings University](education.md) -->
 
 ## Master of Science - Computer Science
-_Georgia Institute of Technology // GPA: 4.0 // Anticipated
-Graduation: 05-2024_\
+_Georgia Institute of Technology // GPA: 4.0 // Graduation: 05/2024_\
 Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
@@ -143,7 +145,7 @@ Coursework:
 - Independent Study ~ Understanding and Identifying Patient Risk Factors for Diabetes, Obesity, and Sleep Apnea
 
 ## Master of Science - Analytics
-_Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
+_Georgia Institute of Technology // GPA: 4.0 // Graduation: 05/2020_\
 Coursework:
 - Simulation
 - Data & Visual Analytics
@@ -191,7 +193,7 @@ Completed Coursework:
 - Designing and Running Randomized Evaluations
 
 ## Bachelor of Science - Biology
-_Kings University // GPA 3.4 // Graduation: 2013_\
+_Kings University // GPA 3.4 // Graduation: 05/2013_\
 Relevant & Interesting Coursework:
 - Calculus
 - Biological Modelling
