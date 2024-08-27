@@ -1,9 +1,9 @@
 # Stacey Brandsma
 
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior data scientist ~ amgen</span>** </div>
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">principal data scientist ~ amgen</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
-I am a senior data scientist with several years of experience analyzing data and building and deploying machine learning models in large healthcare and biotech companies, with a passion for analyzing data to improve patient's lives.  
+I am a principal data scientist with several years of experience analyzing data and building and deploying machine learning models in large healthcare and biotech companies, with a passion for analyzing data to improve patient's lives.  
 My area of interest and expertise is at the intersection between precision medicine, public health, and data science and their applications in improving patient care and treatments.  
 I have both a Master of Science in Computer Science and Master of Science in Analytics from Georgia Tech, in addition to my Bachelor of Science in Biology. 
 
@@ -29,8 +29,9 @@ I have both a Master of Science in Computer Science and Master of Science in Ana
 - [Data Scientist ~ HCA Healthcare](experience.md)
 - [Data Scientist ~ Johnson & Johnson](experience.md) -->
 
-## Senior Data Scientist ~ Amgen
-_July 2021 to present_\
+## Principal Data Scientist ~ Amgen
+_August 2024 - present_/
+_Senior Data Scientist - July 2021 to August 2024_\
 As a technical leader on the R&D AI Strategy & Execution team, I work on several projects across
 the company, particularly in precision medicine and obesity.  I am also a leader in several 
 key initiatives to build community at Amgen, facilitating upskilling and collaboration across the company.  \
