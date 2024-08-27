@@ -4,7 +4,7 @@
 
 # Professional Experience
 ## Principal Data Scientist ~ Amgen
-_August 2024 - present_/
+_August 2024 - present_\
 _Senior Data Scientist - July 2021 to August 2024_\
 As a technical leader on the R&D AI Strategy & Execution team, I work on several projects across
 the company, particularly in precision medicine and obesity.  I am also a leader in several 
