@@ -4,7 +4,7 @@
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
 I am a principal data scientist with several years of experience analyzing data and building and deploying machine learning models in large healthcare and biotech companies, with a passion for analyzing data to improve patient's lives.  
-My area of interest and expertise is at the intersection between precision medicine, public health, and data science and their applications in improving patient care and treatments.  
+My area of interest and expertise is at the intersection between precision medicine, public health, and data science and their applications in improving patient care, safety, and treatments.  
 I have both a Master of Science in Computer Science and Master of Science in Analytics from Georgia Tech, in addition to my Bachelor of Science in Biology. 
 
 ### Contact Information
@@ -32,18 +32,21 @@ I have both a Master of Science in Computer Science and Master of Science in Ana
 ## Principal Data Scientist ~ Amgen
 _Principal Data Scientist - August 2024 to present_\
 _Senior Data Scientist - July 2021 to August 2024_\
-As a technical leader on the R&D AI Strategy & Execution team, I work on several projects across
-the company, particularly in precision medicine and obesity.  I am also a leader in several 
+As a technical leader on the Technology Innovation Lab, I work on several projects across
+the company, particularly in precision medicine and pharmacovigilence.  I am also a leader in several 
 key initiatives to build community at Amgen, facilitating upskilling and collaboration across the company.  \
 \
 Leadership & Strategic Planning:
+- Co-lead for AI Taskforce for Global Patient Safety.
 - Co-lead of AI Taskforce for Obesity & Weight Management. 
 - Co-lead of AI Learning Lab for employees across Amgen. 
-- Data Science lead for AI Taskforce for Global Patient Safety.
 - Data Science lead for Rare Disease Targeting using AI. 
 - SME for Data Science and Precision Medicine strategy at Amgen, participating in workshops and taskforces to define the future of precision medicine at Amgen.  
 
 Technical Lead:
+- Document Authoring for Periodic Safety Reports
+  - I managed a team to deliver a document authoring POC in 10 weeks that was shared with the CEO and Board of Directors.
+  - Currently scaling to MVP to cover more sections of the document.
 - Data Science & Digital Health Engagement Lead for obesity pipeline products. 
   - I led the ideation process to develop use cases for data science in obesity trials and am now building the use cases into proof of concepts.  
   - Additionally, our team evaluated and recommended digital health products and patient registries for improving retention and data collection in a trial setting. This set the stage for the AI Taskforce for Obesity & Weight Management.
@@ -57,8 +60,7 @@ Technical Lead:
 
 Collaboration & Community Building:
 - Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  
-  - I secured an external keynote speaker and moderated fireside and panel discussions.  
-  - Facilitated event for nearly 500 Amgen employees.
+  - Facilitated annual event for between 500 and 1000 Amgen employees.
 - Leader and facilitator of the mentoring program.  
   - I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
 - Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
