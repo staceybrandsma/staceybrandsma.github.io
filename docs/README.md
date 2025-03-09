@@ -24,10 +24,6 @@ I have both a Master of Science in Computer Science and Master of Science in Ana
 ---
 
 # Experience
-<!-- - [Senior Data Scientist ~ Amgen](experience.md)
-- [Data Scientist 2 ~ Parsyl](experience.md)
-- [Data Scientist ~ HCA Healthcare](experience.md)
-- [Data Scientist ~ Johnson & Johnson](experience.md) -->
 
 ## Principal Data Scientist ~ Amgen
 _Principal Data Scientist - August 2024 to present_\
@@ -110,27 +106,10 @@ Key Projects:
 _September 2014 - October 2017_\
 I worked with a non-profit in Zambia, partnering with local community and non-governmental
 organizations to monitor and evaluate projects in healthcare, education, and agriculture. 
-<!-- Key Responsibilities:
-- reviewed and approved partner reports
-- supported partners in developing project plans
-- supported partners in their monitoring strategies
-- organized external evaluations
-- conducted informal reviews of programs
-- organized annual partner meetings
-- maintained MCC country program database
-- conducted workshops on Monitoring and Evaluation for partners
-- collaborated with other MCC personnel on Monitoring and Evaluation Standing Committee
-- contributed to the Monitoring and Evaluation Network --> 
 
 ---
 
 # Education
-<!-- - [Master of Science in Computer Science ~ Georgia Tech](education.md)
-- [Master of Science in Analytics ~ Georgia Tech](education.md)
-- [Biomedical and Public Health Coursework](education.md)
-- [Additional Data Science Coursework](education.md)
-- [MicroMasters in Data & Economics ~ MIT](education.md)
-- [Bachelor of Science in Biology ~ Kings University](education.md) -->
 
 ## Master of Science - Computer Science
 _Georgia Institute of Technology // GPA: 4.0 // Graduation: 05/2024_\
