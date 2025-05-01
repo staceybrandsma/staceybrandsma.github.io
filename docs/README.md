@@ -24,21 +24,21 @@ My work sits at the intersection of precision medicine, public health, and appli
 # Experience
 
 ## Senior Digital AI Product Lead ~ Amgen
-_February 2025 - present_
+_February 2025 - present_\
 As the domain lead for AI product management within Global Patient Safety at Amgen, I am responsible for driving the digital strategy that brings our long-term vision for patient safety to life through technology and innovation. I lead the end-to-end lifecycle of AI product development — from strategic planning and problem discovery to product definition, prototyping, and MVP delivery. My work centers on translating complex safety challenges into scalable, AI-enabled solutions that enhance pharmacovigilance operations and enable more proactive safety decision-making.
 
 Key Initiatives:
-- AI-Driven Document Authoring Platform
-  - Leading the development of an intelligent, modular system to automate the creation of periodic safety reports and other regulatory safety documents.
-  - Leveraging generative AI and document intelligence to reduce manual workload and improve consistency across all safety documentation.
+AI-Driven Document Authoring Platform
+- Leading the development of an intelligent, modular system to automate the creation of periodic safety reports and other regulatory safety documents.
+- Leveraging generative AI and document intelligence to reduce manual workload and improve consistency across all safety documentation.
 
-- Safety Assessment Generation Engine
-  - Designing a platform that enhances traditional safety signal assessment using AI and data-driven methods.
-  - Integrating structured and unstructured data to support faster, more informed signal detection, evaluation, and reporting.
+Safety Assessment Generation Engine
+- Designing a platform that enhances traditional safety signal assessment using AI and data-driven methods.
+- Integrating structured and unstructured data to support faster, more informed signal detection, evaluation, and reporting.
 
-- Safety Risk Prediction & Prevention
-  - Building machine learning models to predict product-level safety risks and adverse event likelihood.
-  - Identifying causal risk factors in specific patient populations to enable earlier intervention and proactive risk management.
+Safety Risk Prediction & Prevention
+- Building machine learning models to predict product-level safety risks and adverse event likelihood.
+- Identifying causal risk factors in specific patient populations to enable earlier intervention and proactive risk management.
 
 
 ## Principal Data Scientist ~ Amgen
