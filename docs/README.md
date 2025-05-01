@@ -19,7 +19,6 @@ My work sits at the intersection of precision medicine, public health, and appli
 | **Programming**         | Python, R, SQL, Bash/Zsh, Git                                                                                                                        |
 | **Methodologies**       | Machine Learning, Natural Language Processing, Image Analysis, Deep Learning, Big Data Analytics, Simulation, Bayesian Statistics, Causal Inference, Business Analytics |
 | **Areas of Expertise**  | Product Safety, Precision Medicine, Digital Health, BioPharma, Healthcare AI, Public Health Informatics, Biomedical Data Science, Program Management  |
-
 ---
 
 # Experience
