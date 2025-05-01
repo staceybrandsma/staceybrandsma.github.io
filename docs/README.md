@@ -1,6 +1,6 @@
 # Stacey Brandsma
 
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">principal data scientist ~ amgen</span>** </div>
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior digtial AI product lead ~ amgen</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
 I  am the Senior Digital AI Product Management Lead for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
@@ -13,13 +13,12 @@ My work sits at the intersection of precision medicine, public health, and appli
 - <a href="https://www.github.com/staceybrandsma/"> Github </a>
 
 ### Skills
-|   |   |
-| --- | --- |
-| Languages | Python, SQL, R, Bash/Zsh, Git |
-| Data Science Methods | Machine Learning, Natural Language Processing, Computer Vision, Deep Learning, Big Data Analytics, Time Series Analysis, Simulation, Bayesian Statistics, Regression, Business Analytics, Generative AI |
-| Engineering | AWS, Databricks |
-| Collaboration | Ideation and Project Development, Jira, Confluence, Agile, Scrum, Software Testing, Product Management, Code Reviews, Pair Programming, Knowledge Transfer, Technical Presentations |
-| Areas of Expertise | Precision Medicine, Digital Health, BioPharma, Healthcare, Epidemiology, Public Health, Program Management, Research, Biomedical Informatics |
+| **Category**            | **Skills**                                                                                                                                           |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Product Management**  | Product Strategy, Roadmapping, OKRs, MVP Development, Product Discovery, User Research, Agile Product Lifecycle, Stakeholder Engagement, Cross-functional Leadership, Prioritization Frameworks (RICE, MoSCoW), Go-to-Market Planning |
+| **Programming**         | Python, R, SQL, Bash/Zsh, Git                                                                                                                        |
+| **Methodologies**       | Machine Learning, Natural Language Processing, Image Analysis, Deep Learning, Big Data Analytics, Simulation, Bayesian Statistics, Causal Inference, Business Analytics |
+| **Areas of Expertise**  | Product Safety, Precision Medicine, Digital Health, BioPharma, Healthcare AI, Public Health Informatics, Biomedical Data Science, Program Management  |
 
 ---
 
