@@ -3,8 +3,7 @@
 [Back to Home](README.md)
 # Education
 ## Master of Science - Computer Science
-_Georgia Institute of Technology // GPA: 4.0 // Anticipated
-Graduation: 05-2024_\
+_Georgia Institute of Technology // GPA: 4.0 // Graduation: 05-2024_\
 Coursework:
 - Big Data for Healthcare
 - AI Ethics & Society
@@ -18,7 +17,7 @@ Coursework:
 - Independent Study ~ Understanding and Identifying Patient Risk Factors for Diabetes, Obesity, and Sleep Apnea
 
 ## Master of Science - Analytics
-_Georgia Institute of Technology // GPA: 4.0 // Graduation: 2020_\
+_Georgia Institute of Technology // GPA: 4.0 // Graduation: 05-2020_\
 Coursework:
 - Simulation
 - Data & Visual Analytics
