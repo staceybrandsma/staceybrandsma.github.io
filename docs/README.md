@@ -25,6 +25,23 @@ I have both a Master of Science in Computer Science and Master of Science in Ana
 
 # Experience
 
+## Senior Digital AI Product Management Lead ~ Amgen
+As the domain lead for AI product management within Global Patient Safety at Amgen, I am responsible for driving the digital strategy that brings our long-term vision for patient safety to life through technology and innovation. I lead the end-to-end lifecycle of AI product development — from strategic planning and problem discovery to product definition, prototyping, and MVP delivery. My work centers on translating complex safety challenges into scalable, AI-enabled solutions that enhance pharmacovigilance operations and enable more proactive safety decision-making.
+
+Key Initiatives:
+- AI-Driven Document Authoring Platform
+  - Leading the development of an intelligent, modular system to automate the creation of periodic safety reports and other regulatory safety documents.
+  - Leveraging generative AI and document intelligence to reduce manual workload and improve consistency across all safety documentation.
+
+- Safety Assessment Generation Engine
+  - Designing a platform that enhances traditional safety signal assessment using AI and data-driven methods.
+  - Integrating structured and unstructured data to support faster, more informed signal detection, evaluation, and reporting.
+
+- Safety Risk Prediction & Prevention
+  - Building machine learning models to predict product-level safety risks and adverse event likelihood.
+  - Identifying causal risk factors in specific patient populations to enable earlier intervention and proactive risk management.
+
+
 ## Principal Data Scientist ~ Amgen
 _Principal Data Scientist - August 2024 to present_\
 _Senior Data Scientist - July 2021 to August 2024_\
@@ -56,7 +73,7 @@ Technical Lead:
 
 Collaboration & Community Building:
 - Vice Chair of organizing committee for annual Data Science Symposium at Amgen.  
-  - Facilitated annual event for between 500 and 1000 Amgen employees.
+  - Facilitated annual event for ~1500 Amgen employees.
 - Leader and facilitator of the mentoring program.  
   - I built a matching software to streamline the mentor matching process, saving hundreds of work hours and improving matching.
 - Mentor and manager of junior staff and ambassador for data science across Amgen, facilitating symposiums, journal clubs, knowledge sharing sessions, pilots, and lunch and learns.  
@@ -83,7 +100,7 @@ Key Projects:
 - Built and deployed predictive models for a patient’s hospital visit cost.
 - Award: outstanding work during COVID-19 pandemic.
 
-## Data Science Co-Op ~ Johnson & Johnson
+## Data Scientist ~ Johnson & Johnson
 _June 2018 to April 2020_\
 I worked on the Advanced Analytics Data Science team within J&J.  My
 main project was developing a model and visualization for detecting
