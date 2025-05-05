@@ -1,6 +1,6 @@
 # Stacey Brandsma
 
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior digtial AI product lead ~ amgen</span>** </div>
+**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">technology strategy & innovation senior manager ~ amgen</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
 I  am the Technology Strategy & Innovation Senior Manager for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
