@@ -3,9 +3,9 @@
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">senior digtial AI product lead ~ amgen</span>** </div>
 **<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
 
-I  am the Senior Digital AI Product Lead for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
+I  am the Technology Strategy & Innovation Senior Manager for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
 
-My work sits at the intersection of precision medicine, public health, and applied AI, and I’m passionate about bringing innovative digital solutions into real-world practice. Prior to transitioning into product leadership, I spent several years building and deploying machine learning models in healthcare and biotech, experience that continues to inform my product strategy and cross-functional collaboration. I hold Master of Science degrees in both Computer Science and Analytics from Georgia Tech, and a Bachelor of Science in Biology.
+My work sits at the intersection of patient outcomes, public health, and applied AI, and I’m passionate about bringing innovative digital solutions into real-world practice. Prior to transitioning into product leadership, I spent several years building and deploying machine learning models in healthcare and biotech, experience that continues to inform my product strategy and cross-functional collaboration. I hold Master of Science degrees in both Computer Science and Analytics from Georgia Tech, and a Bachelor of Science in Biology.
 
 ### Contact Information
 - [Resume](StaceyBrandsma_Resume.pdf)
@@ -23,7 +23,7 @@ My work sits at the intersection of precision medicine, public health, and appli
 
 # Experience
 
-## Senior Digital AI Product Lead ~ Amgen
+## Technology Strategy & Innovation Senior Manager ~ Amgen
 _February 2025 - present_\
 As the domain lead for AI product management within Global Patient Safety at Amgen, I am responsible for driving the digital strategy that brings our long-term vision for patient safety to life through technology and innovation. I lead the end-to-end lifecycle of AI product development — from strategic planning and problem discovery to product definition, prototyping, and MVP delivery. My work centers on translating complex safety challenges into scalable, AI-enabled solutions that enhance pharmacovigilance operations and enable more proactive safety decision-making.
 
