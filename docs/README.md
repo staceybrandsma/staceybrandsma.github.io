@@ -15,10 +15,10 @@ My work sits at the intersection of patient outcomes, public health, and applied
 ### Skills
 | **Category**            | **Skills**                                                                                                                                           |
 |-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Product Management**  | Product Strategy, Roadmapping, OKRs, MVP Development, Product Discovery, User Research, Agile Product Lifecycle, Stakeholder Engagement, Cross-functional Leadership, Prioritization Frameworks (RICE, MoSCoW), Go-to-Market Planning |
+| **Product Management**  | Product Strategy, Roadmapping, OKRs, MVP Development, Product Discovery, User Research, Agile Product Lifecycle, Stakeholder Engagement, Cross-functional Leadership, Prioritization Frameworks, Go-to-Market Planning |
 | **Programming**         | Python, R, SQL, Bash/Zsh, Git                                                                                                                        |
 | **Methodologies**       | Machine Learning, Natural Language Processing, Image Analysis, Deep Learning, Big Data Analytics, Simulation, Bayesian Statistics, Causal Inference, Business Analytics |
-| **Areas of Expertise**  | Product Safety, Precision Medicine, Digital Health, BioPharma, Healthcare AI, Public Health Informatics, Biomedical Data Science, Program Management  |
+| **Areas of Expertise**  | Patient Safety, Precision Medicine, Digital Health, BioPharma, Healthcare AI, Public Health Informatics, Biomedical Data Science, Program Management  |
 ---
 
 # Experience
