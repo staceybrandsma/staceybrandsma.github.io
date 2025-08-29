@@ -1,9 +1,141 @@
 # Stacey Brandsma
 
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">technology strategy & innovation senior manager ~ amgen</span>** </div>
-**<div style="text-align: right"> <span style="font-size: larger; font-size: larger;">msc computer science, msc analytics, bsc biology</span>** </div>
+# Stacey Brandsma
+## AI Product Leader | Data Scientist | Healthcare Innovation
 
-I  am the Technology Strategy & Innovation Senior Manager for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
+<div align="center">
+  <img src="https://img.shields.io/badge/Product%20Management-Expert-blue?style=for-the-badge" alt="Product Management">
+  <img src="https://img.shields.io/badge/Data%20Science-Expert-green?style=for-the-badge" alt="Data Science">
+  <img src="https://img.shields.io/badge/Healthcare%20AI-Specialist-red?style=for-the-badge" alt="Healthcare AI">
+</div>
+
+---
+
+### 👋 About Me {#about}
+
+I'm a **Digital Product Senior Manager** at Amgen, where I transform complex healthcare challenges into scalable AI solutions that protect patients and enhance pharmacovigilance operations. With dual Master's degrees from Georgia Tech and years of hands-on experience in data science, I now lead the end-to-end product lifecycle—from strategic planning to MVP execution.
+
+My passion lies at the intersection of **patient outcomes**, **public health**, and **applied AI**, bringing innovative digital solutions from concept to real-world impact.
+
+### 🚀 Current Focus
+
+🔬 **AI-Driven Patient Safety** - Leading AI product strategy for Global Patient Safety at Amgen  
+📊 **Precision Medicine** - Building ML models for patient risk stratification and therapeutic optimization  
+🤖 **Document Intelligence** - Developing generative AI platforms for regulatory safety reporting  
+👥 **Community Building** - Co-leading AI taskforces and mentoring programs across the organization  
+
+---
+
+## 💼 Professional Experience {#experience}
+
+### 🏢 **Amgen** | Digital Product Senior Manager
+*February 2025 - Present*
+
+Leading AI product strategy for Global Patient Safety, driving digital transformation through:
+
+- **🤖 AI Document Authoring Platform** - Automating periodic safety reports using generative AI
+- **🔍 Safety Assessment Engine** - Improving the signal assessment process with ML and data-driven methods  
+- **⚠️ Risk Prediction Models** - Building predictive models for proactive safety management
+
+**Key Achievements:**
+- 📈 Delivered POC in 10 weeks, presented to CEO and Board of Directors
+- 🎯 Co-leading AI taskforces for Patient Safety and Obesity & Weight Management
+- 👥 Vice Chair of Data Science Symposium for 1,500+ employees
+
+### 🏢 **Amgen** | Principal Data Scientist  
+*July 2021 - February 2025*
+
+Technical leadership across precision medicine and pharmacovigilance initiatives:
+
+- **📊 Precision Medicine** - Developing patient stratification models for IBD and obesity
+- **🔬 Clinical Intelligence** - Building competitive intelligence and forecasting models
+- **🏥 Digital Health** - Evaluating and implementing digital health solutions for clinical trials
+
+### 🏢 **HCA Healthcare** | Data Scientist
+*April 2020 - March 2021*
+
+Built production ML models improving patient outcomes during COVID-19:
+
+- **🚨 COVID-19 Response** - Created ICU capacity and census prediction models
+- **💰 Cost Prediction** - Deployed models for hospital visit cost forecasting
+- **🏆 Recognition** - Outstanding work award during pandemic response
+
+### 🏢 **Johnson & Johnson** | Data Scientist
+*June 2018 - April 2020*
+
+Advanced analytics for pharmaceutical safety and consumer products:
+
+- **🔍 Anomaly Detection** - Modeled suspicious orders in controlled substances
+- **📱 IoT Analytics** - Built location prediction models using IoT devices
+- **📊 Business Intelligence** - Created visualization tools for statistical concepts
+
+---
+
+## 🎓 Education {#education}
+
+### 🏫 **Georgia Institute of Technology**
+**Master of Science - Computer Science** | *2024* | **GPA: 4.0**
+- 🧠 AI Ethics & Society, Deep Learning, Human-Computer Interaction
+- 🔬 Independent Study: Patient Risk Factors for Diabetes, Obesity, Sleep Apnea
+
+**Master of Science - Analytics** | *2020* | **GPA: 4.0**  
+- 📊 Machine Learning, Bayesian Statistics, High Dimensional Data Analytics
+- 🎯 Business Analytics, Simulation, Data Visualization
+
+### 🏫 **Massachusetts Institute of Technology**
+**MicroMasters in Data & Economics** | *2018*
+- 💡 Development Economics, Randomized Evaluations, Social Data Analysis
+
+### 🏫 **Kings University**
+**Bachelor of Science - Biology** | *2013*
+- 🔬 Published thesis in International Journal of Food Microbiology
+- 🏆 Laurence Decore Student Leadership Award, VP Student Government
+
+---
+
+## 🛠️ Technical Skills {#skills}
+
+<div align="center">
+
+### Product & Strategy
+![Product Strategy](https://img.shields.io/badge/Product%20Strategy-Expert-blue)
+![OKRs](https://img.shields.io/badge/OKRs-Expert-blue)
+![MVP%20Development](https://img.shields.io/badge/MVP%20Development-Expert-blue)
+![User%20Research](https://img.shields.io/badge/User%20Research-Expert-blue)
+
+### Programming & ML
+![Python](https://img.shields.io/badge/Python-Expert-green)
+![R](https://img.shields.io/badge/R-Expert-green)
+![SQL](https://img.shields.io/badge/SQL-Expert-green)
+![Machine%20Learning](https://img.shields.io/badge/Machine%20Learning-Expert-green)
+
+### Healthcare & AI
+![Healthcare%20AI](https://img.shields.io/badge/Healthcare%20AI-Expert-red)
+![NLP](https://img.shields.io/badge/NLP-Expert-red)
+![Computer%20Vision](https://img.shields.io/badge/Computer%20Vision-Advanced-red)
+![Pharmacovigilance](https://img.shields.io/badge/Pharmacovigilance-Expert-red)
+
+</div>
+
+---
+
+## 📫 Let's Connect {#contact}
+
+<div align="center">
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/stacey-brandsma/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://www.github.com/staceybrandsma/)
+[![Resume](https://img.shields.io/badge/Resume-Download-FF6B6B?style=for-the-badge&logo=adobe-acrobat-reader)](StaceyBrandsma_Resume.pdf)
+
+</div>
+
+---
+
+<div align="center">
+  <i>"Transforming healthcare through AI innovation, one patient safety initiative at a time."</i>
+</div>
+
+I  am the Digital Product Senior Manager for Global Patient Safety at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations. With a foundation in data science and machine learning, I now focus on driving the end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
 
 My work sits at the intersection of patient outcomes, public health, and applied AI, and I’m passionate about bringing innovative digital solutions into real-world practice. Prior to transitioning into product leadership, I spent several years building and deploying machine learning models in healthcare and biotech, experience that continues to inform my product strategy and cross-functional collaboration. I hold Master of Science degrees in both Computer Science and Analytics from Georgia Tech, and a Bachelor of Science in Biology.
 
@@ -23,7 +155,7 @@ My work sits at the intersection of patient outcomes, public health, and applied
 
 # Experience
 
-## Technology Strategy & Innovation Senior Manager ~ Amgen
+## digital product senior manager ~ Amgen
 _February 2025 - present_\
 As the domain lead for AI product management within Global Patient Safety at Amgen, I am responsible for driving the digital strategy that brings our long-term vision for patient safety to life through technology and innovation. I lead the end-to-end lifecycle of AI product development — from strategic planning and problem discovery to product definition, prototyping, and MVP delivery. My work centers on translating complex safety challenges into scalable, AI-enabled solutions that enhance pharmacovigilance operations and enable more proactive safety decision-making.
 
@@ -34,7 +166,7 @@ AI-Driven Document Authoring Platform
 
 Safety Assessment Generation Engine
 - Designing a platform that enhances traditional safety signal assessment using AI and data-driven methods.
-- Integrating structured and unstructured data to support faster, more informed signal detection, evaluation, and reporting.
+- Integrating structured and unstructured data to support faster, more informed signal assessment, evaluation, and reporting.
 
 Safety Risk Prediction & Prevention
 - Building machine learning models to predict product-level safety risks and adverse event likelihood.
