@@ -3,219 +3,1791 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stacey Brandsma - AI Product Leader</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Stacey Brandsma</title>
     <style>
+        /* Color Variables */
+                :root {
+            --primary-color: #DAA520;    /* Mustard Yellow - more vibrant */
+            --secondary-color: #CD5C5C;  /* Burnt Orange */
+            --accent-color: #1B9B9B;     /* Darker Teal */
+            --sage-green: #9CAF88;       /* Sage Green - now background */
+            --text-dark: #2c3e50;
+            --text-medium: #4a4a4a;
+            --text-light: #f8f9fa;
+            --background-light: #f8f9fa;
+            --background-dark: #34495e;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-dark);
+            background: var(--sage-green);
+            min-height: 100vh;
+        }        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            padding: 3rem 0 2rem;
+            background: var(--sage-green);
         }
-        h1 {
-            font-size: 3rem;
+        
+        .header h1 {
+            font-size: 4rem;
             font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(47, 79, 79, 0.3);
         }
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: #7f8c8d;
-            text-align: center;
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
             margin-bottom: 2rem;
         }
-        h3 {
-            font-size: 1.6rem;
+        
+        /* Tab Navigation */
+                .tab-container {
+            background: var(--primary-color);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        
+        .tab-nav {
+            display: flex;
+            background: var(--primary-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-x: auto;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: #2c3e50;
-            margin: 2rem 0 1rem 0;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 120px;
         }
-        .badges {
+        
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .tab-button.active {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(27, 155, 155, 0.4);
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 3rem;
+            min-height: 500px;
+            animation: fadeIn 0.5s ease-in-out;
+            background: #f8f9fa;
+            margin: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Center content for About and Craft & Code tabs */
+        #about, #craft {
             text-align: center;
-            margin: 2rem 0;
         }
-        .badges img {
-            margin: 0.25rem;
-            border-radius: 6px;
-            transition: transform 0.3s ease;
+        
+        #about h1, #about h2, #about h3, #about p,
+        #craft h1, #craft h2, #craft h3, #craft p,
+        #craft .connection-item h4,
+        #craft .connection-item p {
+            text-align: center;
         }
-        .badges img:hover {
+        
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-medium);
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro-highlight {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem !important;
+        }
+        
+        .intro-bullets {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .intro-bullet {
+            background: var(--background-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .journey-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--accent-color);
+            border-radius: 12px;
+            min-width: 120px;
+            border: 2px solid var(--accent-color);
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.3;
+        }
+        
+        .mission-statement {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--background-light), var(--background-sage));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .mission-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .mission-statement p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        
+        .focus-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .focus-icon {
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+        
+        .focus-highlights {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .current-focus {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .focus-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .focus-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+        
+        .focus-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .emoji-icon {
+            font-style: normal;
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+            display: inline-block;
+            width: 1.5rem;
+            text-align: center;
+            filter: grayscale(100%) sepia(100%) saturate(10000%) hue-rotate(220deg) brightness(0.8);
+        }
+        
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .experience-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .company {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .date {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .job-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .achievements {
+            list-style: none;
+        }
+        
+        .achievements li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .achievements li:before {
+            content: '▪';
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .achievements li strong {
+            color: var(--secondary-color);
+        }
+        
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .education-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+        
+        .degree {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .school {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-details {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--secondary-color);
             transform: translateY(-2px);
         }
-        a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-        .contact-links {
+        
+        .skill-tag.product { background: var(--accent-color); }
+        .skill-tag.tech { background: var(--primary-color); }
+        .skill-tag.healthcare { background: var(--secondary-color); }
+
+        /* Craft & Code Section */
+        .craft-intro {
             text-align: center;
-            margin: 2rem 0;
+            margin-bottom: 3rem;
         }
-        .contact-links a {
-            margin: 0 1rem;
-            transition: transform 0.3s ease;
-            display: inline-block;
+
+        .craft-connections {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
-        .contact-links a:hover {
-            transform: scale(1.1);
-        }
-        .quote {
-            font-style: italic;
-            color: #7f8c8d;
+
+        .connection-section h3 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 1rem;
-            margin: 2rem 0;
-            border-left: 4px solid #667eea;
-            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .connection-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .connection-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .connection-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-connection {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-connection:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .skill-pair strong {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .craft-benefits {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--primary-color);
+            list-style: none;
+        }
+
+        .craft-benefits li {
+            margin-bottom: 1rem;
+            padding-left: 0;
+        }
+
+        .craft-benefits li strong {
+            color: var(--secondary-color);
+        }
+
+        /* Pattern Generator Styles */
+        .pattern-generator {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .upload-area {
+            border: 3px dashed var(--accent-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(27, 155, 155, 0.05);
+            max-width: 400px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background: rgba(218, 165, 32, 0.05);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--secondary-color);
+            background: rgba(205, 92, 92, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Image display styling */
+        .image-preview img {
+            max-width: 600px;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .pattern-image canvas {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-preview, .pattern-image {
+            width: 100%;
+        }
+
+        .upload-note {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin-top: 0.5rem;
+        }
+
+        .image-preview {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
             border-radius: 8px;
         }
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 2rem 0;
+
+        .image-preview h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
         }
+
+        #previewImage {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent-color);
+        }
+
+        .controls-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dimensions-row {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dimension-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dimension-control label {
+            min-width: 120px;
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .control-group label {
+            min-width: 140px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .control-group input[type="range"] {
+            flex: 1;
+            accent-color: var(--accent-color);
+        }
+
+        .stitch-input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-dark);
+            background: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .stitch-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(27, 155, 155, 0.1);
+        }
+
+        .stitch-input:invalid {
+            border-color: var(--secondary-color);
+        }
+
+        .control-group span {
+            min-width: 30px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .generate-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .generate-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .generate-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-section {
+            margin-top: 2rem;
+        }
+
+        .pattern-result {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .pattern-image {
+            text-align: center;
+        }
+
+        .pattern-image h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        #patternCanvas {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--text-medium);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-palette {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .color-palette h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .palette-colors {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .export-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .export-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .export-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 160px;
+        }
+
+        .export-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .export-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.1rem; }
-            .container { padding: 20px; }
+            .image-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .dimensions-row {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .dimension-control {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                width: 100%;
+            }
+            
+            .dimension-control label {
+                min-width: auto;
+            }
+            
+            .stitch-input {
+                width: 100px;
+            }
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-content h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 140px;
+        }
+        
+        .contact-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .tab-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .tab-button {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .current-focus {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Smooth transitions */
+        .tab-content * {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Stacey Brandsma</h1>
-        <h2>AI Product Leader | Data Scientist | Healthcare Innovation</h2>
-
-        <div class="badges">
-            <img src="https://img.shields.io/badge/Product%20Management-Expert-blue?style=for-the-badge" alt="Product Management">
-            <img src="https://img.shields.io/badge/Data%20Science-Expert-green?style=for-the-badge" alt="Data Science">
-            <img src="https://img.shields.io/badge/Healthcare%20AI-Specialist-red?style=for-the-badge" alt="Healthcare AI">
+        <!-- Header -->
+        <div class="header">
+            <h1>STACEY BRANDSMA</h1>
+            <p class="tagline">AI Product Leader & Healthcare Data Scientist</p>
+            
+            <!-- Contact Links in Header -->
+            <div class="contact-links" style="margin-top: 2rem;">
+                <a href="https://www.linkedin.com/in/stacey-brandsma/" class="contact-link">LinkedIn</a>
+                <a href="https://www.github.com/staceybrandsma/" class="contact-link">GitHub</a>
+                <a href="StaceyBrandsma_Resume.pdf" class="contact-link">Resume</a>
+            </div>
         </div>
 
-        <hr>
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="openTab(event, 'about')">About</button>
+                <button class="tab-button" onclick="openTab(event, 'experience')">Experience</button>
+                <button class="tab-button" onclick="openTab(event, 'education')">Education</button>
+                <button class="tab-button" onclick="openTab(event, 'craft')">Craft of Code</button>
+            </div>
 
-        <h3 id="about">👋 About Me</h3>
-        <p>I'm a <strong>Digital Product Senior Manager</strong> at Amgen, where I transform complex healthcare challenges into scalable AI solutions that protect patients and enhance pharmacovigilance operations. With dual Master's degrees from Georgia Tech and years of hands-on experience in data science, I now lead the end-to-end product lifecycle—from strategic planning to MVP execution.</p>
-        
-        <p>My passion lies at the intersection of <strong>patient outcomes</strong>, <strong>public health</strong>, and <strong>applied AI</strong>, bringing innovative digital solutions from concept to real-world impact.</p>
+            <!-- About Tab -->
+            <div id="about" class="tab-content active">
+                <div class="about-content">
+                    <div class="intro-section">
+                        <p>I'm a <strong>Digital Product Senior Manager</strong> at Amgen, where I translate complex safety challenges into scalable, AI-enabled solutions that help protect patients and enhance pharmacovigilance operations worldwide.</p>
+                    </div>
+                    
+                    <div class="journey-stats">
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Master's Degrees<br>Georgia Tech</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Years Driving<br>AI Innovation</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Years in Healthcare<br>& Public Health</div>
+                        </div>
+                    </div>
 
-        <h3>🚀 Current Focus</h3>
-        <p>🔬 <strong>AI-Driven Patient Safety</strong> - Leading AI product strategy for Global Patient Safety at Amgen<br>
-        📊 <strong>Precision Medicine</strong> - Building ML models for patient risk stratification and therapeutic optimization<br>
-        🤖 <strong>Document Intelligence</strong> - Developing generative AI platforms for regulatory safety reporting<br>
-        👥 <strong>Community Building</strong> - Co-leading AI taskforces and mentoring programs across the organization</p>
+                    <div class="current-focus">
+                        <div class="focus-item">
+                            <div class="focus-header">
+                                <h3>Patient Safety Innovation</h3>
+                            </div>
+                            <p>Developing intelligent solutions that revolutionize pharmacovigilance processes—from document intelligence that streamlines safety reporting to assessment engines that improve how we evaluate and respond to safety signals. My work focuses on building AI systems that enhance our ability to protect patients through more efficient and effective safety operations.</p>
+                            <div class="focus-highlights">
+                                <div class="highlight-item">Document intelligence & automated reporting</div>
+                                <div class="highlight-item">Signal assessment & evaluation engines</div>
+                                <div class="highlight-item">Efficient safety operations</div>
+                            </div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-header">
+                                <h3>Precision Medicine</h3>
+                            </div>
+                            <p>Building ML models for patient stratification that enable personalized approaches to both therapeutic optimization and adverse drug reaction prediction. By identifying which patients are most at risk for specific safety events, we can advance precision safety as a critical component of public health—preventing harm before it occurs rather than just responding to it.</p>
+                            <div class="focus-highlights">
+                                <div class="highlight-item">Patient stratification & risk modeling</div>
+                                <div class="highlight-item">Personalized safety predictions</div>
+                                <div class="highlight-item">Public health impact</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <hr>
+            <!-- Experience Tab -->
+            <div id="experience" class="tab-content">
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Digital Product Senior Manager</div>
+                                <div class="company">Amgen</div>
+                            </div>
+                            <div class="date">February 2025 - Present</div>
+                        </div>
+                        <div class="job-description">
+                            Leading AI product strategy for Global Patient Safety, driving digital transformation through scalable AI solutions that protect patients and enhance pharmacovigilance operations. Focus on end-to-end product lifecycle — from strategic planning and problem discovery to solution definition, prototyping, and MVP execution.
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>AI Document Authoring Platform</strong> - Automating periodic safety reports using generative AI, revolutionizing regulatory document creation</li>
+                            <li><strong>Safety Assessment Engine</strong> - Improving the signal assessment process with ML and data-driven methods</li>
+                            <li><strong>Risk Prediction Models</strong> - Building predictive models for proactive safety management and early risk identification</li>
+                            <li><strong>Leadership</strong> - Co-leading AI taskforces for Patient Safety and Obesity & Weight Management across global teams</li>
+                            <li><strong>AI Training & Education</strong> - Delivered multiple training sessions for safety practitioners on AI applications in pharmacovigilance</li>
+                        </ul>
+                    </div>
 
-        <h3 id="experience">💼 Professional Experience</h3>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Principal Data Scientist</div>
+                                <div class="company">Amgen</div>
+                            </div>
+                            <div class="date">July 2021 - February 2025</div>
+                        </div>
+                        <div class="job-description">
+                            Technical leadership across precision medicine and pharmacovigilance initiatives, building advanced ML models and driving data-driven decision making across therapeutic areas. Led cross-functional teams to implement innovative data science solutions for complex healthcare challenges.
+                        </div>
+                        <ul class="achievements">
+                            <li><strong>Precision Medicine</strong> - Developing patient stratification models for IBD and obesity, enabling personalized treatment approaches</li>
+                            <li><strong>Clinical Intelligence</strong> - Building competitive intelligence and forecasting models to support strategic business decisions</li>
+                            <li><strong>Digital Health</strong> - Evaluating and implementing digital health solutions for clinical trials, improving patient outcomes and operational efficiency</li>
+                            <li><strong>AI Taskforce Leadership</strong> - Co-leading AI taskforces for Patient Safety and Obesity & Weight Management, driving innovation across therapeutic areas</li>
+                            <li><strong>Symposium Leadership</strong> - Vice Chair of Data Science Symposium for 1,500+ employees, creating learning opportunities and knowledge sharing</li>
+                            <li><strong>Pharmacovigilance Innovation</strong> - Advanced signal assessment and safety data review using machine learning and statistical methods</li>
+                        </ul>
+                    </div>
 
-        <h4>🏢 <strong>Amgen</strong> | Digital Product Senior Manager</h4>
-        <p><em>February 2025 - Present</em></p>
-        <p>Leading AI product strategy for Global Patient Safety, driving digital transformation through:</p>
-        <ul>
-            <li><strong>🤖 AI Document Authoring Platform</strong> - Automating periodic safety reports using generative AI</li>
-            <li><strong>🔍 Safety Assessment Engine</strong> - Improving the signal assessment process with ML and data-driven methods</li>
-            <li><strong>⚠️ Risk Prediction Models</strong> - Building predictive models for proactive safety management</li>
-        </ul>
-        <p><strong>Key Achievements:</strong><br>
-        📈 Delivered POC in 10 weeks, presented to CEO and Board of Directors<br>
-        🎯 Co-leading AI taskforces for Patient Safety and Obesity & Weight Management<br>
-        👥 Vice Chair of Data Science Symposium for 1,500+ employees</p>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Data Scientist</div>
+                                <div class="company">HCA Healthcare</div>
+                            </div>
+                            <div class="date">April 2020 - March 2021</div>
+                        </div>
+                        <div class="job-description">
+                            Built production machine learning models and analyses to improve patient outcomes during the COVID-19 pandemic.
+                        </div>
+                        <ul class="achievements">
+                            <li>Created COVID-19 ICU capacity and census prediction models</li>
+                            <li>Deployed models for hospital visit cost forecasting</li>
+                            <li>Built pipeline for calculating regional COVID-19 Rt values</li>
+                            <li>Received outstanding work award during pandemic response</li>
+                        </ul>
+                    </div>
 
-        <h4>🏢 <strong>HCA Healthcare</strong> | Data Scientist</h4>
-        <p><em>April 2020 - March 2021</em></p>
-        <p>Built production ML models improving patient outcomes during COVID-19:</p>
-        <ul>
-            <li><strong>🚨 COVID-19 Response</strong> - Created ICU capacity and census prediction models</li>
-            <li><strong>💰 Cost Prediction</strong> - Deployed models for hospital visit cost forecasting</li>
-            <li><strong>🏆 Recognition</strong> - Outstanding work award during pandemic response</li>
-        </ul>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Data Scientist</div>
+                                <div class="company">Johnson & Johnson</div>
+                            </div>
+                            <div class="date">June 2018 - April 2020</div>
+                        </div>
+                        <div class="job-description">
+                            Advanced analytics for pharmaceutical safety and consumer products, focusing on anomaly detection and business intelligence.
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed models for detecting suspicious orders in controlled substances</li>
+                            <li>Built interactive visualization tools for statistical concepts</li>
+                            <li>Implemented IoT analytics for location prediction and tracking</li>
+                            <li>Enhanced pharmaceutical safety and regulatory compliance</li>
+                        </ul>
+                    </div>
 
-        <hr>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Monitoring & Evaluation Officer</div>
+                                <div class="company">MCC (Peace Corps Partner) - Zambia</div>
+                            </div>
+                            <div class="date">September 2014 - October 2017</div>
+                        </div>
+                        <div class="job-description">
+                            International development work partnering with local community and non-governmental organizations to monitor and evaluate projects across healthcare, education, and agriculture sectors in rural Zambia.
+                        </div>
+                        <ul class="achievements">
+                            <li>Designed and implemented M&E frameworks for multi-sector development projects</li>
+                            <li>Conducted field evaluations and data collection in remote rural communities</li>
+                            <li>Built capacity for local NGOs in data collection and analysis methodologies</li>
+                            <li>Managed cross-cultural teams and facilitated community engagement initiatives</li>
+                            <li>Developed sustainable monitoring systems for healthcare and education outcomes</li>
+                            <li>Applied statistical analysis to assess project impact and inform policy decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <h3 id="education">🎓 Education</h3>
+            <!-- Education Tab -->
+            <div id="education" class="tab-content">
+                <div class="education-grid">
+                    <div class="education-item">
+                        <div class="degree">Master of Science - Computer Science</div>
+                        <div class="school">Georgia Institute of Technology</div>
+                        <div class="edu-details">2024 | GPA: 4.0</div>
+                        <p>Specialization in AI Ethics & Society, Deep Learning, and Human-Computer Interaction. Independent study on patient risk factors for diabetes, obesity, and sleep apnea.</p>
+                    </div>
 
-        <h4>🏫 <strong>Georgia Institute of Technology</strong></h4>
-        <p><strong>Master of Science - Computer Science</strong> | <em>2024</em> | <strong>GPA: 4.0</strong><br>
-        🧠 AI Ethics & Society, Deep Learning, Human-Computer Interaction<br>
-        🔬 Independent Study: Patient Risk Factors for Diabetes, Obesity, Sleep Apnea</p>
+                    <div class="education-item">
+                        <div class="degree">Master of Science - Analytics</div>
+                        <div class="school">Georgia Institute of Technology</div>
+                        <div class="edu-details">2020 | GPA: 4.0</div>
+                        <p>Focus on machine learning, Bayesian statistics, high dimensional data analytics, business analytics, and data visualization.</p>
+                    </div>
 
-        <p><strong>Master of Science - Analytics</strong> | <em>2020</em> | <strong>GPA: 4.0</strong><br>
-        📊 Machine Learning, Bayesian Statistics, High Dimensional Data Analytics<br>
-        🎯 Business Analytics, Simulation, Data Visualization</p>
+                    <div class="education-item">
+                        <div class="degree">MicroMasters in Data & Economics</div>
+                        <div class="school">Massachusetts Institute of Technology</div>
+                        <div class="edu-details">2018</div>
+                        <p>Development economics, randomized evaluations, and social data analysis.</p>
+                    </div>
 
-        <h4>🏫 <strong>Massachusetts Institute of Technology</strong></h4>
-        <p><strong>MicroMasters in Data & Economics</strong> | <em>2018</em><br>
-        💡 Development Economics, Randomized Evaluations, Social Data Analysis</p>
+                    <div class="education-item">
+                        <div class="degree">Bachelor of Science - Biology</div>
+                        <div class="school">Kings University</div>
+                        <div class="edu-details">2013</div>
+                        <p>Published thesis in International Journal of Food Microbiology. Laurence Decore Student Leadership Award, VP Student Government.</p>
+                    </div>
+                </div>
+            </div>
 
-        <hr>
+            <!-- Craft & Code Tab -->
+            <div id="craft" class="tab-content">
+                <h2>The Craft of Code: Where Fiber Arts Meet Data Science</h2>
+                
+                <div class="craft-intro">
+                    <p class="intro-highlight">Pattern recognition, systematic thinking, and iterative problem-solving form the foundation of both fiber arts and data science.</p>
+                </div>
 
-        <h3 id="skills">🛠️ Technical Skills</h3>
+                <div class="craft-connections">
+                    <div class="connection-section">
+                        <h3>Historical Parallels: Craft & Computation</h3>
+                        <div class="connection-grid">
+                            <div class="connection-item">
+                                <h4>Jacquard Loom (1804)</h4>
+                                <p>The first programmable machine used punch cards to create complex textile patterns—directly inspiring early computer programming concepts.</p>
+                            </div>
+                            <div class="connection-item">
+                                <h4>Ada Lovelace</h4>
+                                <p>Often called the first computer programmer, Lovelace compared her analytical engine work to the Jacquard loom's pattern-making capabilities.</p>
+                            </div>
+                            <div class="connection-item">
+                                <h4>Binary Thinking</h4>
+                                <p>Knitting and weaving operate on binary principles (knit/purl, over/under) that mirror the fundamental logic of computing.</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="badges">
-            <h4>Product & Strategy</h4>
-            <img src="https://img.shields.io/badge/Product%20Strategy-Expert-blue" alt="Product Strategy">
-            <img src="https://img.shields.io/badge/OKRs-Expert-blue" alt="OKRs">
-            <img src="https://img.shields.io/badge/MVP%20Development-Expert-blue" alt="MVP Development">
-            <img src="https://img.shields.io/badge/User%20Research-Expert-blue" alt="User Research">
+                    <div class="connection-section">
+                        <h3>Interactive Pattern Generator</h3>
+                        <p style="text-align: center; margin-bottom: 2rem;">Upload an image and watch clustering algorithms transform it into a knitting or cross-stitch pattern!</p>
+                        
+                        <div class="pattern-generator">
+                            <div class="upload-section">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-content">
+                                        <div class="upload-icon">📁</div>
+                                        <p>Click to upload an image or drag and drop</p>
+                                        <p class="upload-note">Supports JPG, PNG, GIF</p>
+                                    </div>
+                                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                </div>
+                                
+                                <div class="image-preview" id="imagePreview" style="display: none;">
+                                    <h4>Uploaded Image</h4>
+                                    <img id="previewImage" alt="Uploaded image preview">
+                                </div>
+                            </div>
 
-            <h4>Programming & ML</h4>
-            <img src="https://img.shields.io/badge/Python-Expert-green" alt="Python">
-            <img src="https://img.shields.io/badge/R-Expert-green" alt="R">
-            <img src="https://img.shields.io/badge/SQL-Expert-green" alt="SQL">
-            <img src="https://img.shields.io/badge/Machine%20Learning-Expert-green" alt="Machine Learning">
+                            <div class="controls-section" id="controlsSection" style="display: none;">
+                                <div class="control-group dimensions-row">
+                                    <div class="dimension-control">
+                                        <label for="stitchWidth">Width (stitches):</label>
+                                        <input type="number" id="stitchWidth" min="10" max="200" value="100" class="stitch-input">
+                                    </div>
+                                    <div class="dimension-control">
+                                        <label for="stitchHeight">Height (stitches):</label>
+                                        <input type="number" id="stitchHeight" min="10" max="200" value="100" class="stitch-input">
+                                    </div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label for="colorCount">Number of colors:</label>
+                                    <input type="range" id="colorCount" min="2" max="12" value="6">
+                                    <span id="colorValue">6</span>
+                                </div>
+                                
+                                <button id="generatePattern" class="generate-btn">Generate Pattern</button>
+                            </div>
 
-            <h4>Healthcare & AI</h4>
-            <img src="https://img.shields.io/badge/Healthcare%20AI-Expert-red" alt="Healthcare AI">
-            <img src="https://img.shields.io/badge/NLP-Expert-red" alt="NLP">
-            <img src="https://img.shields.io/badge/Computer%20Vision-Advanced-red" alt="Computer Vision">
-            <img src="https://img.shields.io/badge/Pharmacovigilance-Expert-red" alt="Pharmacovigilance">
-        </div>
+                            <div class="results-section" id="resultsSection" style="display: none;">
+                                <div class="pattern-result">
+                                    <div class="pattern-image">
+                                        <h4>Generated Knitting/Cross-Stitch Pattern</h4>
+                                        <canvas id="patternCanvas"></canvas>
+                                    </div>
+                                </div>
+                                
+                                <div class="color-palette" id="colorPalette">
+                                    <h4>Color Palette</h4>
+                                    <div class="palette-colors" id="paletteColors"></div>
+                                </div>
 
-        <hr>
-
-        <h3 id="contact">📫 Let's Connect</h3>
-
-        <div class="contact-links">
-            <a href="https://www.linkedin.com/in/stacey-brandsma/">
-                <img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin" alt="LinkedIn">
-            </a>
-            <a href="https://www.github.com/staceybrandsma/">
-                <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github" alt="GitHub">
-            </a>
-            <a href="StaceyBrandsma_Resume.pdf">
-                <img src="https://img.shields.io/badge/Resume-Download-FF6B6B?style=for-the-badge&logo=adobe-acrobat-reader" alt="Resume">
-            </a>
-        </div>
-
-        <hr>
-
-        <div class="quote">
-            <em>"Transforming healthcare through AI innovation, one patient safety initiative at a time."</em>
+                                <div class="export-section">
+                                    <h4>Export Pattern</h4>
+                                    <div class="export-buttons">
+                                        <button id="exportImage" class="export-btn">Download Pattern Image</button>
+                                        <button id="exportChart" class="export-btn">Download Text Chart</button>
+                                        <button id="exportPalette" class="export-btn">Download Color Guide</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Hide all tab content
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and mark button as active
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const tabs = document.querySelectorAll('.tab-button');
+            const currentTab = document.querySelector('.tab-button.active');
+            const currentIndex = Array.from(tabs).indexOf(currentTab);
+            
+            if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                tabs[currentIndex - 1].click();
+            } else if (e.key === 'ArrowRight' && currentIndex < tabs.length - 1) {
+                tabs[currentIndex + 1].click();
+            }
+        });
+
+        // Pattern Generator Functionality
+        class PatternGenerator {
+            constructor() {
+                this.originalImage = null;
+                this.currentPatternData = null;
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                const uploadArea = document.getElementById('uploadArea');
+                const imageInput = document.getElementById('imageInput');
+                const generateBtn = document.getElementById('generatePattern');
+
+                if (!uploadArea || !imageInput || !generateBtn) return;
+
+                // File upload handling
+                uploadArea.addEventListener('click', () => imageInput.click());
+                uploadArea.addEventListener('dragover', this.handleDragOver.bind(this));
+                uploadArea.addEventListener('drop', this.handleDrop.bind(this));
+                imageInput.addEventListener('change', this.handleFileSelect.bind(this));
+
+                // Control updates
+                const widthSlider = document.getElementById('stitchWidth');
+                const heightSlider = document.getElementById('stitchHeight');
+                const colorSlider = document.getElementById('colorCount');
+
+                if (widthSlider) {
+                    widthSlider.addEventListener('input', () => {
+                        if (this.originalImage) {
+                            this.updateHeightFromWidth();
+                        }
+                    });
+                }
+
+                if (colorSlider) {
+                    colorSlider.addEventListener('input', (e) => {
+                        document.getElementById('colorValue').textContent = e.target.value;
+                    });
+                }
+
+                generateBtn.addEventListener('click', this.generatePattern.bind(this));
+
+                // Export button listeners
+                const exportImageBtn = document.getElementById('exportImage');
+                const exportChartBtn = document.getElementById('exportChart');
+                const exportPaletteBtn = document.getElementById('exportPalette');
+
+                if (exportImageBtn) {
+                    exportImageBtn.addEventListener('click', this.exportPatternImage.bind(this));
+                }
+                if (exportChartBtn) {
+                    exportChartBtn.addEventListener('click', this.exportTextChart.bind(this));
+                }
+                if (exportPaletteBtn) {
+                    exportPaletteBtn.addEventListener('click', this.exportColorGuide.bind(this));
+                }
+            }
+
+            handleDragOver(e) {
+                e.preventDefault();
+                e.currentTarget.classList.add('dragover');
+            }
+
+            handleDrop(e) {
+                e.preventDefault();
+                e.currentTarget.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    this.processFile(files[0]);
+                }
+            }
+
+            handleFileSelect(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    this.processFile(file);
+                }
+            }
+
+            processFile(file) {
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select an image file.');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        this.originalImage = img;
+                        this.showImagePreview(e.target.result);
+                        this.showControls();
+                        this.calculateHeightFromAspectRatio(img);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            showImagePreview(imageSrc) {
+                const previewSection = document.getElementById('imagePreview');
+                const previewImage = document.getElementById('previewImage');
+                
+                if (previewSection && previewImage) {
+                    previewImage.src = imageSrc;
+                    previewSection.style.display = 'block';
+                }
+            }
+
+            showControls() {
+                const controlsSection = document.getElementById('controlsSection');
+                if (controlsSection) {
+                    controlsSection.style.display = 'block';
+                }
+            }
+
+            calculateHeightFromAspectRatio(img) {
+                const defaultWidth = 100; // Default width at 100 stitches
+                const aspectRatio = img.height / img.width;
+                const calculatedHeight = Math.round(defaultWidth * aspectRatio);
+                
+                // Ensure height is within reasonable bounds
+                const minHeight = 10;
+                const maxHeight = 200;
+                const clampedHeight = Math.max(minHeight, Math.min(maxHeight, calculatedHeight));
+                
+                // Set the height input value
+                const heightInput = document.getElementById('stitchHeight');
+                if (heightInput) {
+                    heightInput.value = clampedHeight;
+                }
+            }
+
+            updateHeightFromWidth() {
+                if (!this.originalImage) return;
+                
+                const widthInput = document.getElementById('stitchWidth');
+                const heightInput = document.getElementById('stitchHeight');
+                
+                if (widthInput && heightInput) {
+                    const currentWidth = parseInt(widthInput.value);
+                    const aspectRatio = this.originalImage.height / this.originalImage.width;
+                    const calculatedHeight = Math.round(currentWidth * aspectRatio);
+                    
+                    // Ensure height is within reasonable bounds
+                    const minHeight = 10;
+                    const maxHeight = 200;
+                    const clampedHeight = Math.max(minHeight, Math.min(maxHeight, calculatedHeight));
+                    
+                    heightInput.value = clampedHeight;
+                }
+            }
+
+            displayOriginalImage() {
+                const canvas = document.getElementById('originalCanvas');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas size maintaining aspect ratio
+                const maxSize = 300;
+                const ratio = Math.min(maxSize / this.originalImage.width, maxSize / this.originalImage.height);
+                canvas.width = this.originalImage.width * ratio;
+                canvas.height = this.originalImage.height * ratio;
+                
+                ctx.drawImage(this.originalImage, 0, 0, canvas.width, canvas.height);
+            }
+
+            generatePattern() {
+                if (!this.originalImage) return;
+
+                const stitchWidth = parseInt(document.getElementById('stitchWidth').value);
+                const stitchHeight = parseInt(document.getElementById('stitchHeight').value);
+                const colorCount = parseInt(document.getElementById('colorCount').value);
+
+                // Create pattern
+                const patternData = this.createPattern(stitchWidth, stitchHeight, colorCount);
+                this.currentPatternData = patternData; // Store for export
+                this.displayPattern(patternData, stitchWidth, stitchHeight);
+                this.displayColorPalette(patternData.palette);
+                
+                const resultsSection = document.getElementById('resultsSection');
+                if (resultsSection) {
+                    resultsSection.style.display = 'block';
+                }
+            }
+
+            createPattern(width, height, colorCount) {
+                // Create a temporary canvas to resize the image
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = width;
+                tempCanvas.height = height;
+                
+                // Draw resized image
+                tempCtx.drawImage(this.originalImage, 0, 0, width, height);
+                
+                // Get pixel data
+                const imageData = tempCtx.getImageData(0, 0, width, height);
+                const pixels = [];
+                
+                for (let i = 0; i < imageData.data.length; i += 4) {
+                    pixels.push([
+                        imageData.data[i],     // R
+                        imageData.data[i + 1], // G
+                        imageData.data[i + 2]  // B
+                    ]);
+                }
+                
+                // Simple k-means clustering for color reduction
+                const palette = this.kMeansClustering(pixels, colorCount);
+                const quantizedPixels = this.quantizePixels(pixels, palette);
+                
+                return {
+                    pixels: quantizedPixels,
+                    palette: palette,
+                    width: width,
+                    height: height
+                };
+            }
+
+            kMeansClustering(pixels, k) {
+                // Initialize centroids randomly
+                let centroids = [];
+                for (let i = 0; i < k; i++) {
+                    const randomPixel = pixels[Math.floor(Math.random() * pixels.length)];
+                    centroids.push([...randomPixel]);
+                }
+                
+                // Iterate to find optimal centroids
+                for (let iter = 0; iter < 20; iter++) {
+                    const clusters = Array.from({ length: k }, () => []);
+                    
+                    // Assign pixels to nearest centroid
+                    pixels.forEach(pixel => {
+                        let minDist = Infinity;
+                        let closestCentroid = 0;
+                        
+                        centroids.forEach((centroid, idx) => {
+                            const dist = this.colorDistance(pixel, centroid);
+                            if (dist < minDist) {
+                                minDist = dist;
+                                closestCentroid = idx;
+                            }
+                        });
+                        
+                        clusters[closestCentroid].push(pixel);
+                    });
+                    
+                    // Update centroids
+                    centroids = clusters.map(cluster => {
+                        if (cluster.length === 0) return centroids[0];
+                        
+                        const avgR = cluster.reduce((sum, p) => sum + p[0], 0) / cluster.length;
+                        const avgG = cluster.reduce((sum, p) => sum + p[1], 0) / cluster.length;
+                        const avgB = cluster.reduce((sum, p) => sum + p[2], 0) / cluster.length;
+                        
+                        return [Math.round(avgR), Math.round(avgG), Math.round(avgB)];
+                    });
+                }
+                
+                return centroids;
+            }
+
+            colorDistance(color1, color2) {
+                const dr = color1[0] - color2[0];
+                const dg = color1[1] - color2[1];
+                const db = color1[2] - color2[2];
+                return Math.sqrt(dr * dr + dg * dg + db * db);
+            }
+
+            quantizePixels(pixels, palette) {
+                return pixels.map(pixel => {
+                    let minDist = Infinity;
+                    let closestColor = palette[0];
+                    
+                    palette.forEach(color => {
+                        const dist = this.colorDistance(pixel, color);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            closestColor = color;
+                        }
+                    });
+                    
+                    return closestColor;
+                });
+            }
+
+            displayPattern(patternData, width, height) {
+                const canvas = document.getElementById('patternCanvas');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                
+                const cellSize = Math.min(300 / width, 300 / height);
+                canvas.width = width * cellSize;
+                canvas.height = height * cellSize;
+                
+                // Draw pattern with grid
+                patternData.pixels.forEach((color, index) => {
+                    const x = (index % width) * cellSize;
+                    const y = Math.floor(index / width) * cellSize;
+                    
+                    ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                    
+                    // Draw grid
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeRect(x, y, cellSize, cellSize);
+                });
+            }
+
+            displayColorPalette(palette) {
+                const container = document.getElementById('paletteColors');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                palette.forEach((color, index) => {
+                    const swatch = document.createElement('div');
+                    swatch.className = 'color-swatch';
+                    swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                    swatch.textContent = index + 1;
+                    container.appendChild(swatch);
+                });
+            }
+
+            // Export Functions
+            exportPatternImage() {
+                if (!this.currentPatternData) {
+                    alert('Please generate a pattern first!');
+                    return;
+                }
+
+                const canvas = document.getElementById('patternCanvas');
+                if (!canvas) return;
+
+                // Create high-resolution version for export
+                const exportCanvas = document.createElement('canvas');
+                const ctx = exportCanvas.getContext('2d');
+                
+                const cellSize = 20; // Larger cells for better quality
+                const width = this.currentPatternData.width;
+                const height = this.currentPatternData.height;
+                
+                exportCanvas.width = width * cellSize;
+                exportCanvas.height = height * cellSize;
+                
+                // Draw pattern with grid
+                this.currentPatternData.pixels.forEach((color, index) => {
+                    const x = (index % width) * cellSize;
+                    const y = Math.floor(index / width) * cellSize;
+                    
+                    ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+                    ctx.fillRect(x, y, cellSize, cellSize);
+                    
+                    // Draw grid
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(x, y, cellSize, cellSize);
+                });
+
+                // Download the image
+                this.downloadCanvas(exportCanvas, 'knitting-pattern.png');
+            }
+
+            exportTextChart() {
+                if (!this.currentPatternData) {
+                    alert('Please generate a pattern first!');
+                    return;
+                }
+
+                const width = this.currentPatternData.width;
+                const height = this.currentPatternData.height;
+                const palette = this.currentPatternData.palette;
+                
+                // Create color to symbol mapping
+                const symbols = ['⬜', '⬛', '🟥', '🟧', '🟨', '🟩', '🟦', '🟪', '🟫', '⚫', '⚪', '🔴'];
+                const colorMap = new Map();
+                
+                palette.forEach((color, index) => {
+                    const colorKey = `${color[0]},${color[1]},${color[2]}`;
+                    colorMap.set(colorKey, {
+                        symbol: symbols[index] || `${index + 1}`,
+                        number: index + 1
+                    });
+                });
+
+                // Generate text chart
+                let chartText = `KNITTING/CROSS-STITCH PATTERN\n`;
+                chartText += `Size: ${width} x ${height} stitches\n`;
+                chartText += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+                
+                chartText += `COLOR LEGEND:\n`;
+                palette.forEach((color, index) => {
+                    const symbol = symbols[index] || `${index + 1}`;
+                    chartText += `${symbol} = Color ${index + 1} - RGB(${color[0]}, ${color[1]}, ${color[2]})\n`;
+                });
+                chartText += `\n`;
+
+                chartText += `PATTERN CHART:\n`;
+                chartText += `Read from bottom to top, right to left for knitting\n`;
+                chartText += `Read from top to bottom, left to right for cross-stitch\n\n`;
+                
+                // Add row numbers and pattern
+                for (let y = 0; y < height; y++) {
+                    const rowNum = (height - y).toString().padStart(3, ' ');
+                    chartText += `${rowNum}: `;
+                    
+                    for (let x = 0; x < width; x++) {
+                        const pixelIndex = y * width + x;
+                        const color = this.currentPatternData.pixels[pixelIndex];
+                        const colorKey = `${color[0]},${color[1]},${color[2]}`;
+                        const mapping = colorMap.get(colorKey);
+                        chartText += mapping ? mapping.symbol : '?';
+                    }
+                    chartText += `\n`;
+                }
+
+                // Download as text file
+                this.downloadText(chartText, 'knitting-pattern-chart.txt');
+            }
+
+            exportColorGuide() {
+                if (!this.currentPatternData) {
+                    alert('Please generate a pattern first!');
+                    return;
+                }
+
+                const palette = this.currentPatternData.palette;
+                
+                let guideText = `COLOR GUIDE FOR KNITTING/CROSS-STITCH PATTERN\n`;
+                guideText += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+                
+                guideText += `YARN/THREAD COLOR RECOMMENDATIONS:\n`;
+                guideText += `(Use these RGB values to match with your preferred yarn/thread brand)\n\n`;
+                
+                palette.forEach((color, index) => {
+                    guideText += `Color ${index + 1}:\n`;
+                    guideText += `  RGB: ${color[0]}, ${color[1]}, ${color[2]}\n`;
+                    guideText += `  Hex: #${color[0].toString(16).padStart(2, '0')}${color[1].toString(16).padStart(2, '0')}${color[2].toString(16).padStart(2, '0')}\n`;
+                    guideText += `  Yarn brand: ________________\n`;
+                    guideText += `  Color name: ________________\n`;
+                    guideText += `  Amount needed: ____________\n\n`;
+                });
+
+                guideText += `PATTERN NOTES:\n`;
+                guideText += `• Pattern size: ${this.currentPatternData.width} x ${this.currentPatternData.height} stitches\n`;
+                guideText += `• Total colors: ${palette.length}\n`;
+                guideText += `• For knitting: Work from bottom up, reading chart right to left\n`;
+                guideText += `• For cross-stitch: Work from top down, reading chart left to right\n`;
+                guideText += `• Consider yarn weight and needle/fabric size for final dimensions\n`;
+
+                this.downloadText(guideText, 'color-guide.txt');
+            }
+
+            downloadCanvas(canvas, filename) {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+
+            downloadText(text, filename) {
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Initialize pattern generator when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new PatternGenerator();
+        });
+    </script>
 </body>
 </html>
