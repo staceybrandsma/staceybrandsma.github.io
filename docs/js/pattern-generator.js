@@ -312,12 +312,123 @@ export class PatternGenerator {
         container.innerHTML = '';
         
         palette.forEach((color, index) => {
+            const swatchContainer = document.createElement('div');
+            swatchContainer.className = 'color-swatch-container';
+            
             const swatch = document.createElement('div');
             swatch.className = 'color-swatch';
             swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             swatch.textContent = index + 1;
-            container.appendChild(swatch);
+            swatch.title = 'Click to change color';
+            
+            // Add click event to open color picker
+            swatch.addEventListener('click', () => this.openColorPicker(index));
+            
+            const colorInfo = document.createElement('div');
+            colorInfo.className = 'color-info';
+            colorInfo.textContent = `RGB(${color[0]}, ${color[1]}, ${color[2]})`;
+            
+            swatchContainer.appendChild(swatch);
+            swatchContainer.appendChild(colorInfo);
+            container.appendChild(swatchContainer);
         });
+    }
+
+    openColorPicker(colorIndex) {
+        if (!this.currentPatternData) return;
+        
+        // Create color picker modal
+        const modal = document.createElement('div');
+        modal.className = 'color-picker-modal';
+        modal.innerHTML = `
+            <div class="color-picker-content">
+                <h4>Change Color ${colorIndex + 1}</h4>
+                <div class="color-picker-section">
+                    <label for="colorPicker">Choose new color:</label>
+                    <input type="color" id="colorPicker" value="${this.rgbToHex(this.currentPatternData.palette[colorIndex])}">
+                </div>
+                <div class="color-preview">
+                    <div class="current-color">
+                        <span>Current:</span>
+                        <div class="color-sample" style="background-color: rgb(${this.currentPatternData.palette[colorIndex].join(', ')})"></div>
+                    </div>
+                    <div class="new-color">
+                        <span>New:</span>
+                        <div class="color-sample" id="newColorSample" style="background-color: ${this.rgbToHex(this.currentPatternData.palette[colorIndex])}"></div>
+                    </div>
+                </div>
+                <div class="color-picker-buttons">
+                    <button id="applyColor" class="apply-btn">Apply</button>
+                    <button id="cancelColor" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        const colorPicker = modal.querySelector('#colorPicker');
+        const newColorSample = modal.querySelector('#newColorSample');
+        const applyBtn = modal.querySelector('#applyColor');
+        const cancelBtn = modal.querySelector('#cancelColor');
+        
+        // Update preview as user changes color
+        colorPicker.addEventListener('input', (e) => {
+            newColorSample.style.backgroundColor = e.target.value;
+        });
+        
+        // Apply color change
+        applyBtn.addEventListener('click', () => {
+            const newColor = this.hexToRgb(colorPicker.value);
+            this.updatePatternColor(colorIndex, newColor);
+            document.body.removeChild(modal);
+        });
+        
+        // Cancel color change
+        cancelBtn.addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    }
+
+    updatePatternColor(colorIndex, newColor) {
+        if (!this.currentPatternData) return;
+        
+        const oldColor = this.currentPatternData.palette[colorIndex];
+        
+        // Update palette
+        this.currentPatternData.palette[colorIndex] = newColor;
+        
+        // Update all pixels that use this color
+        this.currentPatternData.pixels = this.currentPatternData.pixels.map(pixel => {
+            if (pixel[0] === oldColor[0] && pixel[1] === oldColor[1] && pixel[2] === oldColor[2]) {
+                return [...newColor];
+            }
+            return pixel;
+        });
+        
+        // Redraw pattern and palette
+        this.displayPattern(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
+        this.displayColorPalette(this.currentPatternData.palette);
+    }
+
+    rgbToHex(rgb) {
+        const r = rgb[0].toString(16).padStart(2, '0');
+        const g = rgb[1].toString(16).padStart(2, '0');
+        const b = rgb[2].toString(16).padStart(2, '0');
+        return `#${r}${g}${b}`;
+    }
+
+    hexToRgb(hex) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return [r, g, b];
     }
 
     // Export Functions
