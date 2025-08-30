@@ -1032,7 +1032,8 @@ body {
     width: 100%;
     max-width: 100%;
     height: auto;
-    overflow: visible;
+    max-height: 70vh;
+    overflow: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
     background: white;
@@ -1054,7 +1055,7 @@ body {
     contain: layout style paint;
 }
 
-/* Edit mode: enable scrolling with max height and remove centering */
+/* Edit mode: enable scrolling with smaller max height and remove centering */
 .pattern-canvas-container.edit-mode {
     max-height: 60vh;
     min-height: 400px;
