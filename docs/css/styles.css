@@ -19,7 +19,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Century Gothic', 'Apple Gothic', 'AppleGothic', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
     background: var(--sage-green);
@@ -148,6 +148,59 @@ body {
 .intro-section {
     text-align: center;
     margin-bottom: 3rem;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.profile-text {
+    flex: 1;
+    text-align: left;
+}
+
+.profile-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .profile-text {
+        text-align: center;
+    }
+    
+    .profile-image img {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 .intro-highlight {
