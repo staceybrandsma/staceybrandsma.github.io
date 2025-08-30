@@ -24,21 +24,57 @@ export class PatternGenerator {
         // Control updates
         const widthSlider = document.getElementById('stitchWidth');
         const heightSlider = document.getElementById('stitchHeight');
-        const colorSlider = document.getElementById('colorCount');
+        const colorInput = document.getElementById('colorCount');
+        const craftType = document.getElementById('craftType');
 
-        if (widthSlider) {
-            widthSlider.addEventListener('input', () => {
-                if (this.originalImage) {
-                    this.updateHeightFromWidth();
-                }
+        // Color count input doesn't need real-time updates since we removed auto-regeneration
+        // The value will be read when Generate Pattern is clicked
+
+        // Setup measurement inputs (always active now)
+        this.setupMeasurementInputs();
+
+        // Craft type handling
+        if (craftType) {
+            craftType.addEventListener('change', this.handleCraftTypeChange.bind(this));
+            this.handleCraftTypeChange(); // Initialize on load
+        }
+
+        // Fabric count changes should keep measurements constant
+        const fabricCount = document.getElementById('fabricCount');
+        if (fabricCount) {
+            fabricCount.addEventListener('input', () => {
+                // Keep measurements constant, recalculate stitch count based on new fabric count
+                this.updateStitchesFromMeasurements();
             });
         }
 
-        if (colorSlider) {
-            colorSlider.addEventListener('input', (e) => {
-                const colorValue = document.getElementById('colorValue');
-                if (colorValue) {
-                    colorValue.textContent = e.target.value;
+        // Strand count changes for material calculations
+        const strandCount = document.getElementById('strandCount');
+        if (strandCount) {
+            strandCount.addEventListener('input', () => {
+                // No automatic regeneration, just update for next generation
+            });
+        }
+        
+        // Gauge changes should keep measurements constant
+        const yarnGauge = document.getElementById('yarnGauge');
+        if (yarnGauge) {
+            yarnGauge.addEventListener('input', () => {
+                // Keep measurements constant, recalculate stitch count based on new gauge
+                this.updateStitchesFromMeasurements();
+            });
+        }
+
+        // Yarn weight changes should sync with gauge
+        const yarnWeight = document.getElementById('yarnWeight');
+        if (yarnWeight && yarnGauge) {
+            yarnWeight.addEventListener('change', (e) => {
+                const selectedOption = e.target.selectedOptions[0];
+                const gauge = selectedOption.getAttribute('data-gauge');
+                if (gauge) {
+                    yarnGauge.value = gauge;
+                    // Keep measurements constant, recalculate stitch count based on new gauge
+                    this.updateStitchesFromMeasurements();
                 }
             });
         }
@@ -47,6 +83,116 @@ export class PatternGenerator {
 
         // Export button listeners
         this.setupExportListeners();
+    }
+
+    handleCraftTypeChange() {
+        const craftType = document.getElementById('craftType').value;
+        const yarnControls = document.getElementById('yarnControls');
+        const threadControls = document.getElementById('threadControls');
+        const fabricControls = document.getElementById('fabricControls');
+        const gaugeControls = document.getElementById('gaugeControls');
+        
+        // Show/hide controls based on craft type
+        if (['knitting', 'crochet'].includes(craftType)) {
+            // Yarn-based crafts
+            yarnControls.style.display = 'flex';
+            threadControls.style.display = 'none';
+            fabricControls.style.display = 'none';
+            gaugeControls.style.display = 'flex';
+        } else {
+            // Fabric-based crafts (cross-stitch, embroidery, tapestry)
+            yarnControls.style.display = 'none';
+            threadControls.style.display = 'flex';
+            fabricControls.style.display = 'flex';
+            gaugeControls.style.display = 'none';
+        }
+        
+        // Update pattern title
+        const patternTitle = document.querySelector('.pattern-image h4');
+        if (patternTitle) {
+            const craftNames = {
+                'knitting': 'Knitting',
+                'cross-stitch': 'Cross-Stitch',
+                'embroidery': 'Embroidery',
+                'crochet': 'Crochet',
+                'tapestry': 'Tapestry/Needlepoint'
+            };
+            patternTitle.textContent = `Generated ${craftNames[craftType]} Pattern`;
+        }
+        
+        // Update measurements when craft type changes (affects gauge/fabric count)
+        this.updateMeasurementsFromStitches();
+    }
+
+    setupMeasurementInputs() {
+        const finishedWidth = document.getElementById('finishedWidth');
+        const finishedHeight = document.getElementById('finishedHeight');
+        
+        // Width input
+        if (finishedWidth) {
+            finishedWidth.addEventListener('input', (e) => {
+                this.updateStitchesFromMeasurements();
+                if (this.originalImage) {
+                    this.updateHeightFromWidth();
+                }
+            });
+        }
+        
+        // Height input
+        if (finishedHeight) {
+            finishedHeight.addEventListener('input', (e) => {
+                this.updateStitchesFromMeasurements();
+            });
+        }
+        
+        // Initialize measurements based on current stitch counts
+        this.updateMeasurementsFromStitches();
+    }
+
+    updateStitchesFromMeasurements() {
+        const finishedWidth = parseFloat(document.getElementById('finishedWidth').value);
+        const finishedHeight = parseFloat(document.getElementById('finishedHeight').value);
+        const craftType = document.getElementById('craftType').value;
+        
+        let stitchesPerInch;
+        if (['knitting', 'crochet'].includes(craftType)) {
+            stitchesPerInch = parseFloat(document.getElementById('yarnGauge').value);
+        } else {
+            stitchesPerInch = parseInt(document.getElementById('fabricCount').value);
+        }
+        
+        if (!isNaN(finishedWidth) && !isNaN(finishedHeight) && stitchesPerInch) {
+            // Input is in inches, gauge is in stitches per inch
+            const stitchWidth = Math.round(finishedWidth * stitchesPerInch);
+            const stitchHeight = Math.round(finishedHeight * stitchesPerInch);
+            
+            // Update hidden stitch inputs (clamped to min/max values)
+            document.getElementById('stitchWidth').value = Math.max(10, Math.min(200, stitchWidth));
+            document.getElementById('stitchHeight').value = Math.max(10, Math.min(200, stitchHeight));
+        }
+    }
+
+    updateMeasurementsFromStitches() {
+        const stitchWidth = parseInt(document.getElementById('stitchWidth').value);
+        const stitchHeight = parseInt(document.getElementById('stitchHeight').value);
+        const craftType = document.getElementById('craftType').value;
+        
+        let stitchesPerInch;
+        if (['knitting', 'crochet'].includes(craftType)) {
+            stitchesPerInch = parseFloat(document.getElementById('yarnGauge').value);
+        } else {
+            stitchesPerInch = parseInt(document.getElementById('fabricCount').value);
+        }
+        
+        if (stitchWidth && stitchHeight && stitchesPerInch) {
+            // Gauge is in stitches per inch, calculate inches directly
+            const widthInches = (stitchWidth / stitchesPerInch).toFixed(1);
+            const heightInches = (stitchHeight / stitchesPerInch).toFixed(1);
+            
+            // Update display with inch values
+            document.getElementById('finishedWidth').value = widthInches;
+            document.getElementById('finishedHeight').value = heightInches;
+        }
     }
 
     setupExportListeners() {
@@ -124,39 +270,36 @@ export class PatternGenerator {
     }
 
     calculateHeightFromAspectRatio(img) {
-        const defaultWidth = 100; // Default width at 100 stitches
+        const defaultWidthInches = 7.1; // Default width at 7.1 inches
         const aspectRatio = img.height / img.width;
-        const calculatedHeight = Math.round(defaultWidth * aspectRatio);
+        const calculatedHeightInches = defaultWidthInches * aspectRatio;
         
-        // Ensure height is within reasonable bounds
-        const minHeight = 10;
-        const maxHeight = 200;
-        const clampedHeight = Math.max(minHeight, Math.min(maxHeight, calculatedHeight));
+        // Set the measurement input values
+        document.getElementById('widthInches').value = defaultWidthInches.toFixed(1);
+        document.getElementById('widthCm').value = (defaultWidthInches * 2.54).toFixed(1);
+        document.getElementById('heightInches').value = calculatedHeightInches.toFixed(1);
+        document.getElementById('heightCm').value = (calculatedHeightInches * 2.54).toFixed(1);
         
-        // Set the height input value
-        const heightInput = document.getElementById('stitchHeight');
-        if (heightInput) {
-            heightInput.value = clampedHeight;
-        }
+        // Update hidden stitch inputs to match measurements
+        this.updateStitchesFromMeasurements();
     }
 
     updateHeightFromWidth() {
         if (!this.originalImage) return;
         
-        const widthInput = document.getElementById('stitchWidth');
-        const heightInput = document.getElementById('stitchHeight');
+        const widthInches = parseFloat(document.getElementById('widthInches').value);
+        const aspectRatio = this.originalImage.height / this.originalImage.width;
         
-        if (widthInput && heightInput) {
-            const currentWidth = parseInt(widthInput.value);
-            const aspectRatio = this.originalImage.height / this.originalImage.width;
-            const calculatedHeight = Math.round(currentWidth * aspectRatio);
+        if (!isNaN(widthInches)) {
+            const calculatedHeightInches = (widthInches * aspectRatio);
+            const calculatedHeightCm = (calculatedHeightInches * 2.54);
             
-            // Ensure height is within reasonable bounds
-            const minHeight = 10;
-            const maxHeight = 200;
-            const clampedHeight = Math.max(minHeight, Math.min(maxHeight, calculatedHeight));
+            // Update height measurements
+            document.getElementById('heightInches').value = calculatedHeightInches.toFixed(1);
+            document.getElementById('heightCm').value = calculatedHeightCm.toFixed(1);
             
-            heightInput.value = clampedHeight;
+            // Update hidden stitch inputs
+            this.updateStitchesFromMeasurements();
         }
     }
 
@@ -166,12 +309,16 @@ export class PatternGenerator {
         const stitchWidth = parseInt(document.getElementById('stitchWidth').value);
         const stitchHeight = parseInt(document.getElementById('stitchHeight').value);
         const colorCount = parseInt(document.getElementById('colorCount').value);
+        const enableSmoothing = document.getElementById('patternSmoothing').checked;
 
         // Create pattern
-        const patternData = this.createPattern(stitchWidth, stitchHeight, colorCount);
+        const patternData = this.createPattern(stitchWidth, stitchHeight, colorCount, enableSmoothing);
         this.currentPatternData = patternData; // Store for export
         this.displayPattern(patternData, stitchWidth, stitchHeight);
         this.displayColorPalette(patternData.palette);
+        
+        // Calculate and display material estimates (always enabled)
+        this.calculateAndDisplayMaterials(patternData, stitchWidth, stitchHeight);
         
         const resultsSection = document.getElementById('resultsSection');
         if (resultsSection) {
@@ -179,7 +326,138 @@ export class PatternGenerator {
         }
     }
 
-    createPattern(width, height, colorCount) {
+    calculateAndDisplayMaterials(patternData, width, height) {
+        const craftType = document.getElementById('craftType').value;
+        
+        let stitchesPerInch;
+        if (['knitting', 'crochet'].includes(craftType)) {
+            stitchesPerInch = parseFloat(document.getElementById('yarnGauge').value);
+        } else {
+            stitchesPerInch = parseInt(document.getElementById('fabricCount').value);
+        }
+        
+        // Calculate finished dimensions
+        const finishedWidth = width / stitchesPerInch;
+        const finishedHeight = height / stitchesPerInch;
+        
+        // Count stitches per color
+        const colorCounts = new Map();
+        patternData.pixels.forEach(pixel => {
+            const colorKey = `${pixel[0]},${pixel[1]},${pixel[2]}`;
+            colorCounts.set(colorKey, (colorCounts.get(colorKey) || 0) + 1);
+        });
+        
+        // Calculate material requirements
+        const materials = [];
+        patternData.palette.forEach((color, index) => {
+            const colorKey = `${color[0]},${color[1]},${color[2]}`;
+            const stitchCount = colorCounts.get(colorKey) || 0;
+            const yardage = this.calculateYardage(stitchCount, craftType, stitchesPerInch);
+            
+            materials.push({
+                color: color,
+                colorNumber: index + 1,
+                stitchCount: stitchCount,
+                yardage: yardage
+            });
+        });
+        
+        this.displayMaterialEstimates(materials, finishedWidth, finishedHeight, width * height);
+    }
+
+    calculateYardage(stitchCount, craftType, stitchesPerInch) {
+        // Base calculations for different craft types
+        let yardsPerStitch;
+        
+        switch (craftType) {
+            case 'cross-stitch':
+                // Cross-stitch uses about 1 inch of floss per stitch, multiply by strand count
+                const crossStitchStrands = parseInt(document.getElementById('strandCount')?.value || 2);
+                yardsPerStitch = (crossStitchStrands / stitchesPerInch) / 36; // Convert to yards
+                break;
+            case 'embroidery':
+                // Embroidery varies, but similar to cross-stitch
+                const embroideryStrands = parseInt(document.getElementById('strandCount')?.value || 2);
+                yardsPerStitch = (embroideryStrands * 1.2 / stitchesPerInch) / 36;
+                break;
+            case 'knitting':
+                // Knitting yardage depends on stitch size and yarn weight
+                const yarnWeight = document.getElementById('yarnWeight').value;
+                const weightMultipliers = {
+                    'lace': 0.5, 'fingering': 0.7, 'sport': 1.0, 
+                    'dk': 1.3, 'worsted': 1.8, 'bulky': 2.5, 'super-bulky': 3.5
+                };
+                // For knitting, gauge directly affects yarn usage
+                yardsPerStitch = (weightMultipliers[yarnWeight] || 1.3) / (stitchesPerInch * 10);
+                break;
+            case 'crochet':
+                // Crochet uses more yarn than knitting
+                const crochetYarnWeight = document.getElementById('yarnWeight').value;
+                const crochetMultipliers = {
+                    'lace': 0.7, 'fingering': 1.0, 'sport': 1.4, 
+                    'dk': 1.8, 'worsted': 2.5, 'bulky': 3.5, 'super-bulky': 5.0
+                };
+                yardsPerStitch = (crochetMultipliers[crochetYarnWeight] || 1.8) / (stitchesPerInch * 8);
+                break;
+            case 'tapestry':
+                // Tapestry/needlepoint
+                const tapestryStrands = parseInt(document.getElementById('strandCount')?.value || 2);
+                yardsPerStitch = (tapestryStrands * 1.5 / stitchesPerInch) / 36;
+                break;
+            default:
+                yardsPerStitch = (1 / stitchesPerInch) / 36;
+        }
+        
+        const totalYards = stitchCount * yardsPerStitch;
+        
+        // Add 10% waste factor
+        return Math.ceil(totalYards * 1.1 * 100) / 100; // Round to 2 decimal places
+    }
+
+    displayMaterialEstimates(materials, finishedWidth, finishedHeight, totalStitches) {
+        const materialEstimates = document.getElementById('materialEstimates');
+        const finishedSizeSpan = document.getElementById('finishedSize');
+        const totalStitchesSpan = document.getElementById('totalStitches');
+        const materialList = document.getElementById('materialList');
+        
+        if (!materialEstimates || !finishedSizeSpan || !totalStitchesSpan || !materialList) return;
+        
+        // Update project info
+        finishedSizeSpan.textContent = `${finishedWidth.toFixed(1)}" × ${finishedHeight.toFixed(1)}"`;
+        totalStitchesSpan.textContent = totalStitches.toLocaleString();
+        
+        // Clear and populate material list
+        materialList.innerHTML = '';
+        
+        materials.forEach(material => {
+            if (material.stitchCount > 0) {
+                const materialItem = document.createElement('div');
+                materialItem.className = 'material-item';
+                materialItem.style.borderLeftColor = `rgb(${material.color.join(', ')})`;
+                
+                materialItem.innerHTML = `
+                    <div class="material-color">
+                        <div class="material-swatch" style="background-color: rgb(${material.color.join(', ')})"></div>
+                        <div class="material-details">
+                            <div class="material-name">Color ${material.colorNumber}</div>
+                            <div class="material-rgb">RGB(${material.color.join(', ')})</div>
+                        </div>
+                    </div>
+                    <div class="material-amount">
+                        <div class="material-yardage">${material.yardage} yards</div>
+                        <div class="material-stitches">${material.stitchCount.toLocaleString()} stitches</div>
+                    </div>
+                `;
+                
+                materialList.appendChild(materialItem);
+            }
+        });
+        
+        // Show the material estimates section
+        materialEstimates.style.display = 'block';
+    }
+
+    createPattern(width, height, colorCount, enableSmoothing = true) {
         // Create a temporary canvas to resize the image
         const tempCanvas = document.createElement('canvas');
         const tempCtx = tempCanvas.getContext('2d');
@@ -203,7 +481,12 @@ export class PatternGenerator {
         
         // Simple k-means clustering for color reduction
         const palette = this.kMeansClustering(pixels, colorCount);
-        const quantizedPixels = this.quantizePixels(pixels, palette);
+        let quantizedPixels = this.quantizePixels(pixels, palette);
+        
+        // Apply smoothing if enabled
+        if (enableSmoothing) {
+            quantizedPixels = this.smoothPattern(quantizedPixels, width, height, palette);
+        }
         
         return {
             pixels: quantizedPixels,
@@ -211,6 +494,75 @@ export class PatternGenerator {
             width: width,
             height: height
         };
+    }
+
+    smoothPattern(pixels, width, height, palette) {
+        // Create a 2D array for easier neighbor checking
+        const grid = [];
+        for (let y = 0; y < height; y++) {
+            grid[y] = [];
+            for (let x = 0; x < width; x++) {
+                const index = y * width + x;
+                grid[y][x] = pixels[index];
+            }
+        }
+        
+        // Apply smoothing algorithm
+        const smoothedGrid = JSON.parse(JSON.stringify(grid)); // Deep copy
+        
+        for (let y = 1; y < height - 1; y++) {
+            for (let x = 1; x < width - 1; x++) {
+                const currentColor = grid[y][x];
+                const neighbors = [
+                    grid[y-1][x-1], grid[y-1][x], grid[y-1][x+1],
+                    grid[y][x-1],                 grid[y][x+1],
+                    grid[y+1][x-1], grid[y+1][x], grid[y+1][x+1]
+                ];
+                
+                // Check if current pixel is isolated (different from all neighbors)
+                const isIsolated = neighbors.every(neighbor => 
+                    !this.colorsEqual(currentColor, neighbor)
+                );
+                
+                if (isIsolated) {
+                    // Find the most common neighbor color
+                    const colorCounts = new Map();
+                    neighbors.forEach(neighbor => {
+                        const colorKey = `${neighbor[0]},${neighbor[1]},${neighbor[2]}`;
+                        colorCounts.set(colorKey, (colorCounts.get(colorKey) || 0) + 1);
+                    });
+                    
+                    let mostCommonColor = currentColor;
+                    let maxCount = 0;
+                    
+                    for (const [colorKey, count] of colorCounts) {
+                        if (count > maxCount) {
+                            maxCount = count;
+                            const [r, g, b] = colorKey.split(',').map(Number);
+                            mostCommonColor = [r, g, b];
+                        }
+                    }
+                    
+                    smoothedGrid[y][x] = mostCommonColor;
+                }
+            }
+        }
+        
+        // Convert back to flat array
+        const smoothedPixels = [];
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                smoothedPixels.push(smoothedGrid[y][x]);
+            }
+        }
+        
+        return smoothedPixels;
+    }
+    
+    colorsEqual(color1, color2) {
+        return color1[0] === color2[0] && 
+               color1[1] === color2[1] && 
+               color1[2] === color2[2];
     }
 
     kMeansClustering(pixels, k) {
@@ -534,30 +886,94 @@ export class PatternGenerator {
         }
 
         const palette = this.currentPatternData.palette;
+        const craftType = document.getElementById('craftType').value;
         
-        let guideText = `COLOR GUIDE FOR KNITTING/CROSS-STITCH PATTERN\n`;
+        let stitchesPerInch;
+        let sizeLabel;
+        if (['knitting', 'crochet'].includes(craftType)) {
+            stitchesPerInch = parseFloat(document.getElementById('yarnGauge').value);
+            sizeLabel = `${stitchesPerInch} sts/inch gauge`;
+        } else {
+            stitchesPerInch = parseInt(document.getElementById('fabricCount').value);
+            sizeLabel = `${stitchesPerInch}-count fabric`;
+        }
+        
+        // Calculate material requirements for export
+        const colorCounts = new Map();
+        this.currentPatternData.pixels.forEach(pixel => {
+            const colorKey = `${pixel[0]},${pixel[1]},${pixel[2]}`;
+            colorCounts.set(colorKey, (colorCounts.get(colorKey) || 0) + 1);
+        });
+        
+        const craftNames = {
+            'knitting': 'KNITTING',
+            'cross-stitch': 'CROSS-STITCH',
+            'embroidery': 'EMBROIDERY',
+            'crochet': 'CROCHET',
+            'tapestry': 'TAPESTRY/NEEDLEPOINT'
+        };
+        
+        let guideText = `COLOR GUIDE FOR ${craftNames[craftType]} PATTERN\n`;
         guideText += `Generated: ${new Date().toLocaleDateString()}\n\n`;
         
-        guideText += `YARN/THREAD COLOR RECOMMENDATIONS:\n`;
+        // Calculate finished size
+        const finishedWidth = this.currentPatternData.width / stitchesPerInch;
+        const finishedHeight = this.currentPatternData.height / stitchesPerInch;
+        
+        guideText += `PROJECT SPECIFICATIONS:\n`;
+        guideText += `• Pattern size: ${this.currentPatternData.width} x ${this.currentPatternData.height} stitches\n`;
+        guideText += `• Finished size: ${finishedWidth.toFixed(1)}" x ${finishedHeight.toFixed(1)}"\n`;
+        guideText += `• ${sizeLabel}\n`;
+        
+        // Add strand information for floss-based crafts
+        if (['cross-stitch', 'embroidery', 'tapestry'].includes(craftType)) {
+            const strandCount = document.getElementById('strandCount')?.value || 2;
+            guideText += `• Strands of floss: ${strandCount}\n`;
+        }
+        
+        guideText += `• Total colors: ${palette.length}\n\n`;
+        
+        guideText += `MATERIAL REQUIREMENTS:\n`;
         guideText += `(Use these RGB values to match with your preferred yarn/thread brand)\n\n`;
         
         palette.forEach((color, index) => {
+            const colorKey = `${color[0]},${color[1]},${color[2]}`;
+            const stitchCount = colorCounts.get(colorKey) || 0;
+            const yardage = this.calculateYardage(stitchCount, craftType, stitchesPerInch);
+            
             guideText += `Color ${index + 1}:\n`;
             guideText += `  RGB: ${color[0]}, ${color[1]}, ${color[2]}\n`;
             guideText += `  Hex: #${color[0].toString(16).padStart(2, '0')}${color[1].toString(16).padStart(2, '0')}${color[2].toString(16).padStart(2, '0')}\n`;
-            guideText += `  Yarn brand: ________________\n`;
+            guideText += `  Stitches: ${stitchCount.toLocaleString()}\n`;
+            guideText += `  Estimated yardage: ${yardage} yards\n`;
+            guideText += `  Brand: ________________\n`;
             guideText += `  Color name: ________________\n`;
-            guideText += `  Amount needed: ____________\n\n`;
+            guideText += `  Amount purchased: ________________\n\n`;
         });
 
         guideText += `PATTERN NOTES:\n`;
-        guideText += `• Pattern size: ${this.currentPatternData.width} x ${this.currentPatternData.height} stitches\n`;
-        guideText += `• Total colors: ${palette.length}\n`;
-        guideText += `• For knitting: Work from bottom up, reading chart right to left\n`;
-        guideText += `• For cross-stitch: Work from top down, reading chart left to right\n`;
-        guideText += `• Consider yarn weight and needle/fabric size for final dimensions\n`;
+        if (craftType === 'knitting') {
+            guideText += `• Work from bottom up, reading chart right to left on RS rows\n`;
+            guideText += `• Read chart left to right on WS rows\n`;
+            guideText += `• Consider yarn weight and needle size for gauge\n`;
+        } else if (craftType === 'cross-stitch') {
+            guideText += `• Work from top down, left to right\n`;
+            guideText += `• Use ${stitchesPerInch}-count fabric as specified\n`;
+            guideText += `• Recommended: 2 strands of floss for coverage\n`;
+        } else if (craftType === 'embroidery') {
+            guideText += `• Work direction varies by technique\n`;
+            guideText += `• Adjust thread strands for desired coverage\n`;
+            guideText += `• Consider fabric type and weight\n`;
+        } else if (craftType === 'crochet') {
+            guideText += `• Work as single crochet or desired stitch\n`;
+            guideText += `• Consider yarn weight and hook size for gauge\n`;
+            guideText += `• May require more yarn than knitting\n`;
+        }
+        
+        guideText += `• Estimates include 10% waste factor\n`;
+        guideText += `• Always purchase extra for color matching\n`;
 
-        this.downloadText(guideText, 'color-guide.txt');
+        this.downloadText(guideText, `${craftType}-color-guide.txt`);
     }
 
     downloadCanvas(canvas, filename) {

@@ -745,12 +745,24 @@ body {
     accent-color: var(--accent-color);
 }
 
-.stitch-input {
-    width: 80px;
-    padding: 0.5rem;
+/* Measurement Input Styles */
+.dimensions-container {
+    transition: all 0.3s ease;
+}
+
+.measurement-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.measurement-input {
+    width: 60px;
+    padding: 0.4rem;
     border: 2px solid var(--accent-color);
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
     color: var(--text-dark);
@@ -758,20 +770,188 @@ body {
     transition: border-color 0.3s ease;
 }
 
-.stitch-input:focus {
+.gauge-input {
+    width: 80px;
+    padding: 0.4rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-dark);
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.strand-input {
+    width: 60px;
+    padding: 0.4rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-dark);
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.color-input {
+    width: 60px;
+    padding: 0.4rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-dark);
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.measurement-input:focus,
+.gauge-input:focus,
+.strand-input:focus,
+.color-input:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(27, 155, 155, 0.1);
 }
 
-.stitch-input:invalid {
+.measurement-input:invalid,
+.gauge-input:invalid,
+.strand-input:invalid,
+.color-input:invalid {
     border-color: var(--secondary-color);
+}
+
+.unit-label {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 500;
+    min-width: 30px;
+}
+
+@media (max-width: 768px) {
+    .measurement-inputs {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .measurement-input {
+        width: 80px;
+    }
 }
 
 .control-group span {
     min-width: 30px;
     font-weight: 600;
     color: var(--accent-color);
+}
+
+/* Toggle Control Styles */
+.toggle-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.toggle-control input[type="checkbox"] {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.toggle-control input[type="checkbox"]:checked {
+    background: var(--accent-color);
+}
+
+.toggle-control input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-control input[type="checkbox"]:checked::before {
+    transform: translateX(24px);
+}
+
+.toggle-control label {
+    cursor: pointer;
+    min-width: auto;
+    flex: 1;
+}
+
+.toggle-text {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.toggle-description {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: normal;
+}
+
+/* Craft Control Styles */
+.craft-select,
+.yarn-select,
+.thread-select,
+.fabric-select,
+.gauge-select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.craft-select:focus,
+.yarn-select:focus,
+.thread-select:focus,
+.fabric-select:focus,
+.gauge-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(27, 155, 155, 0.1);
+}
+
+.yarn-controls,
+.thread-controls,
+.fabric-controls,
+.gauge-controls {
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.yarn-controls.hidden,
+.thread-controls.hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .generate-btn {
@@ -1050,6 +1230,108 @@ body {
     transform: none;
 }
 
+/* Material Estimates Styles */
+.material-estimates {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.material-estimates h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.project-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.info-item span:last-child {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.material-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.material-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid;
+}
+
+.material-color {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.material-swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+.material-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.material-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.material-rgb {
+    font-size: 0.8rem;
+    color: var(--text-medium);
+}
+
+.material-amount {
+    text-align: right;
+}
+
+.material-yardage {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.material-stitches {
+    font-size: 0.8rem;
+    color: var(--text-medium);
+    margin-top: 0.2rem;
+}
+
 /* Contact Section */
 .contact-content {
     text-align: center;
@@ -1156,10 +1438,6 @@ body {
     
     .dimension-control label {
         min-width: auto;
-    }
-    
-    .stitch-input {
-        width: 100px;
     }
 }
 

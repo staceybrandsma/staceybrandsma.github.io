@@ -285,21 +285,81 @@
                             </div>
 
                             <div class="controls-section" id="controlsSection" style="display: none;">
-                                <div class="control-group dimensions-row">
-                                    <div class="dimension-control">
-                                        <label for="stitchWidth">Width (stitches):</label>
-                                        <input type="number" id="stitchWidth" min="10" max="200" value="100" class="stitch-input">
-                                    </div>
-                                    <div class="dimension-control">
-                                        <label for="stitchHeight">Height (stitches):</label>
-                                        <input type="number" id="stitchHeight" min="10" max="200" value="100" class="stitch-input">
+                                <!-- Hidden stitch inputs for internal calculations -->
+                                <input type="hidden" id="stitchWidth" value="100">
+                                <input type="hidden" id="stitchHeight" value="100">
+                                
+                                <!-- 1. Craft Type -->
+                                <div class="control-group">
+                                    <label for="craftType">Craft Type:</label>
+                                    <select id="craftType" class="craft-select">
+                                        <option value="knitting">Knitting</option>
+                                        <option value="cross-stitch" selected>Cross-Stitch</option>
+                                        <option value="embroidery">Embroidery</option>
+                                        <option value="crochet">Crochet</option>
+                                        <option value="tapestry">Tapestry/Needlepoint</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- 2. Yarn Weight / Strands Used -->
+                                <div class="control-group yarn-controls" id="yarnControls" style="display: none;">
+                                    <label for="yarnWeight">Yarn Weight:</label>
+                                    <select id="yarnWeight" class="yarn-select">
+                                        <option value="lace" data-gauge="8">0 - Lace (400-900 yds/100g)</option>
+                                        <option value="fingering" data-gauge="7">1 - Fingering (350-450 yds/100g)</option>
+                                        <option value="sport" data-gauge="6">2 - Sport (250-350 yds/100g)</option>
+                                        <option value="dk" data-gauge="5.5" selected>3 - DK (200-250 yds/100g)</option>
+                                        <option value="worsted" data-gauge="4.5">4 - Worsted (150-200 yds/100g)</option>
+                                        <option value="bulky" data-gauge="3.5">5 - Bulky (100-150 yds/100g)</option>
+                                        <option value="super-bulky" data-gauge="3">6 - Super Bulky (50-100 yds/100g)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group thread-controls" id="threadControls">
+                                    <label for="strandCount">Strands of floss:</label>
+                                    <input type="number" id="strandCount" class="strand-input" value="2" min="1" max="6" step="1" placeholder="2">
+                                </div>
+                                
+                                <!-- 3. Gauge -->
+                                <div class="control-group gauge-controls" id="gaugeControls" style="display: none;">
+                                    <label for="yarnGauge">Gauge (stitches per inch):</label>
+                                    <input type="number" id="yarnGauge" class="gauge-input" value="5.5" min="1" max="20" step="0.5" placeholder="5.5">
+                                </div>
+                                
+                                <div class="control-group fabric-controls" id="fabricControls">
+                                    <label for="fabricCount">Gauge (stitches per inch):</label>
+                                    <input type="number" id="fabricCount" class="gauge-input" value="14" min="6" max="32" step="1" placeholder="14">
+                                </div>
+                                
+                                <!-- 4. Number of Colors -->
+                                <div class="control-group">
+                                    <label for="colorCount">Number of colors:</label>
+                                    <input type="number" id="colorCount" class="color-input" min="2" max="12" value="6" placeholder="6">
+                                </div>
+                                
+                                <!-- 5. Finished Width & Height -->
+                                <div class="control-group">
+                                    <label class="dimension-label">Finished Size:</label>
+                                    <div class="dimensions-grid">
+                                        <div class="dimension-control">
+                                            <label for="finishedWidth">Width (inches):</label>
+                                            <input type="number" id="finishedWidth" min="0.5" max="50" step="0.1" value="7.1" class="measurement-input">
+                                        </div>
+                                        <div class="dimension-control">
+                                            <label for="finishedHeight">Height (inches):</label>
+                                            <input type="number" id="finishedHeight" min="0.5" max="50" step="0.1" value="7.1" class="measurement-input">
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <div class="control-group">
-                                    <label for="colorCount">Number of colors:</label>
-                                    <input type="range" id="colorCount" min="2" max="12" value="6">
-                                    <span id="colorValue">6</span>
+                                    <div class="toggle-control">
+                                        <input type="checkbox" id="patternSmoothing" checked>
+                                        <label for="patternSmoothing">
+                                            <span class="toggle-text">Pattern Smoothing</span>
+                                            <span class="toggle-description">Removes isolated pixels for cleaner stitching</span>
+                                        </label>
+                                    </div>
                                 </div>
                                 
                                 <button id="generatePattern" class="generate-btn">Generate Pattern</button>
@@ -316,6 +376,21 @@
                                 <div class="color-palette" id="colorPalette">
                                     <h4>Color Palette</h4>
                                     <div class="palette-colors" id="paletteColors"></div>
+                                </div>
+
+                                <div class="material-estimates" id="materialEstimates" style="display: none;">
+                                    <h4>Material Estimates</h4>
+                                    <div class="project-info">
+                                        <div class="info-item">
+                                            <span class="info-label">Finished Size:</span>
+                                            <span id="finishedSize">-</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Total Stitches:</span>
+                                            <span id="totalStitches">-</span>
+                                        </div>
+                                    </div>
+                                    <div class="material-list" id="materialList"></div>
                                 </div>
 
                                 <div class="export-section">
