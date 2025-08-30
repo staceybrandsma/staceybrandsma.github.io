@@ -27,12 +27,13 @@ body {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    border: 60px solid var(--sage-green);
+    box-sizing: border-box;
 }
 
 /* Header */
@@ -135,7 +136,6 @@ body {
 /* About Section */
 .about-content {
     text-align: center;
-    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -250,7 +250,7 @@ body {
     padding: 1.5rem;
     background: var(--accent-color);
     border-radius: 12px;
-    min-width: 120px;
+    flex: 1;
     border: 2px solid var(--accent-color);
     color: white;
 }
@@ -993,11 +993,22 @@ body {
 .pattern-result {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .pattern-image {
     text-align: center;
+    /* Create a responsive viewport for the pattern */
+    width: 90%;
+    max-width: none;
+    margin: 0 auto 2rem auto;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    background: #f5f5f5;
+    padding: 10px;
+    /* No scrolling on outer container */
+    overflow: visible;
+    position: relative;
 }
 
 .pattern-image h4 {
@@ -1005,12 +1016,83 @@ body {
     margin-bottom: 1rem;
 }
 
-#patternCanvas {
+.pattern-header {
+    background: #f5f5f5;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.pattern-header h4 {
+    margin-bottom: 1rem;
+}
+
+/* Scrollable container for the pattern canvas */
+.pattern-canvas-container {
+    width: 100%;
     max-width: 100%;
     height: auto;
-    border: 2px solid #333 !important;
+    overflow: visible;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    position: relative;
+    /* Center the canvas content in non-edit mode */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+    /* Better scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) #f1f1f1;
+    /* Ensure proper containment and clipping */
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* Prevent any overflow outside this container */
+    contain: layout style paint;
+}
+
+/* Edit mode: enable scrolling with max height and remove centering */
+.pattern-canvas-container.edit-mode {
+    max-height: 60vh;
+    min-height: 400px;
+    overflow: auto;
+    display: block;
+    justify-content: unset;
+    align-items: unset;
+}
+
+/* Webkit scrollbar styling */
+.pattern-canvas-container::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.pattern-canvas-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+.pattern-canvas-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 6px;
+}
+
+.pattern-canvas-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+#patternCanvas {
+    /* Remove responsive sizing - use fixed stitch size */
+    max-width: none;
+    width: auto;
+    height: auto;
+    border: none !important;
     display: block;
     margin: 0 auto;
+    padding: 0;
     box-shadow: none !important;
     border-radius: 0 !important;
     background: white;
@@ -1018,6 +1100,11 @@ body {
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     image-rendering: -webkit-crisp-edges;
+    /* Ensure canvas stays within container */
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 .color-palette {

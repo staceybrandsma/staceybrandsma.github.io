@@ -47,6 +47,8 @@ export class PatternGenerator {
             fabricCount.addEventListener('input', () => {
                 // Keep measurements constant, recalculate stitch count based on new fabric count
                 this.updateStitchesFromMeasurements();
+                // Update strand count based on new gauge
+                this.updateStrandCountForCrossStitch();
             });
         }
 
@@ -127,6 +129,24 @@ export class PatternGenerator {
         
         // Update measurements when craft type changes (affects gauge/fabric count)
         this.updateMeasurementsFromStitches();
+        
+        // Update strand count for cross-stitch based on gauge
+        this.updateStrandCountForCrossStitch();
+    }
+
+    updateStrandCountForCrossStitch() {
+        const craftType = document.getElementById('craftType')?.value;
+        const strandCountElement = document.getElementById('strandCount');
+        const fabricCountElement = document.getElementById('fabricCount');
+        
+        // Apply this logic to all thread/floss-based crafts (cross-stitch, embroidery, tapestry)
+        if (['cross-stitch', 'embroidery', 'tapestry'].includes(craftType) && strandCountElement && fabricCountElement) {
+            const gauge = parseInt(fabricCountElement.value);
+            
+            // If gauge is 14 stitches/inch or less, use 3 strands; otherwise use 2 strands
+            const defaultStrands = gauge <= 14 ? 3 : 2;
+            strandCountElement.value = defaultStrands;
+        }
     }
 
     setupMeasurementInputs() {
@@ -222,6 +242,10 @@ export class PatternGenerator {
                     if (addColorSection) addColorSection.style.display = 'flex';
                     this.setupEditColorPalette();
                     this.setupAddColorButton();
+                    
+                    // Enable scrolling for edit mode
+                    const canvasContainer = document.querySelector('.pattern-canvas-container');
+                    if (canvasContainer) canvasContainer.classList.add('edit-mode');
                 } else {
                     editModeToggle.textContent = 'Enable Edit Mode';
                     editModeToggle.classList.remove('active');
@@ -229,6 +253,10 @@ export class PatternGenerator {
                     if (editColorPalette) editColorPalette.style.display = 'none';
                     if (addColorSection) addColorSection.style.display = 'none';
                     this.selectedEditColor = null;
+                    
+                    // Disable scrolling for viewing mode
+                    const canvasContainer = document.querySelector('.pattern-canvas-container');
+                    if (canvasContainer) canvasContainer.classList.remove('edit-mode');
                     
                     // Update material estimates when exiting edit mode
                     console.log('Exiting edit mode - updating material estimates');
@@ -241,6 +269,11 @@ export class PatternGenerator {
                 
                 // Update canvas styling
                 this.updateCanvasStyle();
+                
+                // Redraw pattern with new cell size
+                if (this.currentPatternData) {
+                    this.displayPattern(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
+                }
             });
         }
     }
@@ -895,14 +928,14 @@ export class PatternGenerator {
         
         const ctx = canvas.getContext('2d');
         
-        // Use a larger minimum cell size to make clicking easier
-        const cellSize = Math.max(8, Math.min(400 / width, 400 / height));
+        // Use dynamic cell size: 10px for viewing, 15px for editing
+        const cellSize = this.isEditMode ? 15 : 10;
         canvas.width = width * cellSize;
         canvas.height = height * cellSize;
         
         // Store cellSize for click detection
         this.cellSize = cellSize;
-        console.log('Cell size set to:', this.cellSize);
+        console.log('Cell size set to:', this.cellSize, 'Edit mode:', this.isEditMode);
         
         // Remove any existing click listener to avoid duplicates
         if (this.boundCanvasClick) {
@@ -1375,7 +1408,7 @@ export class PatternGenerator {
         const exportCanvas = document.createElement('canvas');
         const ctx = exportCanvas.getContext('2d');
         
-        const cellSize = 20; // Larger cells for better quality
+        const cellSize = 20; // Fixed larger cells for better export quality
         const width = this.currentPatternData.width;
         const height = this.currentPatternData.height;
         

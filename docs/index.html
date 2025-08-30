@@ -28,7 +28,7 @@
                 <button class="tab-button active" onclick="openTab(event, 'about')">About</button>
                 <button class="tab-button" onclick="openTab(event, 'experience')">Experience</button>
                 <button class="tab-button" onclick="openTab(event, 'education')">Education</button>
-                <button class="tab-button" onclick="openTab(event, 'craft')">Art of Code</button>
+                <button class="tab-button" onclick="openTab(event, 'craft')">Craft & Code</button>
             </div>
 
             <!-- About Tab -->
@@ -51,7 +51,7 @@
                             <div class="stat-label">Master's Degrees<br>Georgia Tech</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">6+</div>
+                            <div class="stat-number">7+</div>
                             <div class="stat-label">Years Driving<br>AI Innovation</div>
                         </div>
                         <div class="stat">
@@ -227,20 +227,24 @@
 
             <!-- Craft & Code Tab -->
             <div id="craft" class="tab-content">
-                <h2>The Art of Code: Where Fiber Arts Meet Data Science</h2>
+                <h2>Craft & Code: Where Fiber Arts Meet Computer Science</h2>
                 
                 <div class="craft-intro">
-                    <p class="intro-highlight">Pattern recognition, systematic thinking, and iterative problem-solving form the foundation of both fiber arts and data science.</p>
+                    <p class="intro-highlight">Pattern recognition, systematic thinking, and iterative problem-solving form the foundation of both fiber arts and computer science.</p>
                 </div>
 
-                <div class="personal-story">
-                    <h3>A Lifelong Love of Making</h3>
-                    <p>Ever since I was a kid, I've been drawn to making things with my hands—knitting intricate scarves, sketching detailed drawings, building elaborate sandcastles, and creating whatever my imagination could conjure. There's something magical about the process of transforming raw materials into something beautiful and functional.</p>
-                    
-                    <p>I've discovered that my best ideas come when my hands are busy and my mind is free to wander. Whether I'm working through complex stitches in a sweater pattern or debugging a particularly stubborn piece of code, there's a meditative quality to the repetitive, methodical work that opens up creative pathways in my brain.</p>
-                    
-                    <p>There are profound parallels between crafting and computing—both involve taking an idea that exists only in your mind and making it real. Whether you're creating a knitted garment or writing code, you're translating abstract concepts into tangible results through systematic, deliberate steps.</p>
+                <div class="craft-connections">
+                    <div class="connection-section">
+                        <h3>A Lifelong Love of Making</h3>
+                        <p>Ever since I was a kid, I've been drawn to making things with my hands—knitting intricate scarves, sketching detailed drawings, building elaborate sandcastles, and creating whatever my imagination could conjure. There's something magical about the process of transforming raw materials into something beautiful and functional.</p>
+                        
+                        <p>I've discovered that my best ideas come when my hands are busy and my mind is free to wander. Whether I'm working through complex stitches in a sweater pattern or debugging a particularly stubborn piece of code, there's a meditative quality to the repetitive, methodical work that opens up creative pathways in my brain.</p>
+                        
+                        <p>There are profound parallels between crafting and computing—both involve taking an idea that exists only in your mind and making it real. Whether you're creating a knitted garment or writing code, you're translating abstract concepts into tangible results through systematic, deliberate steps.</p>
+                    </div>
                 </div>
+
+                <br>
 
                 <div class="craft-connections">
                     <div class="connection-section">
@@ -263,7 +267,7 @@
 
                     <div class="connection-section">
                         <h3>Interactive Pattern Generator</h3>
-                        <p>When I wanted to take my fiber artwork to the next level, I realized I could combine my passion for crafting with my technical skills. That's when I built an interactive pattern generator that uses clustering algorithms to transform any image into knitting or cross-stitch patterns. It's the perfect marriage of my two worlds—using data science to enhance and expand my creative practice.</p>
+                        <p>When I wanted to take my fiber artwork to the next level, I realized I could combine my passion for crafting with my technical skills. That's when I built an interactive pattern generator that uses clustering algorithms to transform any image into knitting or cross-stitch patterns. It's the perfect marriage of my two worlds—using computer science to enhance and expand my creative practice.</p>
                         
                         <p style="text-align: center; margin-bottom: 2rem;">Upload an image and watch clustering algorithms transform it into a knitting or cross-stitch pattern!</p>
                         
@@ -368,19 +372,23 @@
                             <div class="results-section" id="resultsSection" style="display: none;">
                                 <div class="pattern-result">
                                     <div class="pattern-image">
-                                        <h4>Generated Knitting/Cross-Stitch Pattern</h4>
-                                        <div class="pattern-controls">
-                                            <button id="editModeToggle" class="edit-mode-btn" style="display: none;">Enable Edit Mode</button>
-                                        </div>
-                                        <canvas id="patternCanvas"></canvas>
-                                        <div id="editModeInstructions" class="edit-instructions" style="display: none;">
-                                            <p>📝 <strong>Edit Mode Active:</strong> Select a color below, then click stitches to paint them</p>
-                                            <p><small>💡 <strong>Tip:</strong> Double-click a color to edit all stitches of that color in the pattern</small></p>
-                                            <div id="editColorPalette" class="edit-color-palette" style="display: none;"></div>
-                                            <div class="add-color-section" style="display: none;" id="addColorSection">
-                                                <input type="color" id="newColorPicker" value="#ff0000">
-                                                <button id="addColorBtn" class="add-color-btn">Add Color</button>
+                                        <div class="pattern-header">
+                                            <h4>Generated Knitting/Cross-Stitch Pattern</h4>
+                                            <div class="pattern-controls">
+                                                <button id="editModeToggle" class="edit-mode-btn" style="display: none;">Enable Edit Mode</button>
                                             </div>
+                                            <div id="editModeInstructions" class="edit-instructions" style="display: none;">
+                                                <p>📝 <strong>Edit Mode Active:</strong> Select a color below, then click stitches to paint them</p>
+                                                <p><small>💡 <strong>Tip:</strong> Double-click a color to edit all stitches of that color in the pattern</small></p>
+                                                <div id="editColorPalette" class="edit-color-palette" style="display: none;"></div>
+                                                <div class="add-color-section" style="display: none;" id="addColorSection">
+                                                    <input type="color" id="newColorPicker" value="#ff0000">
+                                                    <button id="addColorBtn" class="add-color-btn">Add Color</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pattern-canvas-container">
+                                            <canvas id="patternCanvas"></canvas>
                                         </div>
                                     </div>
                                 </div>
