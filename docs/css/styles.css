@@ -664,8 +664,16 @@ body {
     width: 100%;
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #333 !important;
+    display: block;
+    margin: 0 auto;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: white;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-crisp-edges;
 }
 
 .image-preview, .pattern-image {
@@ -1000,9 +1008,16 @@ body {
 #patternCanvas {
     max-width: 100%;
     height: auto;
-    border: 2px solid var(--text-medium);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #333 !important;
+    display: block;
+    margin: 0 auto;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: white;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-crisp-edges;
 }
 
 .color-palette {
@@ -1444,4 +1459,326 @@ body {
 /* Smooth transitions */
 .tab-content * {
     transition: all 0.3s ease;
+}
+
+/* Stitch Color Picker Modal */
+.stitch-color-picker-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+}
+
+.stitch-color-picker-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.stitch-color-picker-content h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.stitch-color-options {
+    margin-bottom: 1.5rem;
+}
+
+.palette-selection,
+.custom-color-selection {
+    margin-bottom: 1.5rem;
+}
+
+.palette-selection h5,
+.custom-color-selection h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.palette-color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.palette-color-option:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.palette-color-option.selected {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.3);
+}
+
+.palette-color-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.custom-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#stitchCustomColor {
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: none;
+}
+
+.add-custom-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.add-custom-btn:hover {
+    background: #e6a015;
+}
+
+.stitch-color-preview {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.current-stitch,
+.new-stitch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.current-stitch span,
+.new-stitch span {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    font-weight: 500;
+}
+
+.stitch-sample {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stitch-color-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.stitch-color-buttons .apply-btn,
+.stitch-color-buttons .cancel-btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.stitch-color-buttons .apply-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.stitch-color-buttons .apply-btn:hover {
+    background: #1a365d;
+}
+
+.stitch-color-buttons .cancel-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.stitch-color-buttons .cancel-btn:hover {
+    background: #545b62;
+}
+
+/* Edit Mode Styles */
+.pattern-controls {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.edit-mode-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.edit-mode-btn:hover {
+    background: #157a7a;
+    transform: translateY(-1px);
+}
+
+.edit-mode-btn.active {
+    background: var(--secondary-color);
+}
+
+.edit-mode-btn.active:hover {
+    background: #b8494b;
+}
+
+.edit-instructions {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #e8f4f8;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.edit-instructions p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.edit-color-palette {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.edit-color-swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.edit-color-swatch:hover {
+    transform: scale(1.1);
+    border-color: var(--text-dark);
+}
+
+.edit-color-swatch.selected {
+    border-color: var(--primary-color);
+    border-width: 4px;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+}
+
+.add-color-section {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#newColorPicker {
+    width: 50px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: none;
+}
+
+.add-color-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.add-color-btn:hover {
+    background: #157a7a;
+    transform: translateY(-1px);
+}
+
+.add-color-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Canvas edit mode styles */
+#patternCanvas.edit-mode {
+    cursor: crosshair !important;
+    border: 2px solid var(--secondary-color);
+}
+
+#patternCanvas.edit-mode:hover {
+    border-color: var(--primary-color);
+}
+
+/* Pattern canvas hover effects */
+#patternCanvas:hover {
+    border-color: var(--accent-color);
 }

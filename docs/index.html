@@ -369,7 +369,19 @@
                                 <div class="pattern-result">
                                     <div class="pattern-image">
                                         <h4>Generated Knitting/Cross-Stitch Pattern</h4>
+                                        <div class="pattern-controls">
+                                            <button id="editModeToggle" class="edit-mode-btn" style="display: none;">Enable Edit Mode</button>
+                                        </div>
                                         <canvas id="patternCanvas"></canvas>
+                                        <div id="editModeInstructions" class="edit-instructions" style="display: none;">
+                                            <p>📝 <strong>Edit Mode Active:</strong> Select a color below, then click stitches to paint them</p>
+                                            <p><small>💡 <strong>Tip:</strong> Double-click a color to edit all stitches of that color in the pattern</small></p>
+                                            <div id="editColorPalette" class="edit-color-palette" style="display: none;"></div>
+                                            <div class="add-color-section" style="display: none;" id="addColorSection">
+                                                <input type="color" id="newColorPicker" value="#ff0000">
+                                                <button id="addColorBtn" class="add-color-btn">Add Color</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 

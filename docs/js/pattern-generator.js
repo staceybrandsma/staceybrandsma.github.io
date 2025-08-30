@@ -5,6 +5,8 @@ export class PatternGenerator {
     constructor() {
         this.originalImage = null;
         this.currentPatternData = null;
+        this.isEditMode = false;
+        this.selectedEditColor = null;
         this.setupEventListeners();
     }
 
@@ -80,6 +82,9 @@ export class PatternGenerator {
         }
 
         generateBtn.addEventListener('click', this.generatePattern.bind(this));
+
+        // Edit mode toggle
+        this.setupEditModeToggle();
 
         // Export button listeners
         this.setupExportListeners();
@@ -193,6 +198,239 @@ export class PatternGenerator {
             document.getElementById('finishedWidth').value = widthInches;
             document.getElementById('finishedHeight').value = heightInches;
         }
+    }
+
+    setupEditModeToggle() {
+        const editModeToggle = document.getElementById('editModeToggle');
+        const editInstructions = document.getElementById('editModeInstructions');
+        const editColorPalette = document.getElementById('editColorPalette');
+        const addColorSection = document.getElementById('addColorSection');
+
+        console.log('Setting up edit mode toggle. Button found:', !!editModeToggle);
+
+        if (editModeToggle) {
+            editModeToggle.addEventListener('click', () => {
+                console.log('Edit mode toggle clicked. Current state:', this.isEditMode);
+                this.isEditMode = !this.isEditMode;
+                console.log('New edit mode state:', this.isEditMode);
+                
+                if (this.isEditMode) {
+                    editModeToggle.textContent = 'Exit Edit Mode';
+                    editModeToggle.classList.add('active');
+                    if (editInstructions) editInstructions.style.display = 'block';
+                    if (editColorPalette) editColorPalette.style.display = 'flex';
+                    if (addColorSection) addColorSection.style.display = 'flex';
+                    this.setupEditColorPalette();
+                    this.setupAddColorButton();
+                } else {
+                    editModeToggle.textContent = 'Enable Edit Mode';
+                    editModeToggle.classList.remove('active');
+                    if (editInstructions) editInstructions.style.display = 'none';
+                    if (editColorPalette) editColorPalette.style.display = 'none';
+                    if (addColorSection) addColorSection.style.display = 'none';
+                    this.selectedEditColor = null;
+                    
+                    // Update material estimates when exiting edit mode
+                    console.log('Exiting edit mode - updating material estimates');
+                    this.calculateAndDisplayMaterials(
+                        this.currentPatternData, 
+                        this.currentPatternData.width, 
+                        this.currentPatternData.height
+                    );
+                }
+                
+                // Update canvas styling
+                this.updateCanvasStyle();
+            });
+        }
+    }
+
+    setupEditColorPalette() {
+        if (!this.currentPatternData || !this.currentPatternData.palette) return;
+
+        const editColorPalette = document.getElementById('editColorPalette');
+        if (!editColorPalette) return;
+
+        editColorPalette.innerHTML = '';
+
+        this.currentPatternData.palette.forEach((color, index) => {
+            const swatch = document.createElement('div');
+            swatch.className = 'edit-color-swatch';
+            swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            swatch.textContent = index + 1;
+            swatch.title = `Color ${index + 1} - RGB(${color.join(', ')})`;
+
+            // Check if this is the currently selected color
+            if (this.selectedEditColor && 
+                color[0] === this.selectedEditColor[0] && 
+                color[1] === this.selectedEditColor[1] && 
+                color[2] === this.selectedEditColor[2]) {
+                swatch.classList.add('selected');
+            }
+
+            swatch.addEventListener('click', () => {
+                // Remove selection from all swatches
+                editColorPalette.querySelectorAll('.edit-color-swatch').forEach(s => 
+                    s.classList.remove('selected'));
+                
+                // Select this swatch
+                swatch.classList.add('selected');
+                this.selectedEditColor = [...color];
+                console.log('Selected edit color:', this.selectedEditColor);
+            });
+
+            // Add double-click to edit the color throughout the pattern
+            swatch.addEventListener('dblclick', () => {
+                this.openColorEditor(index, color);
+            });
+
+            editColorPalette.appendChild(swatch);
+        });
+
+        // Auto-select the first color if none is selected
+        if (!this.selectedEditColor && this.currentPatternData.palette.length > 0) {
+            const firstSwatch = editColorPalette.querySelector('.edit-color-swatch');
+            if (firstSwatch) {
+                firstSwatch.classList.add('selected');
+                this.selectedEditColor = [...this.currentPatternData.palette[0]];
+            }
+        }
+    }
+
+    setupAddColorButton() {
+        const addColorBtn = document.getElementById('addColorBtn');
+        const newColorPicker = document.getElementById('newColorPicker');
+
+        if (addColorBtn && newColorPicker) {
+            // Remove any existing listeners to avoid duplicates
+            const newAddColorBtn = addColorBtn.cloneNode(true);
+            addColorBtn.parentNode.replaceChild(newAddColorBtn, addColorBtn);
+
+            newAddColorBtn.addEventListener('click', () => {
+                const hexColor = newColorPicker.value;
+                const rgbColor = this.hexToRgb(hexColor);
+                
+                console.log('Adding new color:', hexColor, rgbColor);
+                
+                // Check if color already exists in palette
+                const colorExists = this.currentPatternData.palette.some(color => 
+                    color[0] === rgbColor[0] && color[1] === rgbColor[1] && color[2] === rgbColor[2]);
+                
+                if (colorExists) {
+                    alert('This color is already in the palette!');
+                    return;
+                }
+                
+                // Add new color to palette
+                this.currentPatternData.palette.push(rgbColor);
+                
+                // Refresh the edit color palette
+                this.setupEditColorPalette();
+                
+                // Also update the main color palette display
+                this.displayColorPalette(this.currentPatternData.palette);
+                
+                // Auto-select the new color
+                this.selectedEditColor = [...rgbColor];
+                
+                console.log('New color added successfully');
+            });
+        }
+    }
+
+    openColorEditor(colorIndex, currentColor) {
+        if (!this.currentPatternData) return;
+        
+        // Create color editor modal
+        const modal = document.createElement('div');
+        modal.className = 'color-picker-modal';
+        modal.innerHTML = `
+            <div class="color-picker-content">
+                <h4>Edit Color ${colorIndex + 1} Throughout Pattern</h4>
+                <p>This will change all stitches currently using this color</p>
+                <div class="color-picker-section">
+                    <label for="colorEditor">Choose new color:</label>
+                    <input type="color" id="colorEditor" value="${this.rgbToHex(currentColor)}">
+                </div>
+                <div class="color-preview">
+                    <div class="current-color">
+                        <span>Current:</span>
+                        <div class="color-sample" style="background-color: rgb(${currentColor.join(', ')})"></div>
+                    </div>
+                    <div class="new-color">
+                        <span>New:</span>
+                        <div class="color-sample" id="newColorSample" style="background-color: ${this.rgbToHex(currentColor)}"></div>
+                    </div>
+                </div>
+                <div class="color-picker-buttons">
+                    <button id="applyColorEdit" class="apply-btn">Apply to All</button>
+                    <button id="cancelColorEdit" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        const colorEditor = modal.querySelector('#colorEditor');
+        const newColorSample = modal.querySelector('#newColorSample');
+        const applyBtn = modal.querySelector('#applyColorEdit');
+        const cancelBtn = modal.querySelector('#cancelColorEdit');
+        
+        // Update preview as user changes color
+        colorEditor.addEventListener('input', (e) => {
+            newColorSample.style.backgroundColor = e.target.value;
+        });
+        
+        // Apply color change to all instances
+        applyBtn.addEventListener('click', () => {
+            const newColor = this.hexToRgb(colorEditor.value);
+            this.updateAllInstancesOfColor(colorIndex, currentColor, newColor);
+            document.body.removeChild(modal);
+        });
+        
+        // Cancel color change
+        cancelBtn.addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    }
+
+    updateAllInstancesOfColor(colorIndex, oldColor, newColor) {
+        if (!this.currentPatternData) return;
+        
+        console.log('Updating all instances of color', colorIndex, 'from', oldColor, 'to', newColor);
+        
+        // Update the palette
+        this.currentPatternData.palette[colorIndex] = [...newColor];
+        
+        // Update all pixels that use this color
+        this.currentPatternData.pixels = this.currentPatternData.pixels.map(pixel => {
+            if (pixel[0] === oldColor[0] && pixel[1] === oldColor[1] && pixel[2] === oldColor[2]) {
+                return [...newColor];
+            }
+            return pixel;
+        });
+        
+        // Update the selected edit color if it was the one being changed
+        if (this.selectedEditColor && 
+            this.selectedEditColor[0] === oldColor[0] && 
+            this.selectedEditColor[1] === oldColor[1] && 
+            this.selectedEditColor[2] === oldColor[2]) {
+            this.selectedEditColor = [...newColor];
+        }
+        
+        // Redraw pattern and palettes
+        this.displayPattern(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
+        this.displayColorPalette(this.currentPatternData.palette);
+        this.setupEditColorPalette();
+        
+        console.log('Color update completed');
     }
 
     setupExportListeners() {
@@ -313,9 +551,22 @@ export class PatternGenerator {
 
         // Create pattern
         const patternData = this.createPattern(stitchWidth, stitchHeight, colorCount, enableSmoothing);
+        
+        // Ensure width and height are set on the pattern data
+        patternData.width = stitchWidth;
+        patternData.height = stitchHeight;
+        
         this.currentPatternData = patternData; // Store for export
+        console.log('Generated pattern data:', patternData); // Debug log
+        
         this.displayPattern(patternData, stitchWidth, stitchHeight);
         this.displayColorPalette(patternData.palette);
+        
+        // Show edit mode controls
+        const editModeToggle = document.getElementById('editModeToggle');
+        if (editModeToggle) {
+            editModeToggle.style.display = 'inline-block';
+        }
         
         // Calculate and display material estimates (always enabled)
         this.calculateAndDisplayMaterials(patternData, stitchWidth, stitchHeight);
@@ -634,27 +885,355 @@ export class PatternGenerator {
 
     displayPattern(patternData, width, height) {
         const canvas = document.getElementById('patternCanvas');
-        if (!canvas) return;
+        if (!canvas) {
+            console.error('Canvas not found!');
+            return;
+        }
+        
+        console.log('Displaying pattern with data:', { 
+            pixels: patternData.pixels.length, 
+            width, 
+            height, 
+            hasCanvas: !!canvas 
+        });
         
         const ctx = canvas.getContext('2d');
         
-        const cellSize = Math.min(300 / width, 300 / height);
+        // Use a larger minimum cell size to make clicking easier
+        const cellSize = Math.max(8, Math.min(400 / width, 400 / height));
         canvas.width = width * cellSize;
         canvas.height = height * cellSize;
         
-        // Draw pattern with grid
+        // Store cellSize for click detection
+        this.cellSize = cellSize;
+        console.log('Cell size set to:', this.cellSize);
+        
+        // Remove any existing click listener to avoid duplicates
+        if (this.boundCanvasClick) {
+            canvas.removeEventListener('click', this.boundCanvasClick);
+        }
+        
+        // Create and bind the click handler
+        this.boundCanvasClick = this.handleCanvasClick.bind(this);
+        canvas.addEventListener('click', this.boundCanvasClick);
+        console.log('Click listener bound to canvas');
+        
+        // Add a test click listener to see if ANY clicks are detected
+        canvas.addEventListener('click', () => {
+            console.log('TEST: Canvas was clicked!');
+        });
+        
+        // Set cursor style based on edit mode
+        this.updateCanvasStyle(canvas);
+        
+        console.log('Pattern display setup completed'); // Debug log
+        
+        // Draw pattern cells first
         patternData.pixels.forEach((color, index) => {
             const x = (index % width) * cellSize;
             const y = Math.floor(index / width) * cellSize;
             
             ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             ctx.fillRect(x, y, cellSize, cellSize);
-            
-            // Draw grid
-            ctx.strokeStyle = '#000';
-            ctx.lineWidth = 0.5;
-            ctx.strokeRect(x, y, cellSize, cellSize);
         });
+        
+        // Draw clean grid lines over the pattern
+        this.drawGrid(ctx, width, height, cellSize);
+        
+        console.log('Pattern drawing completed');
+    }
+
+    updateCanvasStyle(canvas) {
+        if (!canvas) canvas = document.getElementById('patternCanvas');
+        if (!canvas) {
+            console.log('Canvas not found in updateCanvasStyle');
+            return;
+        }
+
+        console.log('Updating canvas style. Edit mode:', this.isEditMode);
+
+        if (this.isEditMode) {
+            canvas.style.cursor = 'crosshair';
+            canvas.title = 'Select a color below, then click stitches to paint them';
+            canvas.classList.add('edit-mode');
+            console.log('Canvas set to edit mode');
+        } else {
+            canvas.style.cursor = 'default';
+            canvas.title = 'Enable edit mode to modify stitches';
+            canvas.classList.remove('edit-mode');
+            console.log('Canvas set to view mode');
+        }
+        canvas.style.boxShadow = 'none';
+        canvas.style.borderRadius = '0';
+    }
+
+    drawGrid(ctx, width, height, cellSize) {
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 0.5;
+        
+        // Draw vertical lines between pixels
+        for (let x = 1; x < width; x++) {
+            ctx.beginPath();
+            ctx.moveTo(x * cellSize - 0.5, 0);
+            ctx.lineTo(x * cellSize - 0.5, height * cellSize);
+            ctx.stroke();
+        }
+        
+        // Draw horizontal lines between pixels
+        for (let y = 1; y < height; y++) {
+            ctx.beginPath();
+            ctx.moveTo(0, y * cellSize - 0.5);
+            ctx.lineTo(width * cellSize, y * cellSize - 0.5);
+            ctx.stroke();
+        }
+    }
+
+    handleCanvasClick(event) {
+        console.log('=== HANDLE CANVAS CLICK CALLED ===');
+        console.log('Edit mode:', this.isEditMode);
+        console.log('Event:', event);
+        
+        // Only handle clicks if in edit mode
+        if (!this.isEditMode) {
+            console.log('Not in edit mode, ignoring click');
+            return;
+        }
+
+        console.log('Canvas clicked in edit mode!', event);
+        if (!this.currentPatternData || !this.cellSize) {
+            console.log('Missing data:', { 
+                hasPatternData: !!this.currentPatternData, 
+                hasCellSize: !!this.cellSize,
+                patternData: this.currentPatternData 
+            });
+            return;
+        }
+        
+        const canvas = event.target;
+        const rect = canvas.getBoundingClientRect();
+        
+        // Get more accurate coordinates accounting for canvas scaling
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = (event.clientY - rect.top) * scaleY;
+        
+        console.log('Raw click:', { 
+            clientX: event.clientX, 
+            clientY: event.clientY, 
+            rectLeft: rect.left, 
+            rectTop: rect.top,
+            canvasWidth: canvas.width,
+            canvasHeight: canvas.height,
+            rectWidth: rect.width,
+            rectHeight: rect.height,
+            scaleX,
+            scaleY
+        });
+        console.log('Adjusted click position:', { x, y, cellSize: this.cellSize });
+        
+        // Calculate which stitch was clicked
+        const stitchX = Math.floor(x / this.cellSize);
+        const stitchY = Math.floor(y / this.cellSize);
+        
+        console.log('Stitch coordinates:', { stitchX, stitchY });
+        console.log('Pattern dimensions:', { width: this.currentPatternData.width, height: this.currentPatternData.height });
+        
+        // Check bounds
+        if (stitchX >= 0 && stitchX < this.currentPatternData.width && 
+            stitchY >= 0 && stitchY < this.currentPatternData.height) {
+            
+            const stitchIndex = stitchY * this.currentPatternData.width + stitchX;
+            console.log('Painting stitch at index:', stitchIndex, 'with color:', this.selectedEditColor);
+            
+            if (this.selectedEditColor) {
+                this.updateSingleStitch(stitchIndex, this.selectedEditColor);
+            } else {
+                console.log('No color selected for painting');
+            }
+        } else {
+            console.log('Click outside bounds');
+        }
+    }
+
+    cycleStitchColor(stitchIndex) {
+        if (!this.currentPatternData || !this.currentPatternData.palette) {
+            return;
+        }
+
+        const currentColor = this.currentPatternData.pixels[stitchIndex];
+        const palette = this.currentPatternData.palette;
+        
+        // Find current color index in palette
+        let currentColorIndex = -1;
+        for (let i = 0; i < palette.length; i++) {
+            const paletteColor = palette[i];
+            if (currentColor[0] === paletteColor[0] && 
+                currentColor[1] === paletteColor[1] && 
+                currentColor[2] === paletteColor[2]) {
+                currentColorIndex = i;
+                break;
+            }
+        }
+        
+        // Get next color in palette (cycle back to 0 if at end)
+        const nextColorIndex = (currentColorIndex + 1) % palette.length;
+        const nextColor = palette[nextColorIndex];
+        
+        console.log(`Cycling from color ${currentColorIndex} to ${nextColorIndex}`);
+        
+        // Update the stitch
+        this.updateSingleStitch(stitchIndex, nextColor);
+    }
+
+    openStitchColorPicker(stitchIndex, stitchX, stitchY) {
+        if (!this.currentPatternData) return;
+        
+        const currentColor = this.currentPatternData.pixels[stitchIndex];
+        
+        // Create stitch color picker modal
+        const modal = document.createElement('div');
+        modal.className = 'stitch-color-picker-modal';
+        modal.innerHTML = `
+            <div class="stitch-color-picker-content">
+                <h4>Edit Stitch at Row ${stitchY + 1}, Column ${stitchX + 1}</h4>
+                
+                <div class="stitch-color-options">
+                    <div class="palette-selection">
+                        <h5>Choose from Pattern Colors:</h5>
+                        <div class="palette-grid" id="stitchPaletteGrid"></div>
+                    </div>
+                </div>
+                
+                <div class="stitch-color-preview">
+                    <div class="current-stitch">
+                        <span>Current:</span>
+                        <div class="stitch-sample" style="background-color: rgb(${currentColor.join(', ')})"></div>
+                    </div>
+                    <div class="new-stitch" id="newStitchPreview">
+                        <span>New:</span>
+                        <div class="stitch-sample" style="background-color: rgb(${currentColor.join(', ')})"></div>
+                    </div>
+                </div>
+                
+                <div class="stitch-color-buttons">
+                    <button id="applyStitchColor" class="apply-btn">Apply</button>
+                    <button id="cancelStitchColor" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Populate palette grid
+        const paletteGrid = modal.querySelector('#stitchPaletteGrid');
+        this.currentPatternData.palette.forEach((color, index) => {
+            const colorOption = document.createElement('div');
+            colorOption.className = 'palette-color-option';
+            colorOption.style.backgroundColor = `rgb(${color.join(', ')})`;
+            colorOption.title = `Color ${index + 1} - RGB(${color.join(', ')})`;
+            
+            // Highlight current color
+            if (currentColor[0] === color[0] && currentColor[1] === color[1] && currentColor[2] === color[2]) {
+                colorOption.classList.add('selected');
+            }
+            
+            colorOption.addEventListener('click', () => {
+                // Remove previous selection
+                paletteGrid.querySelectorAll('.palette-color-option').forEach(opt => 
+                    opt.classList.remove('selected'));
+                colorOption.classList.add('selected');
+                
+                // Update preview
+                this.updateStitchPreview(color, modal);
+                this.selectedStitchColor = color;
+            });
+            
+            paletteGrid.appendChild(colorOption);
+        });
+        
+        // Set initial selection
+        this.selectedStitchColor = currentColor;
+        
+        // Button handling
+        const applyBtn = modal.querySelector('#applyStitchColor');
+        const cancelBtn = modal.querySelector('#cancelStitchColor');
+        
+        applyBtn.addEventListener('click', () => {
+            if (this.selectedStitchColor) {
+                this.updateSingleStitch(stitchIndex, this.selectedStitchColor);
+            }
+            document.body.removeChild(modal);
+        });
+        
+        cancelBtn.addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    }
+
+    updateStitchPreview(color, modal) {
+        const newStitchPreview = modal.querySelector('#newStitchPreview .stitch-sample');
+        if (newStitchPreview) {
+            newStitchPreview.style.backgroundColor = `rgb(${color.join(', ')})`;
+        }
+    }
+
+    updateSingleStitch(stitchIndex, newColor) {
+        if (!this.currentPatternData) return;
+        
+        // Update the pixel at the specific index
+        this.currentPatternData.pixels[stitchIndex] = [...newColor];
+        
+        // Redraw only the affected stitch for performance
+        const canvas = document.getElementById('patternCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        const width = this.currentPatternData.width;
+        const height = this.currentPatternData.height;
+        
+        const x = (stitchIndex % width) * this.cellSize;
+        const y = Math.floor(stitchIndex / width) * this.cellSize;
+        
+        // Redraw this stitch
+        ctx.fillStyle = `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`;
+        ctx.fillRect(x, y, this.cellSize, this.cellSize);
+        
+        // Redraw the grid lines that intersect this cell
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 0.5;
+        
+        ctx.beginPath();
+        // Only redraw interior grid lines (not outer borders)
+        if (x > 0) {
+            // Left line
+            ctx.moveTo(x - 0.5, y);
+            ctx.lineTo(x - 0.5, y + this.cellSize);
+        }
+        if (y > 0) {
+            // Top line
+            ctx.moveTo(x, y - 0.5);
+            ctx.lineTo(x + this.cellSize, y - 0.5);
+        }
+        if (x + this.cellSize < width * this.cellSize) {
+            // Right line
+            ctx.moveTo(x + this.cellSize - 0.5, y);
+            ctx.lineTo(x + this.cellSize - 0.5, y + this.cellSize);
+        }
+        if (y + this.cellSize < height * this.cellSize) {
+            // Bottom line
+            ctx.moveTo(x, y + this.cellSize - 0.5);
+            ctx.lineTo(x + this.cellSize, y + this.cellSize - 0.5);
+        }
+        ctx.stroke();
     }
 
     displayColorPalette(palette) {
@@ -671,10 +1250,9 @@ export class PatternGenerator {
             swatch.className = 'color-swatch';
             swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             swatch.textContent = index + 1;
-            swatch.title = 'Click to change color';
+            swatch.title = `Color ${index + 1} - RGB(${color.join(', ')}) - Use edit mode to modify`;
             
-            // Add click event to open color picker
-            swatch.addEventListener('click', () => this.openColorPicker(index));
+            // Remove the click event for editing - editing is now only in edit mode
             
             const colorInfo = document.createElement('div');
             colorInfo.className = 'color-info';
