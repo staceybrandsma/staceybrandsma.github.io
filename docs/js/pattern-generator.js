@@ -435,14 +435,10 @@ export class PatternGenerator {
 
     setupExportListeners() {
         const exportImageBtn = document.getElementById('exportImage');
-        const exportChartBtn = document.getElementById('exportChart');
         const exportPaletteBtn = document.getElementById('exportPalette');
 
         if (exportImageBtn) {
             exportImageBtn.addEventListener('click', this.exportPatternImage.bind(this));
-        }
-        if (exportChartBtn) {
-            exportChartBtn.addEventListener('click', this.exportTextChart.bind(this));
         }
         if (exportPaletteBtn) {
             exportPaletteBtn.addEventListener('click', this.exportColorGuide.bind(this));
@@ -1371,6 +1367,10 @@ export class PatternGenerator {
         const canvas = document.getElementById('patternCanvas');
         if (!canvas) return;
 
+        // Get gridline setting
+        const gridSizeInput = document.getElementById('gridSize');
+        const gridSize = gridSizeInput ? parseInt(gridSizeInput.value) : 10;
+
         // Create high-resolution version for export
         const exportCanvas = document.createElement('canvas');
         const ctx = exportCanvas.getContext('2d');
@@ -1390,71 +1390,36 @@ export class PatternGenerator {
             ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             ctx.fillRect(x, y, cellSize, cellSize);
             
-            // Draw grid
+            // Draw regular grid (thin lines)
             ctx.strokeStyle = '#000';
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0.5;
             ctx.strokeRect(x, y, cellSize, cellSize);
         });
 
+        // Draw thick gridlines every N stitches
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        
+        // Vertical thick gridlines
+        for (let x = 0; x <= width; x += gridSize) {
+            const xPos = x * cellSize;
+            ctx.beginPath();
+            ctx.moveTo(xPos, 0);
+            ctx.lineTo(xPos, height * cellSize);
+            ctx.stroke();
+        }
+        
+        // Horizontal thick gridlines
+        for (let y = 0; y <= height; y += gridSize) {
+            const yPos = y * cellSize;
+            ctx.beginPath();
+            ctx.moveTo(0, yPos);
+            ctx.lineTo(width * cellSize, yPos);
+            ctx.stroke();
+        }
+
         // Download the image
         this.downloadCanvas(exportCanvas, 'knitting-pattern.png');
-    }
-
-    exportTextChart() {
-        if (!this.currentPatternData) {
-            alert('Please generate a pattern first!');
-            return;
-        }
-
-        const width = this.currentPatternData.width;
-        const height = this.currentPatternData.height;
-        const palette = this.currentPatternData.palette;
-        
-        // Create color to symbol mapping
-        const symbols = ['⬜', '⬛', '🟥', '🟧', '🟨', '🟩', '🟦', '🟪', '🟫', '⚫', '⚪', '🔴'];
-        const colorMap = new Map();
-        
-        palette.forEach((color, index) => {
-            const colorKey = `${color[0]},${color[1]},${color[2]}`;
-            colorMap.set(colorKey, {
-                symbol: symbols[index] || `${index + 1}`,
-                number: index + 1
-            });
-        });
-
-        // Generate text chart
-        let chartText = `KNITTING/CROSS-STITCH PATTERN\n`;
-        chartText += `Size: ${width} x ${height} stitches\n`;
-        chartText += `Generated: ${new Date().toLocaleDateString()}\n\n`;
-        
-        chartText += `COLOR LEGEND:\n`;
-        palette.forEach((color, index) => {
-            const symbol = symbols[index] || `${index + 1}`;
-            chartText += `${symbol} = Color ${index + 1} - RGB(${color[0]}, ${color[1]}, ${color[2]})\n`;
-        });
-        chartText += `\n`;
-
-        chartText += `PATTERN CHART:\n`;
-        chartText += `Read from bottom to top, right to left for knitting\n`;
-        chartText += `Read from top to bottom, left to right for cross-stitch\n\n`;
-        
-        // Add row numbers and pattern
-        for (let y = 0; y < height; y++) {
-            const rowNum = (height - y).toString().padStart(3, ' ');
-            chartText += `${rowNum}: `;
-            
-            for (let x = 0; x < width; x++) {
-                const pixelIndex = y * width + x;
-                const color = this.currentPatternData.pixels[pixelIndex];
-                const colorKey = `${color[0]},${color[1]},${color[2]}`;
-                const mapping = colorMap.get(colorKey);
-                chartText += mapping ? mapping.symbol : '?';
-            }
-            chartText += `\n`;
-        }
-
-        // Download as text file
-        this.downloadText(chartText, 'knitting-pattern-chart.txt');
     }
 
     exportColorGuide() {
@@ -1490,68 +1455,127 @@ export class PatternGenerator {
             'crochet': 'CROCHET',
             'tapestry': 'TAPESTRY/NEEDLEPOINT'
         };
+
+        // Create canvas for color guide
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
         
-        let guideText = `COLOR GUIDE FOR ${craftNames[craftType]} PATTERN\n`;
-        guideText += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+        // Calculate canvas dimensions - much more generous spacing
+        const margin = 60;
+        const swatchSize = 120;
+        const swatchSpacing = 60;
+        const colorBlockHeight = 300; // More space for each color
+        const colorsPerRow = 1; // Only 1 color per row for maximum readability
+        const rows = palette.length;
+        
+        const canvasWidth = 800; // Fixed width that's wide enough for all content
+        const headerHeight = 180;
+        const canvasHeight = margin * 2 + headerHeight + (colorBlockHeight * rows) + (swatchSpacing * (rows - 1)) + 80;
+        
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        
+        // White background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        
+        // Header
+        ctx.fillStyle = '#2c3e50';
+        ctx.font = 'bold 28px Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(`COLOR GUIDE FOR ${craftNames[craftType]} PATTERN`, canvasWidth / 2, margin + 35);
+        
+        // Project info
+        ctx.font = '18px Arial, sans-serif';
+        ctx.fillText(`Generated: ${new Date().toLocaleDateString()}`, canvasWidth / 2, margin + 70);
         
         // Calculate finished size
         const finishedWidth = this.currentPatternData.width / stitchesPerInch;
         const finishedHeight = this.currentPatternData.height / stitchesPerInch;
         
-        guideText += `PROJECT SPECIFICATIONS:\n`;
-        guideText += `• Pattern size: ${this.currentPatternData.width} x ${this.currentPatternData.height} stitches\n`;
-        guideText += `• Finished size: ${finishedWidth.toFixed(1)}" x ${finishedHeight.toFixed(1)}"\n`;
-        guideText += `• ${sizeLabel}\n`;
+        ctx.font = '16px Arial, sans-serif';
+        ctx.fillText(`Pattern size: ${this.currentPatternData.width} x ${this.currentPatternData.height} stitches`, canvasWidth / 2, margin + 100);
+        ctx.fillText(`Finished size: ${finishedWidth.toFixed(1)}" x ${finishedHeight.toFixed(1)}" | ${sizeLabel}`, canvasWidth / 2, margin + 125);
         
-        // Add strand information for floss-based crafts
-        if (['cross-stitch', 'embroidery', 'tapestry'].includes(craftType)) {
+        // Add strand information for floss-based crafts in header
+        let finalHeaderLine = `${palette.length} colors total`;
+        if (craftType === 'cross-stitch' || craftType === 'embroidery' || craftType === 'tapestry') {
             const strandCount = document.getElementById('strandCount')?.value || 2;
-            guideText += `• Strands of floss: ${strandCount}\n`;
+            finalHeaderLine += ` | ${strandCount} strands of floss recommended`;
         }
+        ctx.fillText(finalHeaderLine, canvasWidth / 2, margin + 150);
         
-        guideText += `• Total colors: ${palette.length}\n\n`;
-        
-        guideText += `MATERIAL REQUIREMENTS:\n`;
-        guideText += `(Use these RGB values to match with your preferred yarn/thread brand)\n\n`;
-        
+        // Draw color swatches and info
         palette.forEach((color, index) => {
+            const x = margin;
+            const y = margin + headerHeight + index * (colorBlockHeight + swatchSpacing);
+            
+            // Color swatch with border
+            ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            ctx.fillRect(x, y, swatchSize, swatchSize);
+            
+            // Swatch border
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(x, y, swatchSize, swatchSize);
+            
+            // Color information - positioned to the right of swatch with plenty of space
+            const textX = x + swatchSize + 40;
+            
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 24px Arial, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(`Color ${index + 1}`, textX, y + 35);
+            
             const colorKey = `${color[0]},${color[1]},${color[2]}`;
             const stitchCount = colorCounts.get(colorKey) || 0;
             const yardage = this.calculateYardage(stitchCount, craftType, stitchesPerInch);
             
-            guideText += `Color ${index + 1}:\n`;
-            guideText += `  RGB: ${color[0]}, ${color[1]}, ${color[2]}\n`;
-            guideText += `  Hex: #${color[0].toString(16).padStart(2, '0')}${color[1].toString(16).padStart(2, '0')}${color[2].toString(16).padStart(2, '0')}\n`;
-            guideText += `  Stitches: ${stitchCount.toLocaleString()}\n`;
-            guideText += `  Estimated yardage: ${yardage} yards\n`;
-            guideText += `  Brand: ________________\n`;
-            guideText += `  Color name: ________________\n`;
-            guideText += `  Amount purchased: ________________\n\n`;
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillText(`RGB: ${color[0]}, ${color[1]}, ${color[2]}`, textX, y + 70);
+            ctx.fillText(`Hex: #${color[0].toString(16).padStart(2, '0')}${color[1].toString(16).padStart(2, '0')}${color[2].toString(16).padStart(2, '0')}`, textX, y + 95);
+            ctx.fillText(`Stitches needed: ${stitchCount.toLocaleString()}`, textX, y + 120);
+            ctx.fillText(`Estimated yardage: ${yardage} yards`, textX, y + 145);
+            
+            // Shopping lines with labels
+            ctx.fillStyle = '#666666';
+            ctx.font = '16px Arial, sans-serif';
+            ctx.fillText('Brand purchased:', textX, y + 185);
+            ctx.fillText('Color name:', textX, y + 215);
+            ctx.fillText('Amount bought:', textX, y + 245);
+            
+            // Lines for writing - positioned properly
+            ctx.strokeStyle = '#cccccc';
+            ctx.lineWidth = 1;
+            
+            // Brand line
+            ctx.beginPath();
+            ctx.moveTo(textX + 140, y + 190);
+            ctx.lineTo(textX + 400, y + 190);
+            ctx.stroke();
+            
+            // Color name line
+            ctx.beginPath();
+            ctx.moveTo(textX + 110, y + 220);
+            ctx.lineTo(textX + 400, y + 220);
+            ctx.stroke();
+            
+            // Amount line
+            ctx.beginPath();
+            ctx.moveTo(textX + 120, y + 250);
+            ctx.lineTo(textX + 400, y + 250);
+            ctx.stroke();
         });
-
-        guideText += `PATTERN NOTES:\n`;
-        if (craftType === 'knitting') {
-            guideText += `• Work from bottom up, reading chart right to left on RS rows\n`;
-            guideText += `• Read chart left to right on WS rows\n`;
-            guideText += `• Consider yarn weight and needle size for gauge\n`;
-        } else if (craftType === 'cross-stitch') {
-            guideText += `• Work from top down, left to right\n`;
-            guideText += `• Use ${stitchesPerInch}-count fabric as specified\n`;
-            guideText += `• Recommended: 2 strands of floss for coverage\n`;
-        } else if (craftType === 'embroidery') {
-            guideText += `• Work direction varies by technique\n`;
-            guideText += `• Adjust thread strands for desired coverage\n`;
-            guideText += `• Consider fabric type and weight\n`;
-        } else if (craftType === 'crochet') {
-            guideText += `• Work as single crochet or desired stitch\n`;
-            guideText += `• Consider yarn weight and hook size for gauge\n`;
-            guideText += `• May require more yarn than knitting\n`;
-        }
         
-        guideText += `• Estimates include 10% waste factor\n`;
-        guideText += `• Always purchase extra for color matching\n`;
+        // Footer notes
+        const footerY = canvasHeight - margin;
+        ctx.fillStyle = '#666666';
+        ctx.font = '14px Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('💡 Estimates include 10% waste factor • Always purchase extra for color matching', canvasWidth / 2, footerY - 10);
 
-        this.downloadText(guideText, `${craftType}-color-guide.txt`);
+        // Download the image
+        this.downloadCanvas(canvas, `${craftType}-color-guide.png`);
     }
 
     downloadCanvas(canvas, filename) {

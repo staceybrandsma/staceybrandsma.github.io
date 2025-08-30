@@ -1245,6 +1245,36 @@ body {
     transform: none;
 }
 
+.gridline-options {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.gridline-options label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.gridline-options input {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.gridline-options span {
+    color: var(--text-color);
+}
+
 /* Material Estimates Styles */
 .material-estimates {
     margin-top: 2rem;
