@@ -246,6 +246,11 @@ export class PatternGenerator {
                     // Enable scrolling for edit mode
                     const canvasContainer = document.querySelector('.pattern-canvas-container');
                     if (canvasContainer) canvasContainer.classList.add('edit-mode');
+                    
+                    // Refresh color palette to show edit tooltips
+                    if (this.currentPatternData) {
+                        this.displayColorPalette(this.currentPatternData.palette);
+                    }
                 } else {
                     editModeToggle.textContent = 'Enable Edit Mode';
                     editModeToggle.classList.remove('active');
@@ -257,6 +262,11 @@ export class PatternGenerator {
                     // Disable scrolling for viewing mode
                     const canvasContainer = document.querySelector('.pattern-canvas-container');
                     if (canvasContainer) canvasContainer.classList.remove('edit-mode');
+                    
+                    // Refresh color palette to hide edit tooltips
+                    if (this.currentPatternData) {
+                        this.displayColorPalette(this.currentPatternData.palette);
+                    }
                     
                     // Update material estimates when exiting edit mode
                     console.log('Exiting edit mode - updating material estimates');
@@ -291,7 +301,6 @@ export class PatternGenerator {
             swatch.className = 'edit-color-swatch';
             swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             swatch.textContent = index + 1;
-            swatch.title = `Color ${index + 1} - RGB(${color.join(', ')})`;
 
             // Check if this is the currently selected color
             if (this.selectedEditColor && 
@@ -537,15 +546,13 @@ export class PatternGenerator {
     }
 
     calculateHeightFromAspectRatio(img) {
-        const defaultWidthInches = 7.1; // Default width at 7.1 inches
+        const defaultWidthInches = 5.0; // Default width at 5 inches
         const aspectRatio = img.height / img.width;
         const calculatedHeightInches = defaultWidthInches * aspectRatio;
         
         // Set the measurement input values
-        document.getElementById('widthInches').value = defaultWidthInches.toFixed(1);
-        document.getElementById('widthCm').value = (defaultWidthInches * 2.54).toFixed(1);
-        document.getElementById('heightInches').value = calculatedHeightInches.toFixed(1);
-        document.getElementById('heightCm').value = (calculatedHeightInches * 2.54).toFixed(1);
+        document.getElementById('finishedWidth').value = defaultWidthInches.toFixed(1);
+        document.getElementById('finishedHeight').value = calculatedHeightInches.toFixed(1);
         
         // Update hidden stitch inputs to match measurements
         this.updateStitchesFromMeasurements();
@@ -554,16 +561,14 @@ export class PatternGenerator {
     updateHeightFromWidth() {
         if (!this.originalImage) return;
         
-        const widthInches = parseFloat(document.getElementById('widthInches').value);
+        const widthInches = parseFloat(document.getElementById('finishedWidth').value);
         const aspectRatio = this.originalImage.height / this.originalImage.width;
         
         if (!isNaN(widthInches)) {
             const calculatedHeightInches = (widthInches * aspectRatio);
-            const calculatedHeightCm = (calculatedHeightInches * 2.54);
             
             // Update height measurements
-            document.getElementById('heightInches').value = calculatedHeightInches.toFixed(1);
-            document.getElementById('heightCm').value = calculatedHeightCm.toFixed(1);
+            document.getElementById('finishedHeight').value = calculatedHeightInches.toFixed(1);
             
             // Update hidden stitch inputs
             this.updateStitchesFromMeasurements();
@@ -1279,16 +1284,10 @@ export class PatternGenerator {
             swatch.className = 'color-swatch';
             swatch.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
             swatch.textContent = index + 1;
-            swatch.title = `Color ${index + 1} - RGB(${color.join(', ')}) - Use edit mode to modify`;
             
             // Remove the click event for editing - editing is now only in edit mode
             
-            const colorInfo = document.createElement('div');
-            colorInfo.className = 'color-info';
-            colorInfo.textContent = `RGB(${color[0]}, ${color[1]}, ${color[2]})`;
-            
             swatchContainer.appendChild(swatch);
-            swatchContainer.appendChild(colorInfo);
             container.appendChild(swatchContainer);
         });
     }

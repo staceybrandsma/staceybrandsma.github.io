@@ -1110,21 +1110,27 @@ body {
 
 .color-palette {
     text-align: center;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .color-palette h4 {
     color: var(--secondary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .palette-colors {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1.5rem;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .color-swatch-container {
@@ -1135,41 +1141,27 @@ body {
 }
 
 .color-swatch {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    border: 2px solid #ddd;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    border: 3px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: white;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .color-swatch:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     border-color: var(--primary-color);
-}
-
-.color-swatch:hover::after {
-    content: "Click to edit";
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    white-space: nowrap;
-    z-index: 10;
 }
 
 .color-info {
