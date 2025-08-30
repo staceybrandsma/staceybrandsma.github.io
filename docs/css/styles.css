@@ -400,7 +400,7 @@ body {
 }
 
 .date {
-    color: var(--text-light);
+    color: var(--text-medium);
     font-weight: 500;
     font-size: 0.95rem;
 }
@@ -470,7 +470,7 @@ body {
 }
 
 .edu-details {
-    color: var(--text-light);
+    color: var(--text-medium);
     margin-bottom: 1rem;
     font-weight: 500;
 }
