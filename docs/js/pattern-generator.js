@@ -14,6 +14,10 @@ export class PatternGenerator {
         this.selectedCells = new Set();
         this.selectionRect = null;
         
+        // Auto-save state
+        this.hasUnsavedChanges = false;
+        this.autoSaveTimer = null;
+        
         this.setupEventListeners();
         this.setupKeyboardEventListeners();
     }
@@ -538,6 +542,296 @@ export class PatternGenerator {
             // Set initial button text
             this.updateDownloadButtonText();
         }
+
+        // Setup draft management buttons
+        this.setupDraftManagement();
+    }
+
+    setupDraftManagement() {
+        const saveDraftBtn = document.getElementById('saveDraft');
+        const loadDraftBtn = document.getElementById('loadDraft');
+        const manageDraftsBtn = document.getElementById('manageDrafts');
+
+        if (saveDraftBtn) {
+            saveDraftBtn.addEventListener('click', this.saveDraft.bind(this));
+        }
+        if (loadDraftBtn) {
+            loadDraftBtn.addEventListener('click', this.showLoadDraftModal.bind(this));
+        }
+        if (manageDraftsBtn) {
+            manageDraftsBtn.addEventListener('click', this.showDraftManager.bind(this));
+        }
+    }
+
+    saveDraft() {
+        if (!this.currentPatternData) {
+            alert('No pattern to save! Please generate a pattern first.');
+            return;
+        }
+
+        console.log('Saving draft with pattern data:', this.currentPatternData);
+        
+        const projectName = this.getProjectName();
+        const draftData = {
+            id: Date.now().toString(),
+            projectName: projectName,
+            timestamp: new Date().toISOString(),
+            patternData: this.currentPatternData,
+            originalImage: this.originalImage ? this.originalImage.src : null,
+            settings: {
+                craftType: document.getElementById('craftType')?.value,
+                fabricCount: document.getElementById('fabricCount')?.value,
+                colorCount: document.getElementById('colorCount')?.value,
+                finishedWidth: document.getElementById('finishedWidth')?.value,
+                finishedHeight: document.getElementById('finishedHeight')?.value
+            }
+        };
+
+        console.log('Draft data to save:', draftData);
+
+        // Save to localStorage
+        const drafts = this.getSavedDrafts();
+        
+        // Check if draft with same name exists
+        const existingIndex = drafts.findIndex(draft => draft.projectName === projectName);
+        if (existingIndex !== -1) {
+            if (confirm(`A draft named "${projectName}" already exists. Do you want to overwrite it?`)) {
+                drafts[existingIndex] = draftData;
+            } else {
+                return;
+            }
+        } else {
+            drafts.push(draftData);
+        }
+
+        localStorage.setItem('patternDrafts', JSON.stringify(drafts));
+        
+        // Show success message
+        this.showToast(`Draft "${projectName}" saved successfully!`, 'success');
+        
+        // Auto-save enabled
+        this.enableAutoSave();
+    }
+
+    getSavedDrafts() {
+        try {
+            const saved = localStorage.getItem('patternDrafts');
+            return saved ? JSON.parse(saved) : [];
+        } catch (error) {
+            console.error('Error loading drafts:', error);
+            return [];
+        }
+    }
+
+    showLoadDraftModal() {
+        const drafts = this.getSavedDrafts();
+        if (drafts.length === 0) {
+            alert('No saved drafts found.');
+            return;
+        }
+
+        // Create modal
+        const modal = document.createElement('div');
+        modal.className = 'draft-modal';
+        modal.innerHTML = `
+            <div class="draft-modal-content">
+                <div class="draft-modal-header">
+                    <h3>Load Draft</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="draft-list">
+                    ${drafts.map(draft => `
+                        <div class="draft-item" data-draft-id="${draft.id}">
+                            <div class="draft-info">
+                                <h4>${draft.projectName}</h4>
+                                <p>Saved: ${new Date(draft.timestamp).toLocaleString()}</p>
+                                <p>Colors: ${draft.patternData.palette.length} | Size: ${draft.patternData.width}×${draft.patternData.height}</p>
+                            </div>
+                            <div class="draft-actions">
+                                <button class="load-draft-btn" data-draft-id="${draft.id}">Load</button>
+                                <button class="delete-draft-btn" data-draft-id="${draft.id}">Delete</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Add event listeners
+        modal.querySelector('.close-modal').addEventListener('click', () => {
+            document.body.removeChild(modal);
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+            
+            if (e.target.classList.contains('load-draft-btn')) {
+                const draftId = e.target.dataset.draftId;
+                this.loadDraft(draftId);
+                document.body.removeChild(modal);
+            }
+            
+            if (e.target.classList.contains('delete-draft-btn')) {
+                const draftId = e.target.dataset.draftId;
+                this.deleteDraft(draftId);
+                // Refresh modal
+                document.body.removeChild(modal);
+                this.showLoadDraftModal();
+            }
+        });
+    }
+
+    loadDraft(draftId) {
+        const drafts = this.getSavedDrafts();
+        const draft = drafts.find(d => d.id === draftId);
+        
+        if (!draft) {
+            alert('Draft not found.');
+            return;
+        }
+
+        console.log('Loading draft:', draft);
+        console.log('Draft pattern data:', draft.patternData);
+
+        // Function to complete the loading process
+        const completeLoading = () => {
+            console.log('Completing loading process...');
+            
+            // Restore pattern data
+            this.currentPatternData = draft.patternData;
+            console.log('Set currentPatternData:', this.currentPatternData);
+            
+            // Restore project name
+            const projectNameInput = document.getElementById('projectName');
+            if (projectNameInput) {
+                projectNameInput.value = draft.projectName;
+            }
+
+            // Restore settings
+            if (draft.settings) {
+                Object.entries(draft.settings).forEach(([key, value]) => {
+                    const element = document.getElementById(key);
+                    if (element && value) {
+                        element.value = value;
+                    }
+                });
+            }
+
+            // Display the pattern with the saved data
+            console.log('About to display pattern...');
+            this.displayPattern(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
+            this.displayColorPalette(this.currentPatternData.palette);
+            this.updateDownloadButtonText();
+
+            // Show edit mode controls
+            const editModeToggle = document.getElementById('editModeToggle');
+            if (editModeToggle) {
+                editModeToggle.style.display = 'inline-block';
+            }
+
+            // Calculate and display materials
+            this.calculateAndDisplayMaterials(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
+
+            this.showToast(`Draft "${draft.projectName}" loaded successfully!`, 'success');
+            
+            // Enable auto-save for loaded draft
+            this.enableAutoSave();
+        };
+
+        // Restore original image if it exists
+        if (draft.originalImage) {
+            console.log('Loading original image:', draft.originalImage);
+            const img = new Image();
+            img.onload = () => {
+                console.log('Image loaded successfully');
+                this.originalImage = img;
+                this.showImagePreview(draft.originalImage);
+                this.showControls();
+                completeLoading();
+            };
+            img.onerror = () => {
+                console.error('Failed to load image');
+                this.showControls();
+                completeLoading();
+            };
+            img.src = draft.originalImage;
+        } else {
+            console.log('No original image, completing loading directly');
+            // If no original image, just show the controls and complete loading
+            this.showControls();
+            completeLoading();
+        }
+    }
+
+    deleteDraft(draftId) {
+        if (!confirm('Are you sure you want to delete this draft?')) {
+            return;
+        }
+
+        const drafts = this.getSavedDrafts();
+        const filteredDrafts = drafts.filter(d => d.id !== draftId);
+        localStorage.setItem('patternDrafts', JSON.stringify(filteredDrafts));
+        
+        this.showToast('Draft deleted successfully!', 'success');
+    }
+
+    enableAutoSave() {
+        // Clear existing auto-save timer
+        if (this.autoSaveTimer) {
+            clearInterval(this.autoSaveTimer);
+        }
+
+        // Auto-save every 30 seconds when pattern is modified
+        this.autoSaveTimer = setInterval(() => {
+            if (this.currentPatternData && this.hasUnsavedChanges) {
+                this.autoSaveDraft();
+                this.hasUnsavedChanges = false;
+            }
+        }, 30000);
+    }
+
+    autoSaveDraft() {
+        if (!this.currentPatternData) return;
+
+        const projectName = this.getProjectName();
+        const drafts = this.getSavedDrafts();
+        const existingIndex = drafts.findIndex(draft => draft.projectName === projectName);
+
+        if (existingIndex !== -1) {
+            // Update existing draft
+            drafts[existingIndex].patternData = this.currentPatternData;
+            drafts[existingIndex].timestamp = new Date().toISOString();
+            localStorage.setItem('patternDrafts', JSON.stringify(drafts));
+            
+            console.log(`Auto-saved draft "${projectName}"`);
+        }
+    }
+
+    showToast(message, type = 'info') {
+        // Create toast notification
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        
+        // Add to document
+        document.body.appendChild(toast);
+        
+        // Animate in
+        setTimeout(() => toast.classList.add('show'), 100);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                if (document.body.contains(toast)) {
+                    document.body.removeChild(toast);
+                }
+            }, 300);
+        }, 3000);
     }
 
     handleDragOver(e) {
@@ -1273,6 +1567,9 @@ export class PatternGenerator {
         this.selectedCells.clear();
         this.selectionRect = null;
         this.redrawCanvasWithSelection();
+        
+        // Mark as having unsaved changes for auto-save
+        this.hasUnsavedChanges = true;
     }
 
     redrawCanvasWithSelection() {
