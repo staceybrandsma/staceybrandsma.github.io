@@ -18,6 +18,10 @@ export class PatternGenerator {
         this.hasUnsavedChanges = false;
         this.autoSaveTimer = null;
         
+        // Row/column manipulation state
+        this.contextMenuRow = 0;
+        this.contextMenuColumn = 0;
+        
         this.setupEventListeners();
         this.setupKeyboardEventListeners();
     }
@@ -269,6 +273,7 @@ export class PatternGenerator {
         const editInstructions = document.getElementById('editModeInstructions');
         const editColorPalette = document.getElementById('editColorPalette');
         const addColorSection = document.getElementById('addColorSection');
+        const rowColumnControls = document.getElementById('rowColumnControls');
 
         console.log('Setting up edit mode toggle. Button found:', !!editModeToggle);
 
@@ -284,6 +289,7 @@ export class PatternGenerator {
                     if (editInstructions) editInstructions.style.display = 'block';
                     if (editColorPalette) editColorPalette.style.display = 'flex';
                     if (addColorSection) addColorSection.style.display = 'flex';
+                    if (rowColumnControls) rowColumnControls.style.display = 'block';
                     this.setupEditColorPalette();
                     this.setupAddColorButton();
                     
@@ -301,6 +307,7 @@ export class PatternGenerator {
                     if (editInstructions) editInstructions.style.display = 'none';
                     if (editColorPalette) editColorPalette.style.display = 'none';
                     if (addColorSection) addColorSection.style.display = 'none';
+                    if (rowColumnControls) rowColumnControls.style.display = 'none';
                     this.selectedEditColor = null;
                     
                     // Disable scrolling for viewing mode
@@ -386,6 +393,181 @@ export class PatternGenerator {
                 this.selectedEditColor = [...this.currentPatternData.palette[0]];
             }
         }
+        
+        // Setup row/column controls
+        this.setupRowColumnControls();
+    }
+
+    setupRowColumnControls() {
+        const rowColumnControls = document.getElementById('rowColumnControls');
+        if (!rowColumnControls) return;
+
+        // Show the controls
+        rowColumnControls.style.display = 'block';
+
+        // Setup button event listeners
+        const insertRowBtn = document.getElementById('insertRowBtn');
+        const deleteRowBtn = document.getElementById('deleteRowBtn');
+        const insertColumnBtn = document.getElementById('insertColumnBtn');
+        const deleteColumnBtn = document.getElementById('deleteColumnBtn');
+
+        if (insertRowBtn) {
+            insertRowBtn.onclick = () => this.insertRow();
+        }
+        if (deleteRowBtn) {
+            deleteRowBtn.onclick = () => this.deleteRow();
+        }
+        if (insertColumnBtn) {
+            insertColumnBtn.onclick = () => this.insertColumn();
+        }
+        if (deleteColumnBtn) {
+            deleteColumnBtn.onclick = () => this.deleteColumn();
+        }
+    }
+
+    insertRow() {
+        if (!this.currentPatternData) return;
+        
+        const position = Math.floor(this.contextMenuRow) || Math.floor(this.currentPatternData.height / 2);
+        const { width, height, pixels } = this.currentPatternData;
+        
+        // Create new row with default color (first palette color)
+        const defaultColor = this.currentPatternData.palette[0];
+        const newRow = new Array(width).fill(null).map(() => [...defaultColor]);
+        
+        // Create new pixels array with inserted row
+        const newPixels = [];
+        const insertIndex = position * width;
+        
+        // Add pixels before insertion point
+        for (let i = 0; i < insertIndex; i++) {
+            newPixels.push([...pixels[i]]);
+        }
+        
+        // Add new row
+        newRow.forEach(color => newPixels.push(color));
+        
+        // Add pixels after insertion point
+        for (let i = insertIndex; i < pixels.length; i++) {
+            newPixels.push([...pixels[i]]);
+        }
+        
+        // Update pattern data
+        this.currentPatternData.pixels = newPixels;
+        this.currentPatternData.height = height + 1;
+        
+        // Redraw pattern
+        this.displayPattern(this.currentPatternData, width, height + 1);
+        this.hasUnsavedChanges = true;
+        
+        this.showToast(`Row inserted at position ${position + 1}`, 'success');
+    }
+
+    deleteRow() {
+        if (!this.currentPatternData || this.currentPatternData.height <= 1) {
+            alert('Cannot delete the last row!');
+            return;
+        }
+        
+        const position = Math.floor(this.contextMenuRow) || Math.floor(this.currentPatternData.height / 2);
+        const { width, height, pixels } = this.currentPatternData;
+        
+        // Create new pixels array without the specified row
+        const newPixels = [];
+        const deleteStartIndex = position * width;
+        const deleteEndIndex = deleteStartIndex + width;
+        
+        // Add pixels before deletion point
+        for (let i = 0; i < deleteStartIndex; i++) {
+            newPixels.push([...pixels[i]]);
+        }
+        
+        // Skip the row to delete
+        
+        // Add pixels after deletion point
+        for (let i = deleteEndIndex; i < pixels.length; i++) {
+            newPixels.push([...pixels[i]]);
+        }
+        
+        // Update pattern data
+        this.currentPatternData.pixels = newPixels;
+        this.currentPatternData.height = height - 1;
+        
+        // Redraw pattern
+        this.displayPattern(this.currentPatternData, width, height - 1);
+        this.hasUnsavedChanges = true;
+        
+        this.showToast(`Row ${position + 1} deleted`, 'success');
+    }
+
+    insertColumn() {
+        if (!this.currentPatternData) return;
+        
+        const position = Math.floor(this.contextMenuColumn) || Math.floor(this.currentPatternData.width / 2);
+        const { width, height, pixels } = this.currentPatternData;
+        
+        // Default color for new column
+        const defaultColor = this.currentPatternData.palette[0];
+        
+        // Create new pixels array with inserted column
+        const newPixels = [];
+        
+        for (let row = 0; row < height; row++) {
+            for (let col = 0; col <= width; col++) {
+                if (col === position) {
+                    // Insert new pixel at this position
+                    newPixels.push([...defaultColor]);
+                } else if (col < position) {
+                    // Copy pixel from original position
+                    newPixels.push([...pixels[row * width + col]]);
+                } else {
+                    // Copy pixel from position shifted by 1
+                    newPixels.push([...pixels[row * width + (col - 1)]]);
+                }
+            }
+        }
+        
+        // Update pattern data
+        this.currentPatternData.pixels = newPixels;
+        this.currentPatternData.width = width + 1;
+        
+        // Redraw pattern
+        this.displayPattern(this.currentPatternData, width + 1, height);
+        this.hasUnsavedChanges = true;
+        
+        this.showToast(`Column inserted at position ${position + 1}`, 'success');
+    }
+
+    deleteColumn() {
+        if (!this.currentPatternData || this.currentPatternData.width <= 1) {
+            alert('Cannot delete the last column!');
+            return;
+        }
+        
+        const position = Math.floor(this.contextMenuColumn) || Math.floor(this.currentPatternData.width / 2);
+        const { width, height, pixels } = this.currentPatternData;
+        
+        // Create new pixels array without the specified column
+        const newPixels = [];
+        
+        for (let row = 0; row < height; row++) {
+            for (let col = 0; col < width; col++) {
+                if (col !== position) {
+                    // Copy pixel (skip the column to delete)
+                    newPixels.push([...pixels[row * width + col]]);
+                }
+            }
+        }
+        
+        // Update pattern data
+        this.currentPatternData.pixels = newPixels;
+        this.currentPatternData.width = width - 1;
+        
+        // Redraw pattern
+        this.displayPattern(this.currentPatternData, width - 1, height);
+        this.hasUnsavedChanges = true;
+        
+        this.showToast(`Column ${position + 1} deleted`, 'success');
     }
 
     setupAddColorButton() {
@@ -548,11 +730,16 @@ export class PatternGenerator {
     }
 
     setupDraftManagement() {
+        console.log('Setting up draft management...');
         const saveDraftBtn = document.getElementById('saveDraft');
         const loadDraftBtn = document.getElementById('loadDraft');
         const manageDraftsBtn = document.getElementById('manageDrafts');
 
+        console.log('Save draft button found:', !!saveDraftBtn);
+        console.log('Load draft button found:', !!loadDraftBtn);
+
         if (saveDraftBtn) {
+            console.log('Adding save draft event listener');
             saveDraftBtn.addEventListener('click', this.saveDraft.bind(this));
         }
         if (loadDraftBtn) {
@@ -564,7 +751,10 @@ export class PatternGenerator {
     }
 
     saveDraft() {
+        console.log('Save draft function called');
+        
         if (!this.currentPatternData) {
+            console.log('No current pattern data found');
             alert('No pattern to save! Please generate a pattern first.');
             return;
         }
@@ -589,28 +779,38 @@ export class PatternGenerator {
 
         console.log('Draft data to save:', draftData);
 
-        // Save to localStorage
-        const drafts = this.getSavedDrafts();
-        
-        // Check if draft with same name exists
-        const existingIndex = drafts.findIndex(draft => draft.projectName === projectName);
-        if (existingIndex !== -1) {
-            if (confirm(`A draft named "${projectName}" already exists. Do you want to overwrite it?`)) {
-                drafts[existingIndex] = draftData;
-            } else {
-                return;
-            }
-        } else {
-            drafts.push(draftData);
-        }
+        // Save to localStorage - always keep only one draft
+        const drafts = [];
+        drafts.push(draftData);
 
-        localStorage.setItem('patternDrafts', JSON.stringify(drafts));
-        
-        // Show success message
-        this.showToast(`Draft "${projectName}" saved successfully!`, 'success');
-        
-        // Auto-save enabled
-        this.enableAutoSave();
+        try {
+            localStorage.setItem('patternDrafts', JSON.stringify(drafts));
+            
+            // Show success message
+            this.showToast(`Draft "${projectName}" saved successfully!`, 'success');
+            
+            // Auto-save enabled
+            this.enableAutoSave();
+        } catch (error) {
+            console.error('Error saving draft:', error);
+            
+            // If localStorage is full, try saving without the original image
+            if (error.name === 'QuotaExceededError' || error.message.includes('quota')) {
+                const draftDataWithoutImage = { ...draftData, originalImage: null };
+                const draftsWithoutImage = [draftDataWithoutImage];
+                
+                try {
+                    localStorage.setItem('patternDrafts', JSON.stringify(draftsWithoutImage));
+                    this.showToast(`Draft "${projectName}" saved successfully (without image)!`, 'success');
+                    this.enableAutoSave();
+                } catch (secondError) {
+                    console.error('Error saving draft even without image:', secondError);
+                    this.showToast('Failed to save draft. Storage may be full.', 'error');
+                }
+            } else {
+                this.showToast('Failed to save draft. Please try again.', 'error');
+            }
+        }
     }
 
     getSavedDrafts() {
@@ -626,63 +826,13 @@ export class PatternGenerator {
     showLoadDraftModal() {
         const drafts = this.getSavedDrafts();
         if (drafts.length === 0) {
-            alert('No saved drafts found.');
+            alert('No saved draft found.');
             return;
         }
 
-        // Create modal
-        const modal = document.createElement('div');
-        modal.className = 'draft-modal';
-        modal.innerHTML = `
-            <div class="draft-modal-content">
-                <div class="draft-modal-header">
-                    <h3>Load Draft</h3>
-                    <button class="close-modal">&times;</button>
-                </div>
-                <div class="draft-list">
-                    ${drafts.map(draft => `
-                        <div class="draft-item" data-draft-id="${draft.id}">
-                            <div class="draft-info">
-                                <h4>${draft.projectName}</h4>
-                                <p>Saved: ${new Date(draft.timestamp).toLocaleString()}</p>
-                                <p>Colors: ${draft.patternData.palette.length} | Size: ${draft.patternData.width}×${draft.patternData.height}</p>
-                            </div>
-                            <div class="draft-actions">
-                                <button class="load-draft-btn" data-draft-id="${draft.id}">Load</button>
-                                <button class="delete-draft-btn" data-draft-id="${draft.id}">Delete</button>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(modal);
-
-        // Add event listeners
-        modal.querySelector('.close-modal').addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-            }
-            
-            if (e.target.classList.contains('load-draft-btn')) {
-                const draftId = e.target.dataset.draftId;
-                this.loadDraft(draftId);
-                document.body.removeChild(modal);
-            }
-            
-            if (e.target.classList.contains('delete-draft-btn')) {
-                const draftId = e.target.dataset.draftId;
-                this.deleteDraft(draftId);
-                // Refresh modal
-                document.body.removeChild(modal);
-                this.showLoadDraftModal();
-            }
-        });
+        // Since we only have one draft, just load it directly
+        const draft = drafts[0];
+        this.loadDraft(draft.id);
     }
 
     loadDraft(draftId) {
@@ -768,15 +918,19 @@ export class PatternGenerator {
     }
 
     deleteDraft(draftId) {
-        if (!confirm('Are you sure you want to delete this draft?')) {
+        if (!confirm('Are you sure you want to delete the saved draft?')) {
             return;
         }
 
-        const drafts = this.getSavedDrafts();
-        const filteredDrafts = drafts.filter(d => d.id !== draftId);
-        localStorage.setItem('patternDrafts', JSON.stringify(filteredDrafts));
-        
-        this.showToast('Draft deleted successfully!', 'success');
+        try {
+            // Clear all drafts since we only keep one
+            localStorage.setItem('patternDrafts', JSON.stringify([]));
+            
+            this.showToast('Draft deleted successfully!', 'success');
+        } catch (error) {
+            console.error('Error deleting draft:', error);
+            this.showToast('Failed to delete draft. Please try again.', 'error');
+        }
     }
 
     enableAutoSave() {
@@ -799,15 +953,20 @@ export class PatternGenerator {
 
         const projectName = this.getProjectName();
         const drafts = this.getSavedDrafts();
-        const existingIndex = drafts.findIndex(draft => draft.projectName === projectName);
-
-        if (existingIndex !== -1) {
-            // Update existing draft
-            drafts[existingIndex].patternData = this.currentPatternData;
-            drafts[existingIndex].timestamp = new Date().toISOString();
-            localStorage.setItem('patternDrafts', JSON.stringify(drafts));
+        
+        // Always update the single draft if it exists, or create a new one
+        if (drafts.length > 0) {
+            drafts[0].patternData = this.currentPatternData;
+            drafts[0].timestamp = new Date().toISOString();
+            drafts[0].projectName = projectName; // Update project name too
             
-            console.log(`Auto-saved draft "${projectName}"`);
+            try {
+                localStorage.setItem('patternDrafts', JSON.stringify(drafts));
+                console.log(`Auto-saved draft "${projectName}"`);
+            } catch (error) {
+                console.error('Error auto-saving draft:', error);
+                // Don't show toast for auto-save errors to avoid spam
+            }
         }
     }
 
@@ -1311,11 +1470,13 @@ export class PatternGenerator {
         this.boundCanvasMouseMove = this.handleCanvasMouseMove.bind(this);
         this.boundCanvasMouseUp = this.handleCanvasMouseUp.bind(this);
         this.boundCanvasClick = this.handleCanvasClick.bind(this);
+        this.boundCanvasContextMenu = this.handleCanvasContextMenu.bind(this);
         
         canvas.addEventListener('mousedown', this.boundCanvasMouseDown);
         canvas.addEventListener('mousemove', this.boundCanvasMouseMove);
         canvas.addEventListener('mouseup', this.boundCanvasMouseUp);
         canvas.addEventListener('click', this.boundCanvasClick);
+        canvas.addEventListener('contextmenu', this.boundCanvasContextMenu);
         
         console.log('Mouse event listeners bound to canvas');
         
@@ -1447,6 +1608,59 @@ export class PatternGenerator {
         
         // Reset mouse moved flag
         this.mouseHasMoved = false;
+    }
+
+    handleCanvasContextMenu(event) {
+        // Only handle right-clicks in edit mode
+        if (!this.isEditMode || !this.currentPatternData) {
+            return;
+        }
+        
+        event.preventDefault(); // Prevent default context menu
+        
+        const { x, y } = this.getCanvasCoordinates(event);
+        
+        // Calculate which stitch was right-clicked
+        const stitchX = Math.floor(x / this.cellSize);
+        const stitchY = Math.floor(y / this.cellSize);
+        
+        // Check bounds
+        if (stitchX >= 0 && stitchX < this.currentPatternData.width && 
+            stitchY >= 0 && stitchY < this.currentPatternData.height) {
+            
+            // Store the position for row/column operations
+            this.contextMenuRow = stitchY;
+            this.contextMenuColumn = stitchX;
+            
+            // Show a brief visual indicator
+            this.showContextPosition(stitchX, stitchY);
+            
+            this.showToast(`Position set: Row ${stitchY + 1}, Column ${stitchX + 1}`, 'info');
+        }
+    }
+
+    showContextPosition(stitchX, stitchY) {
+        const canvas = document.getElementById('patternCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        
+        // Draw a temporary highlight
+        ctx.save();
+        ctx.strokeStyle = '#ff0000';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([5, 5]);
+        
+        const x = stitchX * this.cellSize;
+        const y = stitchY * this.cellSize;
+        
+        ctx.strokeRect(x, y, this.cellSize, this.cellSize);
+        ctx.restore();
+        
+        // Clear the highlight after 1 second
+        setTimeout(() => {
+            this.redrawCanvasWithSelection();
+        }, 1000);
     }
 
     updateDownloadButtonText() {
