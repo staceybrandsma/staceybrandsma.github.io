@@ -7,7 +7,47 @@ export class PatternGenerator {
         this.currentPatternData = null;
         this.isEditMode = false;
         this.selectedEditColor = null;
+        
+        // Multi-select state
+        this.isDragging = false;
+        this.dragStartPos = null;
+        this.selectedCells = new Set();
+        this.selectionRect = null;
+        
         this.setupEventListeners();
+        this.setupKeyboardEventListeners();
+    }
+
+    setupKeyboardEventListeners() {
+        document.addEventListener('keydown', (event) => {
+            if (!this.isEditMode) return;
+            
+            // Escape key to clear selection
+            if (event.key === 'Escape') {
+                this.clearSelection();
+                event.preventDefault();
+            }
+            
+            // Delete key to delete selected cells (make them transparent or background color)
+            if (event.key === 'Delete' || event.key === 'Backspace') {
+                if (this.selectedCells.size > 0 && this.currentPatternData?.palette?.[0]) {
+                    // Use the first color in palette as background/delete color
+                    const backgroundColor = this.currentPatternData.palette[0];
+                    this.selectedCells.forEach(index => {
+                        this.updateSingleStitch(index, backgroundColor);
+                    });
+                    this.clearSelection();
+                    event.preventDefault();
+                }
+            }
+        });
+    }
+
+    clearSelection() {
+        this.selectedCells.clear();
+        this.selectionRect = null;
+        this.isDragging = false;
+        this.redrawCanvasWithSelection();
     }
 
     setupEventListeners() {
@@ -319,6 +359,11 @@ export class PatternGenerator {
                 swatch.classList.add('selected');
                 this.selectedEditColor = [...color];
                 console.log('Selected edit color:', this.selectedEditColor);
+                
+                // If we have selected cells, apply the color immediately
+                if (this.selectedCells.size > 0) {
+                    this.updateSelectedCells();
+                }
             });
 
             // Add double-click to edit the color throughout the pattern
@@ -485,6 +530,14 @@ export class PatternGenerator {
         if (exportPaletteBtn) {
             exportPaletteBtn.addEventListener('click', this.exportColorGuide.bind(this));
         }
+
+        // Setup project name input listener to update button text
+        const projectNameInput = document.getElementById('projectName');
+        if (projectNameInput) {
+            projectNameInput.addEventListener('input', this.updateDownloadButtonText.bind(this));
+            // Set initial button text
+            this.updateDownloadButtonText();
+        }
     }
 
     handleDragOver(e) {
@@ -595,6 +648,9 @@ export class PatternGenerator {
         
         this.displayPattern(patternData, stitchWidth, stitchHeight);
         this.displayColorPalette(patternData.palette);
+        
+        // Update download button text with project name
+        this.updateDownloadButtonText();
         
         // Show edit mode controls
         const editModeToggle = document.getElementById('editModeToggle');
@@ -942,20 +998,32 @@ export class PatternGenerator {
         this.cellSize = cellSize;
         console.log('Cell size set to:', this.cellSize, 'Edit mode:', this.isEditMode);
         
-        // Remove any existing click listener to avoid duplicates
+        // Remove any existing event listeners to avoid duplicates
+        if (this.boundCanvasMouseDown) {
+            canvas.removeEventListener('mousedown', this.boundCanvasMouseDown);
+        }
+        if (this.boundCanvasMouseMove) {
+            canvas.removeEventListener('mousemove', this.boundCanvasMouseMove);
+        }
+        if (this.boundCanvasMouseUp) {
+            canvas.removeEventListener('mouseup', this.boundCanvasMouseUp);
+        }
         if (this.boundCanvasClick) {
             canvas.removeEventListener('click', this.boundCanvasClick);
         }
         
-        // Create and bind the click handler
+        // Create and bind the mouse event handlers
+        this.boundCanvasMouseDown = this.handleCanvasMouseDown.bind(this);
+        this.boundCanvasMouseMove = this.handleCanvasMouseMove.bind(this);
+        this.boundCanvasMouseUp = this.handleCanvasMouseUp.bind(this);
         this.boundCanvasClick = this.handleCanvasClick.bind(this);
-        canvas.addEventListener('click', this.boundCanvasClick);
-        console.log('Click listener bound to canvas');
         
-        // Add a test click listener to see if ANY clicks are detected
-        canvas.addEventListener('click', () => {
-            console.log('TEST: Canvas was clicked!');
-        });
+        canvas.addEventListener('mousedown', this.boundCanvasMouseDown);
+        canvas.addEventListener('mousemove', this.boundCanvasMouseMove);
+        canvas.addEventListener('mouseup', this.boundCanvasMouseUp);
+        canvas.addEventListener('click', this.boundCanvasClick);
+        
+        console.log('Mouse event listeners bound to canvas');
         
         // Set cursor style based on edit mode
         this.updateCanvasStyle(canvas);
@@ -988,7 +1056,7 @@ export class PatternGenerator {
 
         if (this.isEditMode) {
             canvas.style.cursor = 'crosshair';
-            canvas.title = 'Select a color below, then click stitches to paint them';
+            canvas.title = 'Click to paint • Drag to select multiple • Ctrl+click for individual selection • Esc to clear selection';
             canvas.classList.add('edit-mode');
             console.log('Canvas set to edit mode');
         } else {
@@ -1024,12 +1092,12 @@ export class PatternGenerator {
 
     handleCanvasClick(event) {
         console.log('=== HANDLE CANVAS CLICK CALLED ===');
-        console.log('Edit mode:', this.isEditMode);
-        console.log('Event:', event);
+        console.log('Edit mode:', this.isEditMode, 'Mouse moved:', this.mouseHasMoved);
         
-        // Only handle clicks if in edit mode
-        if (!this.isEditMode) {
-            console.log('Not in edit mode, ignoring click');
+        // Only handle clicks if in edit mode and mouse wasn't dragged
+        if (!this.isEditMode || this.mouseHasMoved) {
+            console.log('Not in edit mode or mouse was dragged, ignoring click');
+            this.mouseHasMoved = false; // Reset for next interaction
             return;
         }
 
@@ -1043,28 +1111,8 @@ export class PatternGenerator {
             return;
         }
         
-        const canvas = event.target;
-        const rect = canvas.getBoundingClientRect();
+        const { x, y } = this.getCanvasCoordinates(event);
         
-        // Get more accurate coordinates accounting for canvas scaling
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        
-        const x = (event.clientX - rect.left) * scaleX;
-        const y = (event.clientY - rect.top) * scaleY;
-        
-        console.log('Raw click:', { 
-            clientX: event.clientX, 
-            clientY: event.clientY, 
-            rectLeft: rect.left, 
-            rectTop: rect.top,
-            canvasWidth: canvas.width,
-            canvasHeight: canvas.height,
-            rectWidth: rect.width,
-            rectHeight: rect.height,
-            scaleX,
-            scaleY
-        });
         console.log('Adjusted click position:', { x, y, cellSize: this.cellSize });
         
         // Calculate which stitch was clicked
@@ -1079,6 +1127,19 @@ export class PatternGenerator {
             stitchY >= 0 && stitchY < this.currentPatternData.height) {
             
             const stitchIndex = stitchY * this.currentPatternData.width + stitchX;
+            
+            // Handle Ctrl/Cmd+click for individual selection
+            if (event.ctrlKey || event.metaKey) {
+                if (this.selectedCells.has(stitchIndex)) {
+                    this.selectedCells.delete(stitchIndex);
+                } else {
+                    this.selectedCells.add(stitchIndex);
+                }
+                this.redrawCanvasWithSelection();
+                return;
+            }
+            
+            // Regular single click - paint immediately if color is selected
             console.log('Painting stitch at index:', stitchIndex, 'with color:', this.selectedEditColor);
             
             if (this.selectedEditColor) {
@@ -1088,6 +1149,207 @@ export class PatternGenerator {
             }
         } else {
             console.log('Click outside bounds');
+        }
+        
+        // Reset mouse moved flag
+        this.mouseHasMoved = false;
+    }
+
+    updateDownloadButtonText() {
+        const projectName = this.getProjectName();
+        const exportImageBtn = document.getElementById('exportImage');
+        const exportPaletteBtn = document.getElementById('exportPalette');
+
+        if (exportImageBtn) {
+            exportImageBtn.textContent = `Download Pattern (${projectName}-pattern.png)`;
+        }
+        if (exportPaletteBtn) {
+            exportPaletteBtn.textContent = `Download Color Guide (${projectName}-color-guide.png)`;
+        }
+    }
+
+    handleCanvasMouseDown(event) {
+        if (!this.isEditMode || !this.currentPatternData) return;
+        
+        this.isDragging = false; // Will be set to true if mouse moves
+        this.dragStartPos = this.getCanvasCoordinates(event);
+        this.mouseHasMoved = false;
+        
+        // Clear previous selection if not holding Ctrl/Cmd
+        if (!event.ctrlKey && !event.metaKey) {
+            this.selectedCells.clear();
+            this.redrawCanvasWithSelection();
+        }
+        
+        // Prevent text selection during drag
+        event.preventDefault();
+    }
+
+    handleCanvasMouseMove(event) {
+        if (!this.isEditMode || !this.currentPatternData || !this.dragStartPos) return;
+        
+        const currentPos = this.getCanvasCoordinates(event);
+        
+        // Check if mouse has moved significantly (more than 5 pixels)
+        const distance = Math.sqrt(
+            Math.pow(currentPos.x - this.dragStartPos.x, 2) + 
+            Math.pow(currentPos.y - this.dragStartPos.y, 2)
+        );
+        
+        if (distance > 5) {
+            this.isDragging = true;
+            this.mouseHasMoved = true;
+            this.updateSelection(this.dragStartPos, currentPos);
+            this.redrawCanvasWithSelection();
+        }
+        
+        event.preventDefault();
+    }
+
+    handleCanvasMouseUp(event) {
+        if (!this.isEditMode) return;
+        
+        // If we were dragging and have selected cells and a color is chosen, apply it
+        if (this.isDragging && this.selectedCells.size > 0 && this.selectedEditColor) {
+            this.updateSelectedCells();
+        }
+        
+        // Reset drag state
+        this.isDragging = false;
+        this.dragStartPos = null;
+        
+        event.preventDefault();
+    }
+
+    getCanvasCoordinates(event) {
+        const canvas = event.target;
+        const rect = canvas.getBoundingClientRect();
+        
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = (event.clientY - rect.top) * scaleY;
+        
+        return { x, y };
+    }
+
+    updateSelection(startPos, endPos) {
+        if (!this.currentPatternData) return;
+        
+        // Calculate the selection rectangle in grid coordinates
+        const startX = Math.floor(startPos.x / this.cellSize);
+        const startY = Math.floor(startPos.y / this.cellSize);
+        const endX = Math.floor(endPos.x / this.cellSize);
+        const endY = Math.floor(endPos.y / this.cellSize);
+        
+        // Ensure coordinates are within bounds
+        const minX = Math.max(0, Math.min(startX, endX));
+        const maxX = Math.min(this.currentPatternData.width - 1, Math.max(startX, endX));
+        const minY = Math.max(0, Math.min(startY, endY));
+        const maxY = Math.min(this.currentPatternData.height - 1, Math.max(startY, endY));
+        
+        // Store selection rectangle
+        this.selectionRect = { minX, minY, maxX, maxY };
+        
+        // Update selected cells
+        for (let y = minY; y <= maxY; y++) {
+            for (let x = minX; x <= maxX; x++) {
+                const index = y * this.currentPatternData.width + x;
+                this.selectedCells.add(index);
+            }
+        }
+    }
+
+    updateSelectedCells() {
+        if (!this.selectedEditColor || this.selectedCells.size === 0) return;
+        
+        // Update all selected cells with the chosen color
+        this.selectedCells.forEach(index => {
+            this.updateSingleStitch(index, this.selectedEditColor);
+        });
+        
+        // Clear selection after updating
+        this.selectedCells.clear();
+        this.selectionRect = null;
+        this.redrawCanvasWithSelection();
+    }
+
+    redrawCanvasWithSelection() {
+        if (!this.currentPatternData) return;
+        
+        const canvas = document.getElementById('patternCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        const { width, height, pixels } = this.currentPatternData;
+        
+        // Clear and redraw the pattern
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw pattern cells
+        pixels.forEach((color, index) => {
+            const x = (index % width) * this.cellSize;
+            const y = Math.floor(index / width) * this.cellSize;
+            
+            ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+            ctx.fillRect(x, y, this.cellSize, this.cellSize);
+        });
+        
+        // Draw grid if in edit mode
+        if (this.isEditMode) {
+            this.drawGrid(ctx, width, height);
+        }
+        
+        // Draw selection overlay
+        if (this.selectedCells.size > 0) {
+            ctx.fillStyle = 'rgba(0, 123, 255, 0.3)'; // Blue overlay
+            ctx.strokeStyle = 'rgba(0, 123, 255, 0.8)';
+            ctx.lineWidth = 2;
+            
+            this.selectedCells.forEach(index => {
+                const x = (index % width) * this.cellSize;
+                const y = Math.floor(index / width) * this.cellSize;
+                
+                ctx.fillRect(x, y, this.cellSize, this.cellSize);
+                ctx.strokeRect(x, y, this.cellSize, this.cellSize);
+            });
+        }
+        
+        // Draw selection rectangle during drag
+        if (this.isDragging && this.selectionRect) {
+            const { minX, minY, maxX, maxY } = this.selectionRect;
+            const x = minX * this.cellSize;
+            const y = minY * this.cellSize;
+            const width = (maxX - minX + 1) * this.cellSize;
+            const height = (maxY - minY + 1) * this.cellSize;
+            
+            ctx.strokeStyle = 'rgba(0, 123, 255, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.strokeRect(x, y, width, height);
+            ctx.setLineDash([]); // Reset line dash
+        }
+    }
+
+    drawGrid(ctx, width, height) {
+        ctx.strokeStyle = '#ddd';
+        ctx.lineWidth = 0.5;
+        
+        // Draw vertical lines
+        for (let x = 0; x <= width; x++) {
+            ctx.beginPath();
+            ctx.moveTo(x * this.cellSize + 0.5, 0);
+            ctx.lineTo(x * this.cellSize + 0.5, height * this.cellSize);
+            ctx.stroke();
+        }
+        
+        // Draw horizontal lines
+        for (let y = 0; y <= height; y++) {
+            ctx.beginPath();
+            ctx.moveTo(0, y * this.cellSize + 0.5);
+            ctx.lineTo(width * this.cellSize, y * this.cellSize + 0.5);
+            ctx.stroke();
         }
     }
 
@@ -1451,7 +1713,8 @@ export class PatternGenerator {
         }
 
         // Download the image
-        this.downloadCanvas(exportCanvas, 'knitting-pattern.png');
+        const projectName = this.getProjectName();
+        this.downloadCanvas(exportCanvas, `${projectName}-pattern.png`);
     }
 
     exportColorGuide() {
@@ -1607,7 +1870,8 @@ export class PatternGenerator {
         ctx.fillText('💡 Estimates include 10% waste factor • Always purchase extra for color matching', canvasWidth / 2, footerY - 10);
 
         // Download the image
-        this.downloadCanvas(canvas, `${craftType}-color-guide.png`);
+        const projectName = this.getProjectName();
+        this.downloadCanvas(canvas, `${projectName}-color-guide.png`);
     }
 
     downloadCanvas(canvas, filename) {
@@ -1615,6 +1879,29 @@ export class PatternGenerator {
         link.download = filename;
         link.href = canvas.toDataURL();
         link.click();
+    }
+
+    getProjectName() {
+        const projectNameInput = document.getElementById('projectName');
+        const rawName = projectNameInput ? projectNameInput.value.trim() : '';
+        
+        // If no name provided, use default
+        if (!rawName) {
+            return 'My Pattern Project';
+        }
+        
+        // Sanitize the project name for use in filenames
+        return this.sanitizeFilename(rawName);
+    }
+
+    sanitizeFilename(name) {
+        // Remove or replace characters that are invalid in filenames
+        return name
+            .replace(/[<>:"/\\|?*]/g, '') // Remove invalid characters
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/\.+$/, '') // Remove trailing dots
+            .substring(0, 50) // Limit length
+            .toLowerCase();
     }
 
     downloadText(text, filename) {

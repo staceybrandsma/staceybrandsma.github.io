@@ -1294,6 +1294,36 @@ body {
     margin-bottom: 1rem;
 }
 
+.project-name-input {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-name-input label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.project-name-input input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.project-name-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+}
+
 .export-buttons {
     display: flex;
     gap: 1rem;
