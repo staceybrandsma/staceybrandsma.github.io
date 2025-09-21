@@ -886,6 +886,12 @@ export class PatternGenerator {
             // Calculate and display materials
             this.calculateAndDisplayMaterials(this.currentPatternData, this.currentPatternData.width, this.currentPatternData.height);
 
+            // Show the results section so both original image and pattern are visible
+            const resultsSection = document.getElementById('resultsSection');
+            if (resultsSection) {
+                resultsSection.style.display = 'block';
+            }
+
             this.showToast(`Draft "${draft.projectName}" loaded successfully!`, 'success');
             
             // Enable auto-save for loaded draft
